@@ -14,7 +14,7 @@ export class IndexComponent implements OnInit {
       var Page = (() => {
         var $nav = $('#nav-dots > span'),
           slitslider = $('#slider').slitslider({
-            onBeforeChange: (slide, pos) => {
+            onBeforeChange: (slide : any, pos : any) => {
               $nav.removeClass('nav-dot-current');
               $nav.eq(pos).addClass('nav-dot-current');
             }
@@ -23,8 +23,8 @@ export class IndexComponent implements OnInit {
             initEvents();
           },
           initEvents = () => {
-            $nav.each(function(i) {
-              $(this).on('click', function(event) {
+            $nav.each(function(i: any) {
+              $(this).on('click', function(event: any) {
                 var $dot = $(this);
                 if (!slitslider.isActive()) {
                   $nav.removeClass('nav-dot-current');
