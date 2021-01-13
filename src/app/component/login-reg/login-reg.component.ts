@@ -9,6 +9,7 @@ let isValidated = true;
   styleUrls: ['./login-reg.component.css']
 })
 export class LoginRegComponent implements OnInit {
+  private output = '';
   user: User = {};
   userForm: FormGroup = new FormGroup({
     name: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]),
@@ -29,9 +30,7 @@ export class LoginRegComponent implements OnInit {
     if (this.userForm.invalid){
       return;
     }else {
-      this.userService.registerUser(this.user).subscribe(()=>{
-        console.log("Đăng ký thành công")
-      })
+      this.userService.registerUser(this.user).subscribe(output=> {this.output = 'Tạo Tài Khoản Thành Công'; });
     }
   }
 
