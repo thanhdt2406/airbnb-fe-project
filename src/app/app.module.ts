@@ -15,6 +15,7 @@ import { ContactComponent } from './component/contact/contact.component';
 import { UserProfileComponent } from './component/user-profile/user-profile.component';
 import { UserHouseComponent } from './component/user-house/user-house.component';
 import { ChangePassComponent } from './component/change-pass/change-pass.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,9 @@ import { ChangePassComponent } from './component/change-pass/change-pass.compone
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
