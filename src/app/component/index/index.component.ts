@@ -24,7 +24,9 @@ export class IndexComponent implements OnInit {
           },
           initEvents = () => {
             $nav.each(function(i: any) {
+              // @ts-ignore
               $(this).on('click', function(event: any) {
+                // @ts-ignore
                 var $dot = $(this);
                 if (!slitslider.isActive()) {
                   $nav.removeClass('nav-dot-current');

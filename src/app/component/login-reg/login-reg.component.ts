@@ -9,7 +9,7 @@ let isValidated = true;
   styleUrls: ['./login-reg.component.css']
 })
 export class LoginRegComponent implements OnInit {
-  private output = '';
+  output = '';
   user: User = {};
   userForm: FormGroup = new FormGroup({
     name: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]),
