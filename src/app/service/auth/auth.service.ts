@@ -4,6 +4,7 @@ import {UserToken} from '../../model/user-token';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
 import {map} from 'rxjs/operators';
+import {User} from '../../model/user';
 
 const API_URL = `${environment.apiUrl}`;
 
@@ -11,7 +12,7 @@ const API_URL = `${environment.apiUrl}`;
   providedIn: 'root'
 })
 export class AuthService {
-  update = new EventEmitter<string>();
+  // update = new EventEmitter<string>();
   // @ts-ignore
   private currentUserSubject: BehaviorSubject<UserToken>;
   // @ts-ignore
@@ -28,11 +29,11 @@ export class AuthService {
   }
 
   public login(username: string, password: string) {
-    return this.http.post(API_URL + '/login', {username, password})
+    return this.http.post<any>(API_URL + '/login', {username, password})
       .pipe(map(user => {
         localStorage.setItem('user', JSON.stringify(user));
         this.currentUserSubject.next(user);
-        this.update.emit('login');
+        // this.update.emit('login');
         return user;
       }));
   }

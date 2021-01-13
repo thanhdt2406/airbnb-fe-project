@@ -20,7 +20,6 @@ const routes: Routes = [
   {
     path: 'list',
     component: ListComponent,
-    canActivate: [AuthGuard]
   },
   {
     path: 'detail',
