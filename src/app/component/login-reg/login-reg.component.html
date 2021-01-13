@@ -18,13 +18,13 @@
       <div class="box-for overflow">
         <div class="col-md-12 col-xs-12 register-blocks">
           <h2>New account : </h2>
-          <form action="" method="post" [formGroup]="apartmentForm" id="apartment-form">
+          <form action="" method="post" [formGroup]="userForm" (ngSubmit)="createUser()"  id="apartment-form">
             <div class="form-group">
               <label>Name</label>
               <input type="text" name="name"
                      class="form-control" formControlName="name"
-                     [ngClass]="{'is-invalid': apartmentForm.get('name')!.invalid && apartmentForm.get('name')!.touched}">
-              <div *ngIf="apartmentForm.get('name')!.invalid && apartmentForm.get('name')!.touched" class="error">
+                     [ngClass]="{'is-invalid': userForm.get('name')!.invalid && userForm.get('name')!.touched}">
+              <div *ngIf="userForm.get('name')!.invalid && userForm.get('name')!.touched" class="error">
                 <span>Bạn phải nhập tên !!!</span>
                 <br>
                 <span>Bạn phải nhập tối thiểu 6 ký tự !!!</span>
@@ -35,8 +35,8 @@
             <div class="form-group">
               <label>Email</label>
               <input  type="text"  class="form-control" name="email" formControlName="email"
-                      [ngClass]="{'is-invalid': apartmentForm.get('email')!.invalid && apartmentForm.get('email')!.touched}">
-              <div *ngIf="apartmentForm.get('email')!.invalid && apartmentForm.get('email')!.touched" class="error">
+                      [ngClass]="{'is-invalid': userForm.get('email')!.invalid && userForm.get('email')!.touched}">
+              <div *ngIf="userForm.get('email')!.invalid && userForm.get('email')!.touched" class="error">
                 <span>Bạn phải nhập email !!!</span>
                 <br>
                 <span>Bạn phải nhập đúng định dạng email !!!</span>
@@ -46,8 +46,8 @@
             <div class="form-group">
               <label for="password">Password</label>
               <input type="password"  class="form-control" id="password" formControlName="password"
-                     [ngClass]="{'is-invalid': apartmentForm.get('password')!.invalid && apartmentForm.get('password')!.touched}">
-              <div *ngIf="apartmentForm.get('password')!.invalid && apartmentForm.get('password')!.touched" class="error">
+                     [ngClass]="{'is-invalid': userForm.get('password')!.invalid && userForm.get('password')!.touched}">
+              <div *ngIf="userForm.get('password')!.invalid && userForm.get('password')!.touched" class="error">
                 <span>Bạn phải nhập mật khẩu !!!</span>
                 <br>
                 <span>Bạn phải nhập tối thiểu 6 ký tự !!!</span>
