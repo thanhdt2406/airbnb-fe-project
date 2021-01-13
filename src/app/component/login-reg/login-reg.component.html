@@ -25,7 +25,11 @@
                      class="form-control" formControlName="name"
                      [ngClass]="{'is-invalid': apartmentForm.get('name')!.invalid && apartmentForm.get('name')!.touched}">
               <div *ngIf="apartmentForm.get('name')!.invalid && apartmentForm.get('name')!.touched" class="error">
-                <div>*bạn phải nhập tên</div>
+                <span>Bạn phải nhập tên !!!</span>
+                <br>
+                <span>Bạn phải nhập tối thiểu 6 ký tự !!!</span>
+                <br>
+                <span>Bạn chỉ được nhập tối đa 20 ký tự !!!</span>
               </div>
             </div>
             <div class="form-group">
@@ -33,8 +37,9 @@
               <input  type="text"  class="form-control" name="email" formControlName="email"
                       [ngClass]="{'is-invalid': apartmentForm.get('email')!.invalid && apartmentForm.get('email')!.touched}">
               <div *ngIf="apartmentForm.get('email')!.invalid && apartmentForm.get('email')!.touched" class="error">
-                <div>*bạn phải nhập email</div>
-                <div>*bạn phải nhập đúng định dạng email</div>
+                <span>Bạn phải nhập email !!!</span>
+                <br>
+                <span>Bạn phải nhập đúng định dạng email !!!</span>
               </div>
 
             </div>
@@ -43,8 +48,9 @@
               <input type="password"  class="form-control" id="password" formControlName="password"
                      [ngClass]="{'is-invalid': apartmentForm.get('password')!.invalid && apartmentForm.get('password')!.touched}">
               <div *ngIf="apartmentForm.get('password')!.invalid && apartmentForm.get('password')!.touched" class="error">
-                <div>*bạn phải nhập mật khẩu</div>
-                <div>*bạn phải nhập tối thiểu 6 ký tự</div>
+                <span>Bạn phải nhập mật khẩu !!!</span>
+                <br>
+                <span>Bạn phải nhập tối thiểu 6 ký tự !!!</span>
               </div>
             </div>
             <div class="text-center">
@@ -62,7 +68,7 @@
           <form action="" method="post">
             <div class="form-group">
               <label for="email">Email</label>
-              <input type="text" class="form-control" >
+              <input type="text" class="form-control" id="email">
             </div>
             <div class="form-group">
               <label for="password">Password</label>

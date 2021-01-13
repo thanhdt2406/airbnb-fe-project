@@ -8,7 +8,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 })
 export class LoginRegComponent implements OnInit {
   apartmentForm: FormGroup = new FormGroup({
-    name: new FormControl('', Validators.required),
+    name: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]),
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required, Validators.minLength(6)])
   });
