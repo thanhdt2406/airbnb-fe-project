@@ -19,4 +19,6 @@ export class ApartmentService {
   getAllApartment(): Observable<Apartment[]> {
     return this.http.get<Apartment[]>(API_URL + `/apartments`);
   }
+
+
 }

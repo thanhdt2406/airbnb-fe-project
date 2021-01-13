@@ -16,10 +16,12 @@ import { UserProfileComponent } from './component/user-profile/user-profile.comp
 import { UserHouseComponent } from './component/user-house/user-house.component';
 import { ChangePassComponent } from './component/change-pass/change-pass.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
     AppComponent,
+    HttpClientModule,
     HeaderComponent,
     NavComponent,
     FooterComponent,

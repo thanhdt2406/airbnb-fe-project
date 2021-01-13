@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Apartment} from "../../model/apartment";
+import {ApartmentService} from "../../service/apartment/apartment.service";
 
 @Component({
   selector: 'app-list',
@@ -6,10 +8,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
+  apartments: Apartment[] = [];
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(private apartmentService: ApartmentService) {
   }
 
+  ngOnInit(): void {
+    this.getAllApartment();
+  }
+
+  getAllApartment(){
+    this.apartmentService.getAllApartment().subscribe(rs=>{
+      this.apartments = rs;
+    })
+  }
 }
