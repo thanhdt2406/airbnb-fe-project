@@ -127,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "airbnb-ft-project"
+  "defaultProject": "airbnb-ft-project",
+  "cli": {
+    "analytics": "1c799c7a-197e-412a-b9b3-96cf625749b6"
+  }
 }
