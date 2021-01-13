@@ -9,6 +9,7 @@ import {ContactComponent} from './component/contact/contact.component';
 import {UserProfileComponent} from './component/user-profile/user-profile.component';
 import {UserHouseComponent} from './component/user-house/user-house.component';
 import {ChangePassComponent} from './component/change-pass/change-pass.component';
+import {AuthGuard} from './helper/auth-guard';
 
 
 const routes: Routes = [
@@ -19,6 +20,7 @@ const routes: Routes = [
   {
     path: 'list',
     component: ListComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'detail',
