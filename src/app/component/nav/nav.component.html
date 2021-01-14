@@ -15,7 +15,6 @@
     <div class="collapse navbar-collapse yamm" id="navigation">
       <div class="button navbar-right">
         <button class="navbar-btn nav-button wow bounceInRight login" *ngIf="!isUserLoggedIn" routerLink="/login" data-wow-delay="0.4s">Login</button>
-        <a href="#" *ngIf="isUserLoggedIn">{{currentUser.name}}</a>
         <button class="navbar-btn nav-button wow fadeInRight" *ngIf="isUserLoggedIn" (click)="logout()" data-wow-delay="0.5s">Logout</button>
       </div>
       <ul class="main-nav nav navbar-nav navbar-right">
@@ -23,8 +22,7 @@
           <a href="index.html" class="dropdown-toggle active" data-toggle="dropdown" routerLink="" data-hover="dropdown" data-delay="200">Home</a>
         </li>
 
-        <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="" onclick=" window.open('/list')" >Properties</a></li>
-        <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" routerLink="/user-house">My properties</a></li>
+        <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="" [routerLink]="['/list']" >Properties</a></li>
         <li class="dropdown yamm-fw" data-wow-delay="0.1s">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200">Template <b class="caret"></b></a>
           <ul class="dropdown-menu">
@@ -72,8 +70,16 @@
             </li>
           </ul>
         </li>
+        <li class="wow fadeInDown" data-wow-delay="0.4s"><a routerLink="/contact">Contact</a></li>
+        <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" *ngIf="isUserLoggedIn">
+          <select class="form-select currentUser" id="currentUser" aria-label="Default select example" style="border: none">
+            <option value="0">{{currentUser.name}}</option>
+            <option value="1">Your Profile</option>
+            <option value="2">Your House</option>
+            <option value="3">Your Rent</option>
+            <option value="4">Change Pass</option>
+          </select></a></li>
 
-        <li class="wow fadeInDown" data-wow-delay="0.4s"><a href="contact.html">Contact</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
