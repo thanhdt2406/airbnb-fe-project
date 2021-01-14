@@ -1,16 +1,18 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {Image} from '../../model/image';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
 
-const API_URL = `${environment.apiUrl}`
+const API_URL = `${environment.apiUrl}`;
+
 @Injectable({
   providedIn: 'root'
 })
 export class ImageService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   getAllImage(): Observable<Image[]> {
     return this.http.get<Image[]>(API_URL + '/images');
@@ -31,4 +33,5 @@ export class ImageService {
   getImage(id: number): Observable<Image> {
     return this.http.get<Image>(API_URL + `/images/${id}`);
   }
+
 }
