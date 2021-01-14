@@ -9,19 +9,21 @@ import {ContactComponent} from './component/contact/contact.component';
 import {UserProfileComponent} from './component/user-profile/user-profile.component';
 import {UserHouseComponent} from './component/user-house/user-house.component';
 import {ChangePassComponent} from './component/change-pass/change-pass.component';
+import {AuthGuard} from './helper/auth-guard';
+import {NavComponent} from "./component/nav/nav.component";
 
 
 const routes: Routes = [
   {
     path: '',
-    component: IndexComponent,
+    component: UserHouseComponent,
   },
   {
     path: 'list',
     component: ListComponent,
   },
   {
-    path: 'detail',
+    path: 'detail/:id',
     component: DetailComponent,
   },
   {
