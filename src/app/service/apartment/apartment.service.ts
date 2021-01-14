@@ -23,4 +23,14 @@ export class ApartmentService {
   getApartmentById(id: number): Observable<Apartment> {
     return this.http.get<Apartment>(API_URL + `/apartments/${id}`);
   }
+
+  createApartment(apartment: Apartment): Observable<Apartment> {
+    return this.http.post<Apartment>(API_URL + '/apartments', apartment);
+  }
+  updateApartment(id: number, apartment: Apartment): Observable<Apartment> {
+    return this.http.put<Apartment>(API_URL + `/apartments/${id}`, apartment);
+  }
+  stopRenting(id: number): Observable<Apartment> {
+    return this.http.delete<Apartment>(API_URL + `/apartments/${id}`);
+  }
 }
