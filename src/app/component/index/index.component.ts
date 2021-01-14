@@ -10,54 +10,40 @@ export class IndexComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    $(function() {
-
-      let Page = (function() {
-
-        let $nav = $('#nav-dots > span'),
+    $(() => {
+      var Page = (() => {
+        var $nav = $('#nav-dots > span'),
           slitslider = $('#slider').slitslider({
-            onBeforeChange(slide: any, pos: any) {
-
+            onBeforeChange: (slide : any, pos : any) => {
               $nav.removeClass('nav-dot-current');
               $nav.eq(pos).addClass('nav-dot-current');
-
             }
           }),
-          init = function() {
-
+          init = () => {
             initEvents();
-
           },
           initEvents = () => {
-
             $nav.each(function(i: any) {
-
-              $(self).on('click', () => {
-
-                let $dot = $(self);
-
+              // @ts-ignore
+              $(this).on('click', function(event: any) {
+                // @ts-ignore
+                var $dot = $(this);
                 if (!slitslider.isActive()) {
-
                   $nav.removeClass('nav-dot-current');
                   $dot.addClass('nav-dot-current');
-
                 }
-
                 slitslider.jump(i + 1);
                 return false;
-
               });
-
             });
-
           };
-
-        return {init};
-
+        return {init: init};
       })();
 
       Page.init();
+
     });
   }
+
 
 }
