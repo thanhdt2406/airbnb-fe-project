@@ -15,7 +15,6 @@
     <div class="collapse navbar-collapse yamm" id="navigation">
       <div class="button navbar-right">
         <button class="navbar-btn nav-button wow bounceInRight login" *ngIf="!isUserLoggedIn" routerLink="/login" data-wow-delay="0.4s">Login</button>
-        <button class="navbar-btn nav-button wow fadeInRight" *ngIf="isUserLoggedIn" (click)="logout()" data-wow-delay="0.5s">Logout</button>
       </div>
       <ul class="main-nav nav navbar-nav navbar-right">
         <li class="dropdown ymm-sw " data-wow-delay="0.1s">
@@ -71,15 +70,34 @@
           </ul>
         </li>
         <li class="wow fadeInDown" data-wow-delay="0.4s"><a routerLink="/contact">Contact</a></li>
-        <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" *ngIf="isUserLoggedIn">
-          <select class="form-select currentUser" id="currentUser" aria-label="Default select example" style="border: none">
-            <option value="0">{{currentUser.name}}</option>
-            <option value="1">Your Profile</option>
-            <option value="2">Your House</option>
-            <option value="3">Your Rent</option>
-            <option value="4">Change Pass</option>
-          </select></a></li>
-
+        <li class="dropdown yamm-fw" data-wow-delay="0.1s" *ngIf="isUserLoggedIn" >
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" *ngIf="currentUser.name " data-delay="200">{{currentUser.name}}<b class="caret"></b></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" *ngIf="!currentUser.name " data-delay="200">Đầu Cắt Moi<b class="caret"></b></a>
+          <ul class="dropdown-menu" style="width: 250px; margin-left: 1000px">
+            <li>
+              <div class="yamm-content" >
+                <div class="row" >
+                  <ul>
+                    <li><a routerLink="/user-frofile">Your Profile</a> </li>
+                  </ul>
+                  <ul>
+                    <li><a routerLink="/user-house">Your House</a></li>
+                  </ul>
+                  <ul>
+                    <li><a routerLink="/user-house">Your Rent List</a> </li>
+                  </ul>
+                  <ul>
+                    <li><a routerLink="/change-pass">Change Pass</a></li>
+                  </ul>
+                  <ul>
+                    <li><a routerLink="#" (click)="logout()">Log Out</a></li>
+                  </ul>
+                </div>
+              </div>
+              <!-- /.yamm-content -->
+            </li>
+          </ul>
+        </li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
