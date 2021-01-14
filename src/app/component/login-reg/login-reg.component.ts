@@ -6,6 +6,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {AuthService} from '../../service/auth/auth.service';
 import {first} from 'rxjs/operators';
 
+declare var $: any;
 let isValidated = true;
 
 @Component({
@@ -16,15 +17,14 @@ let isValidated = true;
 export class LoginRegComponent implements OnInit {
   output = '';
   user: User = {};
-  userForm: FormGroup = new FormGroup({
-    name: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]),
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required, Validators.minLength(6)])
+  submitted = false;
+  registerForm: FormGroup = new FormGroup({
+    name: new FormControl(''),
+    password: new FormControl(''),
+    confirmPassword: new FormControl(''),
   });
-
   loginForm: FormGroup = new FormBuilder().group({});
   loading = false;
-  submitted = false;
   returnUrl: string = '';
   error = '';
 
@@ -39,22 +39,59 @@ export class LoginRegComponent implements OnInit {
   }
 
   ngOnInit() {
+    $(document).ready(function() {
+      $('#register-form').validate({
+        rules: {
+          name: {
+            required: true,
+            minlength: 6,
+            maxlength: 20,
+          },
+          password: {
+            required: true,
+            minlength: 6,
+            maxlength: 20,
+          },
+          confirmPassword: {
+            required: true,
+            equalTo : "#password"
+          }
+        },
+        messages: {
+          name: {
+            required: 'Hãy nhập tên đăng ký',
+            minlength: 'Bạn phải nhập tối thiểu 6 ký tự',
+            maxlength: 'Bạn chỉ được nhập tối đa 20 ký tự'
+          },
+          password: {
+            required: 'Hãy nhập password',
+            minlength: 'Bạn phải nhập tối thiểu 6 ký tự',
+            maxlength: 'Bạn chỉ được nhập tối đa 20 ký tự'
+          },
+          confirmPassword: {
+            required: 'hay nhap gia san pham',
+            equalTo: 'bạn phải nhập đúng password'
+          }
+        }
+      });
+
+    });
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
     });
 
     // get return url from route parameters or default to '/'
-    this.returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl'] || "/";
+    this.returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl'] || '/';
   }
 
   createUser() {
     this.user = {
-      name: this.userForm.value.name,
-      email: this.userForm.value.email,
-      password: this.userForm.value.password
+      name: this.registerForm.value.name,
+      email: this.registerForm.value.email,
+      password: this.registerForm.value.password
     };
-    if (this.userForm.invalid) {
+    if (this.registerForm.invalid) {
       return;
     } else {
       this.userService.registerUser(this.user).subscribe(output => {
@@ -63,7 +100,9 @@ export class LoginRegComponent implements OnInit {
     }
   }
 
-  get f() { return this.loginForm.controls; }
+  get f() {
+    return this.loginForm.controls;
+  }
 
   public login() {
     this.submitted = true;
