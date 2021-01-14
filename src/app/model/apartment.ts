@@ -6,18 +6,17 @@ export interface Apartment {
   name?: string;
   avatar?: string;
   address?: string;
-  bathRoom?: number;
-  bedRoom?: number;
-  couple_room?: number;
-  luxury_room?: number;
-  president_room?: number;
-  single_room?: number;
-  vip_room?: number;
+  bathroom?: number;
+  bedroom?: number;
+  couple_room?: boolean;
+  luxury_room?: boolean;
+  president_room?: boolean;
+  single_room?: boolean;
+  vip_room?: boolean;
   create_date?: Date;
   status?: number;
   value?: number;
   description?: string;
   user?: User;
   ward?: Ward;
-  /*---------------test-----------------*/
 }

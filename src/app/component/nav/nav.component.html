@@ -14,8 +14,9 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse yamm" id="navigation">
       <div class="button navbar-right">
-        <button class="navbar-btn nav-button wow bounceInRight login" routerLink="/login" data-wow-delay="0.4s">Login</button>
-        <button class="navbar-btn nav-button wow fadeInRight" (click)="logout()" data-wow-delay="0.5s">Logout</button>
+        <button class="navbar-btn nav-button wow bounceInRight login" *ngIf="!isUserLoggedIn" routerLink="/login" data-wow-delay="0.4s">Login</button>
+        <a href="#" *ngIf="isUserLoggedIn">{{currentUser.name}}</a>
+        <button class="navbar-btn nav-button wow fadeInRight" *ngIf="isUserLoggedIn" (click)="logout()" data-wow-delay="0.5s">Logout</button>
       </div>
       <ul class="main-nav nav navbar-nav navbar-right">
         <li class="dropdown ymm-sw " data-wow-delay="0.1s">
@@ -23,7 +24,7 @@
         </li>
 
         <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="" onclick=" window.open('/list')" >Properties</a></li>
-        <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" routerLink="/detail">Property</a></li>
+        <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" routerLink="/user-house">My properties</a></li>
         <li class="dropdown yamm-fw" data-wow-delay="0.1s">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200">Template <b class="caret"></b></a>
           <ul class="dropdown-menu">
@@ -52,7 +53,7 @@
 
                     <h5>Properties list</h5>
                     <ul>
-                      <li><a href="properties.html">Properties list style (1)</a> </li>
+                      <li><a [routerLink]="['/list']">properties list</a> </li>
                     </ul>
                   </div>
                   <div class="col-sm-3">
