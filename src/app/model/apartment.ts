@@ -19,5 +19,4 @@ export interface Apartment {
   description?: string;
   user?: User;
   ward?: Ward;
-  /*---------------test-----------------*/
 }
