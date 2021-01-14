@@ -54,205 +54,31 @@
 
         <div class="section">
           <div id="list-type" class="proerty-th-list">
-            <div class="col-md-4 p0">
+            <ng-container *ngFor="let ap  of apartments ">
+             <div class="col-md-4 p0">
               <div class="box-two proerty-item">
                 <div class="item-thumb">
-                  <a href="property-1.html" ><img src="assets/img/demo/property-3.jpg"></a>
+                  <a href="" ><img src="assets/img/demo/property-3.jpg" alt=""></a>
                 </div>
                 <div class="item-entry overflow">
-                  <h5><a href="property-1.html"> Super nice villa </a></h5>
+                  <h5>{{ap.name}}(<small style="font-weight: bold; color: #FDC600" id="content-status"><i *ngIf="ap.status == 0">Được Thuê</i><i *ngIf="ap.status == 1">Đang Thuê</i><i *ngIf="ap.status == 2">Đang nâng cấp</i><i *ngIf="ap.status == 3">Vô Hiệu Hóa</i></small>)</h5>
                   <div class="dot-hr"></div>
-                  <span class="pull-left"><b> Area :</b> 120m </span>
-                  <span class="proerty-price pull-right"> $ 300,000</span>
-                  <p style="display: none;">Suspendisse ultricies Suspendisse ultricies Nulla quis dapibus nisl. Suspendisse ultricies commodo arcu nec pretium ...</p>
+                  <span class="proerty-price pull-right">{{ap.value}} $</span>
+                  <p style="display: none;">{{ap.description}}</p>
                   <div class="property-icon">
-                    <img src="assets/img/icon/bed.png">(5)|
-                    <img src="assets/img/icon/shawer.png">(2)|
-                    <img src="assets/img/icon/cars.png">(1)
-
+                    <img src="assets/img/icon/bed.png">{{ap.bedroom}}|
+                    <img src="assets/img/icon/shawer.png">{{ap.bathroom}}|
                     <div class="dealer-action pull-right">
-                      <a href="submit-property.html" class="button">Edit </a>
-                      <a href="#" class="button delete_user_car">Delete</a>
-                      <a routerLink="/detail/1" class="button">View</a>
-                    </div>
-                  </div>
-
-
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-4 p0">
-              <div class="box-two proerty-item">
-                <div class="item-thumb">
-                  <a href="property-1.html" ><img src="assets/img/demo/property-2.jpg"></a>
-                </div>
-
-                <div class="item-entry overflow ">
-                  <h5><a href="property-1.html"> Super nice villa </a></h5>
-                  <div class="dot-hr"></div>
-                  <span class="pull-left"><b> Area :</b> 120m </span>
-                  <span class="proerty-price pull-right"> $ 300,000</span>
-                  <p style="display: none;">Suspendisse ultricies Suspendisse ultricies Nulla quis dapibus nisl. Suspendisse ultricies commodo arcu nec pretium ...</p>
-                  <div class="property-icon">
-                    <img src="assets/img/icon/bed.png">(5)|
-                    <img src="assets/img/icon/shawer.png">(2)|
-                    <img src="assets/img/icon/cars.png">(1)
-
-                    <div class="dealer-action pull-right">
-                      <a href="submit-property.html" class="button">Edit </a>
-                      <a href="#" class="button delete_user_car">Delete</a>
-                      <a href="property-1.html" class="button">View</a>
+                      <a href="" class="button" *ngIf="ap.status != 1">Edit </a>
+                      <a routerLink="/detail/{{ap.id}}" class="button">View</a>
+                      <a routerLink="#" (click)="deleteApartment(ap.id)"  class="button delete_user_car">Stop</a>
+                      <a routerLink="#"   class="button delete_user_car">Repair</a>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-
-            <div class="col-md-4 p0">
-              <div class="box-two proerty-item">
-                <div class="item-thumb">
-                  <a href="property-1.html" ><img src="assets/img/demo/property-1.jpg"></a>
-                </div>
-
-                <div class="item-entry overflow">
-                  <h5><a href="property-1.html"> Super nice villa </a></h5>
-                  <div class="dot-hr"></div>
-                  <span class="pull-left"><b> Area :</b> 120m </span>
-                  <span class="proerty-price pull-right"> $ 300,000</span>
-                  <p style="display: none;">Suspendisse ultricies Suspendisse ultricies Nulla quis dapibus nisl. Suspendisse ultricies commodo arcu nec pretium ...</p>
-                  <div class="property-icon">
-                    <img src="assets/img/icon/bed.png">(5)|
-                    <img src="assets/img/icon/shawer.png">(2)|
-                    <img src="assets/img/icon/cars.png">(1)
-
-                    <div class="dealer-action pull-right">
-                      <a href="submit-property.html" class="button">Edit </a>
-                      <a href="#" class="button delete_user_car">Delete</a>
-                      <a href="property-1.html" class="button">View</a>
-                    </div>
-                  </div>
-                </div>
-
-
-              </div>
-            </div>
-
-            <div class="col-md-4 p0">
-              <div class="box-two proerty-item">
-                <div class="item-thumb">
-                  <a href="property-1.html" ><img src="assets/img/demo/property-3.jpg"></a>
-                </div>
-
-                <div class="item-entry overflow">
-                  <h5><a href="property-1.html"> Super nice villa </a></h5>
-                  <div class="dot-hr"></div>
-                  <span class="pull-left"><b> Area :</b> 120m </span>
-                  <span class="proerty-price pull-right"> $ 300,000</span>
-                  <p style="display: none;">Suspendisse ultricies Suspendisse ultricies Nulla quis dapibus nisl. Suspendisse ultricies commodo arcu nec pretium ...</p>
-                  <div class="property-icon">
-                    <img src="assets/img/icon/bed.png">(5)|
-                    <img src="assets/img/icon/shawer.png">(2)|
-                    <img src="assets/img/icon/cars.png">(1)
-
-                    <div class="dealer-action pull-right">
-                      <a href="submit-property.html" class="button">Edit </a>
-                      <a href="#" class="button delete_user_car">Delete</a>
-                      <a href="property-1.html" class="button">View</a>
-                    </div>
-                  </div>
-                </div>
-
-
-              </div>
-            </div>
-
-            <div class="col-md-4 p0">
-              <div class="box-two proerty-item">
-                <div class="item-thumb">
-                  <a href="property-1.html" ><img src="assets/img/demo/property-1.jpg"></a>
-                </div>
-
-                <div class="item-entry overflow">
-                  <h5><a href="property-1.html"> Super nice villa </a></h5>
-                  <div class="dot-hr"></div>
-                  <span class="pull-left"><b> Area :</b> 120m </span>
-                  <span class="proerty-price pull-right"> $ 300,000</span>
-                  <p style="display: none;">Suspendisse ultricies Suspendisse ultricies Nulla quis dapibus nisl. Suspendisse ultricies commodo arcu nec pretium ...</p>
-                  <div class="property-icon">
-                    <img src="assets/img/icon/bed.png">(5)|
-                    <img src="assets/img/icon/shawer.png">(2)|
-                    <img src="assets/img/icon/cars.png">(1)
-
-                    <div class="dealer-action pull-right">
-                      <a href="submit-property.html" class="button">Edit </a>
-                      <a href="#" class="button delete_user_car">Delete</a>
-                      <a href="property-1.html" class="button">View</a>
-                    </div>
-                  </div>
-                </div>
-
-
-              </div>
-            </div>
-
-            <div class="col-md-4 p0">
-              <div class="box-two proerty-item">
-                <div class="item-thumb">
-                  <a href="property-1.html" ><img src="assets/img/demo/property-2.jpg"></a>
-                </div>
-
-                <div class="item-entry overflow">
-                  <h5><a href="property-1.html"> Super nice villa </a></h5>
-                  <div class="dot-hr"></div>
-                  <span class="pull-left"><b> Area :</b> 120m </span>
-                  <span class="proerty-price pull-right"> $ 300,000</span>
-                  <p style="display: none;">Suspendisse ultricies Suspendisse ultricies Nulla quis dapibus nisl. Suspendisse ultricies commodo arcu nec pretium ...</p>
-                  <div class="property-icon">
-                    <img src="assets/img/icon/bed.png">(5)|
-                    <img src="assets/img/icon/shawer.png">(2)|
-                    <img src="assets/img/icon/cars.png">(1)
-
-                    <div class="dealer-action pull-right">
-                      <a href="submit-property.html" class="button">Edit </a>
-                      <a href="#" class="button delete_user_car">Delete</a>
-                      <a href="property-1.html" class="button">View</a>
-                    </div>
-                  </div>
-                </div>
-
-
-              </div>
-            </div>
-
-            <div class="col-md-4 p0">
-              <div class="box-two proerty-item">
-                <div class="item-thumb">
-                  <a href="property-1.html" ><img src="assets/img/demo/property-3.jpg"></a>
-                </div>
-
-                <div class="item-entry overflow">
-                  <h5><a href="property-1.html"> Super nice villa </a></h5>
-                  <div class="dot-hr"></div>
-                  <span class="pull-left"><b> Area :</b> 120m </span>
-                  <span class="proerty-price pull-right"> $ 300,000</span>
-                  <p style="display: none;">Suspendisse ultricies Suspendisse ultricies Nulla quis dapibus nisl. Suspendisse ultricies commodo arcu nec pretium ...</p>
-                  <div class="property-icon">
-                    <img src="assets/img/icon/bed.png">(5)|
-                    <img src="assets/img/icon/shawer.png">(2)|
-                    <img src="assets/img/icon/cars.png">(1)
-
-                    <div class="dealer-action pull-right">
-                      <a href="submit-property.html" class="button">Edit </a>
-                      <a href="#" class="button delete_user_car">Delete</a>
-                      <a href="property-1.html" class="button">View</a>
-                    </div>
-                  </div>
-                </div>
-
-
-              </div>
-            </div>
+            </ng-container>
           </div>
         </div>
 
@@ -277,7 +103,8 @@
         <div class="blog-asside-right">
           <div class="panel panel-default sidebar-menu wow fadeInRight animated" >
             <div class="panel-heading">
-              <h3 class="panel-title">Hello Kimaro</h3>
+              <h3 class="panel-title">Hello <small *ngIf="currentUser.name">{{currentUser.name}}</small>
+                <small *ngIf="!currentUser.name">Đầu Cắt Moi</small></h3>
             </div>
             <div class="panel-body search-widget">
 
