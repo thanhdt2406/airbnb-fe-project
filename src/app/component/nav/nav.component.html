@@ -23,7 +23,7 @@
         </li>
 
         <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="" onclick=" window.open('/list')" >Properties</a></li>
-        <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" routerLink="/detail">Property</a></li>
+        <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" routerLink="/user-house">My properties</a></li>
         <li class="dropdown yamm-fw" data-wow-delay="0.1s">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200">Template <b class="caret"></b></a>
           <ul class="dropdown-menu">
@@ -52,7 +52,7 @@
 
                     <h5>Properties list</h5>
                     <ul>
-                      <li><a href="properties.html">Properties list style (1)</a> </li>
+                      <li><a [routerLink]="['/list']">properties list</a> </li>
                     </ul>
                   </div>
                   <div class="col-sm-3">
