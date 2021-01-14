@@ -45,15 +45,6 @@ let isValidated = true;
 //   image?: any[];
 export class CreateComponent implements OnInit {
   currentUser: User = this.authService.currentUserValue;
-  // apartment :Apartment ={
-  //   address: '',
-  //   user: {
-  //     id: this.currentUser.id
-  //   },
-  //   name: this.apartForm.value.name,
-  //
-  // }
-
   pro_id: number = 0;
   dis_id: number = 0;
   apartForm: FormGroup = new FormGroup({
@@ -69,6 +60,8 @@ export class CreateComponent implements OnInit {
     single_room: new FormControl(''),
     vip_room: new FormControl(''),
     ward: new FormControl(),
+    district: new FormControl(),
+    province: new FormControl(),
   });
   selectedImages: any[] = [];
   provinces: Province[] = [];
@@ -331,22 +324,24 @@ export class CreateComponent implements OnInit {
     }
   }
 
+
+
   // @ts-ignore
   createApartment() {
-    const apartment: Apartment = {
+    const apartment = {
       name: this.apartForm.value.name,
       value: this.apartForm.value.value,
       description: this.apartForm.value.description,
       address: this.apartForm.value.address,
       bathroom: this.apartForm.value.bathroom,
       bedroom: this.apartForm.value.bedroom,
-      couple_room: this.apartForm.value.address,
-      luxury_room: this.apartForm.value.address,
-      president_room: this.apartForm.value.address,
-      single_room: this.apartForm.value.address,
-      vip_room: this.apartForm.value.address,
+      couple_room: this.apartForm.value.couple_room,
+      luxury_room: this.apartForm.value.luxury_room,
+      president_room: this.apartForm.value.president_room,
+      single_room: this.apartForm.value.single_room,
+      vip_room: this.apartForm.value.vip_room,
       ward: {
-        id: wardId
+        id: this.apartForm.value.ward
       },
       user: {
         id: this.currentUser.id
@@ -355,6 +350,16 @@ export class CreateComponent implements OnInit {
     };
     if (isValidated) {
       return this.apartmentService.createApartment(apartment).toPromise();
+    }
+  }
+
+  showPreview(event: any) {
+    if (event.target.files && event.target.files[0]) {
+      const reader = new FileReader();
+      reader.readAsDataURL(event.target.files[0]);
+      this.selectedImages = event.target.files;
+    } else {
+      this.selectedImages = [];
     }
   }
 
@@ -378,5 +383,9 @@ export class CreateComponent implements OnInit {
       this.wards = wardList;
     })
   }
-
+  toggleEditable(event: any) {
+    if ( event.target.checked ) {
+      this.apartForm.value.couple_room = true;
+    }
+  }
 }

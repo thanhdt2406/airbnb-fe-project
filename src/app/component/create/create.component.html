@@ -56,7 +56,7 @@
                     <div class="col-sm-4">
                       <div class="form-group">
                         <label>Province :</label>
-                        <select class="show-tick form-control" name="pro_id" (change)="getAllDistrictsByProvinceId(pro_id)">
+                        <select class="show-tick form-control" formControlName="province" name="pro_id" (change)="getAllDistrictsByProvinceId(pro_id)" [(ngModel)]="pro_id">
                           <option  *ngFor="let province of provinces" [value]="province.id">{{province.name}}</option>
                         </select>
                       </div>
@@ -64,7 +64,7 @@
                     <div class="col-sm-4">
                       <div class="form-group">
                         <label>District :</label>
-                        <select  class="show-tick form-control" name="dis_id" (change)="getAllWardsByDistrictId(dis_id)">
+                        <select  class="show-tick form-control" formControlName="district" name="dis_id" (change)="getAllWardsByDistrictId(dis_id)" [(ngModel)]="dis_id">
                           <option *ngFor="let dis of districts" [value]="dis.id">{{dis.name}}</option>
                         </select>
                       </div>
@@ -136,7 +136,7 @@
                             <div class="form-group">
                               <div class="checkbox">
                                 <label>
-                                  <input type="checkbox"> Couple Room
+                                  <input type="checkbox" (change)="toggleEditable($event)"> Couple Room
                                 </label>
                               </div>
                             </div>
@@ -158,7 +158,7 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="property-images">Chose Images :</label>
-                        <input class="form-control" name="image" type="file" id="property-images" multiple >
+                        <input class="form-control" formControlName="image" name="image" type="file" id="property-images" multiple (change)="showPreview($event)">
                         <p class="help-block">Select multipel images for your property .</p>
                       </div>
                     </div>
