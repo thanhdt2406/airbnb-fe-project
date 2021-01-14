@@ -19,30 +19,12 @@ import {AuthService} from '../../service/auth/auth.service';
 declare var $: any;
 declare var Swal: any;
 
-let wardId: number = -1;
 let isValidated = true;
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.css']
 })
-//  id?: number;
-//   name?: string;
-//   address?: string;
-//   bathroom?: number;
-//   bedroom?: number;
-//   couple_room?: boolean;
-//   luxury_room?: boolean;
-//   president_room?: boolean;
-//   single_room?: boolean;
-//   vip_room?: boolean;
-//   create_date?: Date;
-//   status?: number;
-//   value?: number;
-//   description?: string;
-//   user?: User;
-//   ward?: Ward;
-//   image?: any[];
 export class CreateComponent implements OnInit {
   currentUser: User = this.authService.currentUserValue;
   pro_id: number = 0;
