@@ -30,7 +30,7 @@ export class UserHouseComponent implements OnInit {
     });
   }
 
-  stopApartment(id: number) {
+  stopApartment(id: any) {
     if (confirm("Are you sure")) {
       this.apartmentService.stopRenting(id).subscribe(mess => {this.mess = 'Stop Apartment success' } ,
         mess => {this.mess = 'Stop Apartment fail'; });
@@ -40,7 +40,7 @@ export class UserHouseComponent implements OnInit {
     }
   }
 
-  repairApartment(id: number) {
+  repairApartment(id: any) {
     if (confirm("Are you sure")) {
       this.apartmentService.repairRenting(id).subscribe(mess => {this.mess = 'Repair Apartment success' } ,
         mess => {this.mess = 'Repair Apartment fail'; });
@@ -50,7 +50,7 @@ export class UserHouseComponent implements OnInit {
     }
   }
 
-  rentAgain(id: number) {
+  rentAgain(id: any) {
     if (confirm("Are you sure")) {
       this.apartmentService.rentAgain(id).subscribe(mess => {this.mess = 'Rent Again Apartment success' } ,
         mess => {this.mess = 'Rent Again Apartment fail'; });
