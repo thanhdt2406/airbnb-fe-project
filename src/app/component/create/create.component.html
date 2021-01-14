@@ -16,7 +16,7 @@
       <div class="wizard-container">
 
         <div class="wizard-card ct-wizard-orange" id="wizardProperty">
-          <form action="" method="get">
+          <form action="" method="post" [formGroup]="apartForm" id="apartment-form" (ngSubmit)="createImage()">
             <div class="row col-sm-12">
               <div class="col-sm-4"></div>
               <div class="col-sm-6">
@@ -37,19 +37,18 @@
                   <div class="col-sm-12">
                     <div class="col-sm-12">
                       <div class="form-group">
-                        <label>Apartment Name <small>(required)</small></label>
-                        <input name="propertyname" type="text" class="form-control" placeholder="Super villa ...">
+                        <label>Apartment Name</label>
+                        <input name="name" type="text" class="form-control" placeholder="Super villa ..." formControlName="name">
                       </div>
-
                       <div class="form-group">
-                        <label>Apartment Value <small>(required)</small></label>
-                        <input name="propertyprice" type="text" class="form-control" placeholder="3330000">
+                        <label>Apartment Value</label>
+                        <input name="value" type="text" class="form-control" placeholder="3330000" formControlName="value">
                       </div>
                     </div>
                     <div class="col-sm-12">
                       <div class="form-group">
                         <label>Property Description :</label>
-                        <textarea name="discrition" class="form-control" placeholder="Description ...."></textarea>
+                        <textarea name="description" class="form-control" placeholder="Description ...." formControlName="description"></textarea>
                       </div>
                     </div>
                   </div>
@@ -57,7 +56,7 @@
                     <div class="col-sm-4">
                       <div class="form-group">
                         <label>Province :</label>
-                        <select class="show-tick form-control" name="pro_id" (change)="getAllDistrictsByProvinceId(pro_id)" [(ngModel)]="pro_id">
+                        <select class="show-tick form-control" name="pro_id" (change)="getAllDistrictsByProvinceId(pro_id)">
                           <option  *ngFor="let province of provinces" [value]="province.id">{{province.name}}</option>
                         </select>
                       </div>
@@ -65,21 +64,21 @@
                     <div class="col-sm-4">
                       <div class="form-group">
                         <label>District :</label>
-                        <select  class="show-tick form-control" name="dis_id" (change)="getAllWardsByDistrictId(dis_id)"  [(ngModel)]="dis_id">
+                        <select  class="show-tick form-control" name="dis_id" (change)="getAllWardsByDistrictId(dis_id)">
                           <option *ngFor="let dis of districts" [value]="dis.id">{{dis.name}}</option>
                         </select>
                       </div>
                     </div>
                     <div class="col-sm-4">
                       <label>Wards :</label>
-                      <select  class="show-tick form-control" name="dis_id" >
+                      <select  class="show-tick form-control" name="ward" formControlName="ward" >
                         <option *ngFor="let war of wards" [value]="war.id">{{war.name}}</option>
                       </select>
                     </div>
                     <div class="col-sm-12 padding-top-15">
                       <div class="form-group">
                         <label>Address <small>(required)</small></label>
-                        <input name="address" type="text" class="form-control" placeholder="Address....">
+                        <input name="address" type="text" class="form-control" placeholder="Address...." formControlName="address">
                       </div>
                     </div>
 
@@ -91,13 +90,13 @@
                           <div class="col-sm-6">
                             <div class="form-group">
                               <label>Bedroom</label>
-                              <input name="bedroom" type="number" class="form-control" placeholder="Bedroom....">
+                              <input name="bedroom" type="number" class="form-control" placeholder="Bedroom...." formControlName="bedroom">
                             </div>
                           </div>
                           <div class="col-sm-6">
                             <div class="form-group">
                               <label>Bathroom</label>
-                              <input name="bathroom" type="number" class="form-control" placeholder="Bathroom....">
+                              <input name="bathroom" type="number" class="form-control" placeholder="Bathroom...." formControlName="bathroom">
                             </div>
                           </div>
                         </div>
@@ -159,7 +158,7 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="property-images">Chose Images :</label>
-                        <input class="form-control" type="file" id="property-images" multiple>
+                        <input class="form-control" name="image" type="file" id="property-images" multiple >
                         <p class="help-block">Select multipel images for your property .</p>
                       </div>
                     </div>
@@ -182,7 +181,7 @@
                   <div class="col-sm-12 padding-top-15">
                     <div class="col-sm-5"></div>
                     <div class="col-sm-2">
-                      <div style="width: 100px"><input type='button' class='btn btn-finish btn-primary' name='finish' value='Finish' /></div>
+                      <div style="width: 100px"><input type='submit' class='btn btn-finish btn-primary' name='finish' value='Finish' /></div>
                     </div>
                     <div class="col-sm-5"></div>
                   </div>
