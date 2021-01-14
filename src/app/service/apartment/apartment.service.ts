@@ -20,5 +20,7 @@ export class ApartmentService {
     return this.http.get<Apartment[]>(API_URL + `/apartments`);
   }
 
-
+  getApartmentById(id: number): Observable<Apartment> {
+    return this.http.get<Apartment>(API_URL + `/apartments/${id}`);
+  }
 }

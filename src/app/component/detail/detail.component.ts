@@ -1,15 +1,31 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Apartment} from "../../model/apartment";
+import {ApartmentService} from "../../service/apartment/apartment.service";
+import {ActivatedRoute, Route} from "@angular/router";
+
 declare var $: any;
+
 @Component({
   selector: 'app-detail',
   templateUrl: './detail.component.html',
   styleUrls: ['./detail.component.css']
 })
 export class DetailComponent implements OnInit {
+  apartment: Apartment = {};
+  // @ts-ignore
+  id: number;
 
-  constructor() { }
+  constructor(private apertmentService: ApartmentService,
+              private activatedRoute: ActivatedRoute) {
+  }
 
   ngOnInit(): void {
+    this.activatedRoute.paramMap.subscribe(paramMap => {
+      // @ts-ignore
+      this.id = +paramMap.get('id');
+      // @ts-ignore
+      this.getApartment(this.id);
+    })
     $(document).ready(function () {
       $('#image-gallery').lightSlider({
         gallery: true,
@@ -53,4 +69,10 @@ export class DetailComponent implements OnInit {
     });
   }
 
+// @ts-ignore
+  getApartment() {
+    this.apertmentService.getApartmentById(this.id).subscribe(value => {
+      this.apartment = value;
+    })
+  }
 }
