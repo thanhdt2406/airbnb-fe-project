@@ -16,7 +16,7 @@ import {NavComponent} from "./component/nav/nav.component";
 const routes: Routes = [
   {
     path: '',
-    component: IndexComponent,
+    component: UserHouseComponent,
   },
   {
     path: 'list',
