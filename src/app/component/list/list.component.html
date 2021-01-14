@@ -206,7 +206,7 @@
           <div class="col-sm-6 col-md-3 p0">
             <div class="box-two proerty-item">
               <div class="item-thumb">
-                <a href="property-1.html" ><img src="assets/img/demo/property-3.jpg"></a>
+                <a [routerLink]="['/detail/',apartment.id]"><img src="assets/img/demo/property-3.jpg"></a>
               </div>
               <div class="item-entry overflow">
                 <h5><a href="property-1.html"> {{apartment.name}} </a></h5>
@@ -214,10 +214,9 @@
                 <span class="pull-left"><b> Area :</b> 120m </span>
                 <span class="proerty-price pull-right"> $ 300,000</span>
                 <p style="display: none;">{{apartment.description}}</p>
-                <h1>{{apartment.bathRoom}}</h1>
                 <div class="property-icon">
-                  <img src="assets/img/icon/bed.png">({{apartment.bedRoom}})|
-                  <img src="assets/img/icon/shawer.png">({{apartment.bathRoom}})|
+                  <img src="assets/img/icon/bed.png">({{apartment.bedroom}})|
+                  <img src="assets/img/icon/shawer.png">({{apartment.bathroom}})|
                   <img src="assets/img/icon/cars.png">(1)
                 </div>
               </div>

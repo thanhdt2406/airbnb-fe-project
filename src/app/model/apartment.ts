@@ -6,8 +6,8 @@ export interface Apartment {
   name?: string;
   avatar?: string;
   address?: string;
-  bathRoom?: string;
-  bedRoom?: number;
+  bathroom?: string;
+  bedroom?: number;
   couple_room?: boolean;
   luxury_room?: boolean;
   president_room?: boolean;
