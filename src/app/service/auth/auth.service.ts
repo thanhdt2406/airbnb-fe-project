@@ -14,7 +14,7 @@ const API_URL = `${environment.apiUrl}`;
 export class AuthService {
   // update = new EventEmitter<string>();
   // @ts-ignore
-  private currentUserSubject: BehaviorSubject<UserToken>;
+  public currentUserSubject: BehaviorSubject<UserToken>;
   // @ts-ignore
   private currentUser: Observable<UserToken>;
 
