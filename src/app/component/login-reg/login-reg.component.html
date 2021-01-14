@@ -32,7 +32,7 @@
               <label>Email</label>
               <input  type="text"  class="form-control" name="email" formControlName="email"
                       [ngClass]="{'is-invalid': apartmentForm.get('email')!.invalid && apartmentForm.get('email')!.touched}">
-              <div *ngIf="apartmentForm.get('email')!.invalid && apartmentForm.get('email')!.touched" class="error">
+              <div *ngIf="apartmentForm.get('email')!.touched && apartmentForm.get('email')!.invalid" class="error">
                 <div>*bạn phải nhập email</div>
                 <div>*bạn phải nhập đúng định dạng email</div>
               </div>
