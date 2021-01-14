@@ -16,7 +16,10 @@ let isValidated = true;
 })
 export class LoginRegComponent implements OnInit {
   output = '';
-  user: User = {};
+  loginFail: string = '';
+  user: User = {
+    id: 0
+  };
   submitted = false;
   registerForm: FormGroup = new FormGroup({
     name: new FormControl(''),
@@ -54,12 +57,12 @@ export class LoginRegComponent implements OnInit {
           },
           confirmPassword: {
             required: true,
-            equalTo : "#password"
+            equalTo: '#password'
           }
         },
         messages: {
           name: {
-            required: 'Hãy nhập tên đăng ký',
+            required: 'Hãy nhập tên tài khoản',
             minlength: 'Bạn phải nhập tối thiểu 6 ký tự',
             maxlength: 'Bạn chỉ được nhập tối đa 20 ký tự'
           },
@@ -69,8 +72,8 @@ export class LoginRegComponent implements OnInit {
             maxlength: 'Bạn chỉ được nhập tối đa 20 ký tự'
           },
           confirmPassword: {
-            required: 'hay nhap gia san pham',
-            equalTo: 'bạn phải nhập đúng password'
+            required: 'Hãy nhập lại mật khẩu',
+            equalTo: 'Mật khẩu không khớp'
           }
         }
       });
@@ -87,15 +90,17 @@ export class LoginRegComponent implements OnInit {
 
   createUser() {
     this.user = {
-      name: this.registerForm.value.name,
-      email: this.registerForm.value.email,
+      username: this.registerForm.value.name,
       password: this.registerForm.value.password
     };
+    console.log(this.user);
     if (this.registerForm.invalid) {
       return;
     } else {
-      this.userService.registerUser(this.user).subscribe(output => {
+      this.userService.registerUser(this.user).subscribe(() => {
         this.output = 'Tạo Tài Khoản Thành Công';
+      },()=>{
+        console.log(1);
       });
     }
   }
@@ -117,11 +122,14 @@ export class LoginRegComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
+          alert('Đăng nhập thành công!');
           this.router.navigate([this.returnUrl]);
         },
         error => {
           this.error = error;
           this.loading = false;
+          this.loginFail = 'Sai tên đăng nhập hoặc mật khẩu! Vui lòng đăng nhập lại...';
+          this.router.navigate(['/login']);
         });
   }
 
