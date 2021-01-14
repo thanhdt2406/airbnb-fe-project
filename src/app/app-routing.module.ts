@@ -24,6 +24,7 @@ const routes: Routes = [
   {
     path: 'detail',
     component: DetailComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'login',
