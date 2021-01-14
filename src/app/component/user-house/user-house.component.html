@@ -71,8 +71,9 @@
                     <div class="dealer-action pull-right">
                       <a href="" class="button" *ngIf="ap.status != 1">Edit </a>
                       <a routerLink="/detail/{{ap.id}}" class="button">View</a>
-                      <a routerLink="#" (click)="deleteApartment(ap.id)"  class="button delete_user_car">Stop</a>
-                      <a routerLink="#"   class="button delete_user_car">Repair</a>
+                      <a routerLink="#" *ngIf="ap.status == 0" (click)="stopApartment(ap.id)"  class="button delete_user_car">Stop</a>
+                      <a routerLink="#" *ngIf="ap.status == 0" (click)="repairApartment(ap.id)"   class="button delete_user_car">Repair</a>
+                      <a routerLink="#" *ngIf="ap.status == 2 || ap.status == 3 " (click)="rentAgain(ap.id)" class="button delete_user_car">Rent Again</a>
                     </div>
                   </div>
                 </div>

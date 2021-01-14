@@ -35,6 +35,16 @@ export class ApartmentService {
     return this.http.patch<Apartment>(API_URL + `/apartments/${id}`);
   }
 
+  repairRenting(id: number): Observable<Apartment> {
+    // @ts-ignore
+    return this.http.patch<Apartment>(API_URL + `/apartments/repair/${id}`);
+  }
+
+  rentAgain(id: number): Observable<Apartment> {
+    // @ts-ignore
+    return this.http.patch<Apartment>(API_URL + `/apartments/rentagain/${id}`);
+  }
+
   getApartmentByUser(id: number): Observable<Apartment[]> {
     return this.http.get<Apartment[]>(API_URL + `/apartments/user/${id}`)
   }

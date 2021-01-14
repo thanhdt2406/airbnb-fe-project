@@ -30,10 +30,30 @@ export class UserHouseComponent implements OnInit {
     });
   }
 
-  deleteApartment(id: number) {
+  stopApartment(id: number) {
     if (confirm("Are you sure")) {
       this.apartmentService.stopRenting(id).subscribe(mess => {this.mess = 'Stop Apartment success' } ,
         mess => {this.mess = 'Stop Apartment fail'; });
+      this.contentStatus();
+    }else {
+      return;
+    }
+  }
+
+  repairApartment(id: number) {
+    if (confirm("Are you sure")) {
+      this.apartmentService.repairRenting(id).subscribe(mess => {this.mess = 'Repair Apartment success' } ,
+        mess => {this.mess = 'Repair Apartment fail'; });
+      this.contentStatus();
+    }else {
+      return;
+    }
+  }
+
+  rentAgain(id: number) {
+    if (confirm("Are you sure")) {
+      this.apartmentService.rentAgain(id).subscribe(mess => {this.mess = 'Rent Again Apartment success' } ,
+        mess => {this.mess = 'Rent Again Apartment fail'; });
       this.contentStatus();
     }else {
       return;
