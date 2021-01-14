@@ -43,6 +43,14 @@ export class IndexComponent implements OnInit {
       Page.init();
 
     });
+
+    $("#testimonial-slider").owlCarousel({
+      navigation: false, // Show next and prev buttons
+      slideSpeed: 100,
+      pagination: true,
+      paginationSpeed: 100,
+      items: 3
+    });
   }
 
 

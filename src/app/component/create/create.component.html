@@ -16,7 +16,7 @@
       <div class="wizard-container">
 
         <div class="wizard-card ct-wizard-orange" id="wizardProperty">
-          <form action="" method="GET">
+          <form action="" method="">
             <div class="wizard-header">
               <h3>
                 <b>Submit</b> YOUR PROPERTY <br>
@@ -141,7 +141,7 @@
                     <div class="col-sm-4">
 
                       <div class="form-group">
-                        <label>Min baths :</label>
+                        <label for="price-range">Min baths :</label>
                         <input type="text" class="span2" value="" data-slider-min="0"
                                data-slider-max="600" data-slider-step="5"
                                data-slider-value="[250,450]" id="min-baths" ><br />
@@ -254,7 +254,7 @@
                   </div>
                   <div class="col-sm-6">
                     <div class="form-group">
-                      <label>Property video :</label>
+                      <label for="property-video">Property video :</label>
                       <input class="form-control" value="" placeholder="http://www.youtube.com, http://vimeo.com" name="property_video" type="text">
                     </div>
 
@@ -301,10 +301,12 @@
 
             <div class="wizard-footer">
               <div class="pull-right">
-                <input type='submit' class='btn btn-finish btn-primary ' name='finish' value='Finish' />
+                <input type='button' class='btn btn-next btn-primary' name='next' value='Next' />
+                <input type='button' class='btn btn-finish btn-primary ' name='finish' value='Finish' />
               </div>
 
               <div class="pull-left">
+                <input type='button' class='btn btn-previous btn-default' name='previous' value='Previous' />
               </div>
               <div class="clearfix"></div>
             </div>
@@ -315,3 +317,4 @@
     </div>
   </div>
 </div>
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
