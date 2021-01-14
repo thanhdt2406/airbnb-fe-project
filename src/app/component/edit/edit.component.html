@@ -1,0 +1,38 @@
+<h1><button><a routerLink="/edit/1">EDIT</a></button></h1>
+<div class="properties-area recent-property" style="background-color: #FFF;">
+  <div class="container" style="border: #1D62F0 solid 1px">
+
+    <form (ngSubmit)="updateApartment()">
+      <table border="1">
+        <tr>
+          <td>Name</td>
+          <td><input type="text" name="name" [(ngModel)]="apartment.name"></td>
+          <th><input  type="checkbox" [(ngModel)]="apartment.luxury_room"  name="">Aroom</th>
+        </tr>
+        <tr>
+          <td>Price</td>
+          <td><input type="text" name="value" [(ngModel)]="apartment.value"></td>
+        </tr>
+        <tr>
+          <td>Bathroom</td>
+          <td><input type="text" name="bathroom" [(ngModel)]="apartment.bathroom"></td>
+        </tr>
+        <tr>
+          <td>Bedroom</td>
+          <td><input type="text" name="bedroom" [(ngModel)]="apartment.bedroom"></td>
+        </tr>
+        <tr>
+          <td>Description:</td>
+          <td>
+            <textarea name="description" id="" cols="30" rows="4" [(ngModel)]="apartment.description"></textarea>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><button class="btn btn-primary">Submit</button></td>
+        </tr>
+      </table>
+    </form>
+
+  </div>
+</div>
