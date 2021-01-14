@@ -46,17 +46,13 @@
                   </div>
                   <div class="col-sm-6">
                     <div class="form-group">
-                      <label>Property name <small>(required)</small></label>
+                      <label>Apartment Name <small>(required)</small></label>
                       <input name="propertyname" type="text" class="form-control" placeholder="Super villa ...">
                     </div>
 
                     <div class="form-group">
-                      <label>Property price <small>(required)</small></label>
+                      <label>Apartment Value <small>(required)</small></label>
                       <input name="propertyprice" type="text" class="form-control" placeholder="3330000">
-                    </div>
-                    <div class="form-group">
-                      <label>Telephone <small>(empty if you wanna use default phone number)</small></label>
-                      <input name="phone" type="text" class="form-control" placeholder="+1 473 843 7436">
                     </div>
                   </div>
                 </div>
@@ -64,7 +60,7 @@
               <!--  End step 1 -->
 
               <div class="tab-pane" id="step2">
-                <h4 class="info-text"> How much your Property is Beautiful ? </h4>
+                <h4 class="info-text"> How much your Apartment is Beautiful ? </h4>
                 <div class="row">
                   <div class="col-sm-12">
                     <div class="col-sm-12">
@@ -76,55 +72,27 @@
                   </div>
 
                   <div class="col-sm-12">
-                    <div class="col-sm-3">
+                    <div class="col-sm-4">
                       <div class="form-group">
-                        <label>Property State :</label>
-                        <select id="lunchBegins" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Select your city">
-                          <option>Seoul</option>
-                          <option>Paris</option>
-                          <option>Casablanca</option>
-                          <option>Tokyo</option>
-                          <option>Marraekch</option>
-                          <option>kyoto , shibua</option>
+                        <label>Province :</label>
+                        <select class="show-tick form-control" name="pro_id" (change)="getAllDistrictsByProvinceId(pro_id)" [(ngModel)]="pro_id">
+                          <option  *ngFor="let province of provinces" [value]="province.id">{{province.name}}</option>
                         </select>
                       </div>
                     </div>
-                    <div class="col-sm-3">
+                    <div class="col-sm-4">
                       <div class="form-group">
-                        <label>Property City :</label>
-                        <select id="lunchBegins" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Select your city">
-                          <option>New york, CA</option>
-                          <option>Paris</option>
-                          <option>Casablanca</option>
-                          <option>Tokyo</option>
-                          <option>Marraekch</option>
-                          <option>kyoto , shibua</option>
+                        <label>Province :</label>
+                        <select  class="show-tick form-control" name="dis_id" (change)="getAllWardsByDistrictId(dis_id)"  [(ngModel)]="dis_id">
+                          <option *ngFor="let dis of districts" [value]="dis.id">{{dis.name}}</option>
                         </select>
                       </div>
                     </div>
-                    <div class="col-sm-3">
-                      <div class="form-group">
-                        <label>Property Statue  :</label>
-                        <select id="basic" class="selectpicker show-tick form-control">
-                          <option> -Status- </option>
-                          <option>Rent </option>
-                          <option>Boy</option>
-                          <option>used</option>
-
-                        </select>
-                      </div>
-                    </div>
-                    <div class="col-sm-3">
-                      <div class="form-group">
-                        <label>Property Statue  :</label>
-                        <select id="basic" class="selectpicker show-tick form-control">
-                          <option> -Status- </option>
-                          <option>Rent </option>
-                          <option>Boy</option>
-                          <option>used</option>
-
-                        </select>
-                      </div>
+                    <div class="col-sm-4">
+                      <label>Province :</label>
+                      <select  class="show-tick form-control" name="dis_id" >
+                        <option *ngFor="let war of wards" [value]="war.id">{{war.name}}</option>
+                      </select>
                     </div>
                   </div>
                   <div class="col-sm-12 padding-top-15">
@@ -141,7 +109,7 @@
                     <div class="col-sm-4">
 
                       <div class="form-group">
-                        <label for="price-range">Min baths :</label>
+                        <label >Min baths :</label>
                         <input type="text" class="span2" value="" data-slider-min="0"
                                data-slider-max="600" data-slider-step="5"
                                data-slider-value="[250,450]" id="min-baths" ><br />
@@ -254,7 +222,7 @@
                   </div>
                   <div class="col-sm-6">
                     <div class="form-group">
-                      <label for="property-video">Property video :</label>
+                      <label >Property video :</label>
                       <input class="form-control" value="" placeholder="http://www.youtube.com, http://vimeo.com" name="property_video" type="text">
                     </div>
 

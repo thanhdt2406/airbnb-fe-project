@@ -16,6 +16,7 @@ import {finalize} from 'rxjs/operators';
 
 declare var $: any;
 declare var Swal: any;
+
 let wardId: number = -1;
 let isValidated = true;
 @Component({
@@ -24,6 +25,8 @@ let isValidated = true;
   styleUrls: ['./create.component.css']
 })
 export class CreateComponent implements OnInit {
+  pro_id: number = 1;
+  dis_id: number = 5;
   apartForm: FormGroup = new FormGroup({
     name: new FormControl(''),
     address: new FormControl(''),
@@ -42,12 +45,12 @@ export class CreateComponent implements OnInit {
               private provinceService: ProvinceService,
               private apartmentService: ApartmentService,
               private storage: AngularFireStorage) {
-  this.getAllWard();
-  this.getAllDistrict();
   this.getAllProvince();
   }
 
   ngOnInit(): void {
+    this.getAllDistrictsByProvinceId(1);
+    this.getAllWardsByDistrictId(1);
     $('.selectpicker').selectpicker();
     $('#price-range').slider();
     $('#property-geo').slider();
@@ -307,17 +310,21 @@ export class CreateComponent implements OnInit {
   getAllProvince() {
     this.provinceService.getAllProvince().subscribe(provinceList => {
       this.provinces = provinceList;
-    })
+    });
   }
-  getAllDistrict() {
-    this.districtService.getAllDistrict().subscribe(districtList => {
+
+  getAllDistrictsByProvinceId(id: number) {
+    console.log(id);
+    this.districtService.getDistrictByProvinceId(id).subscribe(districtList => {
+      // @ts-ignore
       this.districts = districtList;
-    })
+    });
   }
-  getAllWard() {
-    this.wardService.getAllWard().subscribe(wardList => {
+
+  getAllWardsByDistrictId(id: number) {
+    console.log(id)
+    this.wardService.getAllWardByDistricts(id).subscribe(wardList => {
       this.wards = wardList;
     })
   }
-
 }
