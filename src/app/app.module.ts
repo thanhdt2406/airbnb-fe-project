@@ -23,7 +23,6 @@ import {AngularFireStorage, AngularFireStorageModule} from '@angular/fire/storag
 import {AngularFireModule} from '@angular/fire';
 import {environment} from '../environments/environment';
 import { UpdateComponent } from './component/update/update.component';
-import { EditComponent } from './component/edit/edit.component';
 // @ts-ignore
 @NgModule({
   declarations: [
@@ -41,7 +40,6 @@ import { EditComponent } from './component/edit/edit.component';
     UserHouseComponent,
     ChangePassComponent,
     UpdateComponent,
-    EditComponent,
 
   ],
   imports: [
