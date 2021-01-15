@@ -104,4 +104,8 @@ export class DetailComponent implements OnInit {
     this.imageService.getAllByApartment(ap.id).subscribe(data => {this.images = data;
     });
   }
+
+  rentApartment(){
+
+  }
 }
