@@ -12,12 +12,13 @@ import {ChangePassComponent} from './component/change-pass/change-pass.component
 import {AuthGuard} from './helper/auth-guard';
 import {NavComponent} from "./component/nav/nav.component";
 import {EditComponent} from "./component/edit/edit.component";
+import {UpdateComponent} from "./component/update/update.component";
 
 
 const routes: Routes = [
   {
     path: '',
-    component: IndexComponent,
+    component: UpdateComponent,
   },
   {
     path: 'edit/:id',
