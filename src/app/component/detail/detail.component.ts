@@ -20,8 +20,8 @@ export class DetailComponent implements OnInit {
     bathroom: "",
     value: "",
     address: "",
-    vip_room: 0,
-    president_room: 0,
+    vipRoom: 0,
+    pr: 0,
     ward: {
       name: "",
       district: {
