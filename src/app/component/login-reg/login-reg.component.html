@@ -22,6 +22,9 @@
             <div class="form-group">
               <label>User Name</label>
               <input type="text" name="name" class="form-control" formControlName="name">
+              <div style="color: red;" *ngIf="existUsername">
+                {{existUsername}}
+              </div>
             </div>
             <div class="form-group">
               <label for="password">Password</label>

@@ -5,16 +5,19 @@ import {UserService} from '../../service/user/user.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AuthService} from '../../service/auth/auth.service';
 import {first} from 'rxjs/operators';
+
 declare var $: any;
 let isValidated = true;
 declare const gapi: any;
 declare var Swal: any;
+
 @Component({
   selector: 'app-login-reg',
   templateUrl: './login-reg.component.html',
   styleUrls: ['./login-reg.component.css']
 })
-export class LoginRegComponent implements OnInit{
+export class LoginRegComponent implements OnInit {
+  users: User[] = [];
   output = '';
   loginFail: string = '';
   user: User = {
@@ -22,15 +25,16 @@ export class LoginRegComponent implements OnInit{
   };
   submitted = false;
   registerForm: FormGroup = this.formBuilder.group({
-    name: ['',[Validators.required]],
-    password: ['',[Validators.required]],
-    confirmPassword: ['',[Validators.required]],
-  },{validators: this.checkPasswords});
+    name: ['', [Validators.required]],
+    password: ['', [Validators.required]],
+    confirmPassword: ['', [Validators.required]],
+  }, {validators: this.checkPasswords});
   loginForm: FormGroup = new FormBuilder().group({});
   loading = false;
   returnUrl: string = '';
   error = '';
   auth2: any;
+  existUsername: string = '';
 
   constructor(private userService: UserService,
               private formBuilder: FormBuilder,
@@ -87,7 +91,9 @@ export class LoginRegComponent implements OnInit{
 
     // get return url from route parameters or default to '/'
     this.returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl'] || '/';
+    this.getAllUser();
   }
+
   checkPasswords(group: FormGroup) { // here we have the 'passwords' group
     let pass = group.controls.password.value;
     let confirmPass = group.controls.confirmPassword.value;
@@ -99,17 +105,22 @@ export class LoginRegComponent implements OnInit{
     if (this.registerForm.invalid) {
       return;
     }
+    if(this.isExistUsername()){
+      this.existUsername = 'Username already exists!';
+      return;
+    }
     this.user = {
       username: this.registerForm.value.name,
       password: this.registerForm.value.password
     };
     this.userService.registerUser(this.user).subscribe(() => {
       this.output = 'Tạo Tài Khoản Thành Công';
+      this.existUsername = '';
       this.registerForm = this.formBuilder.group({
-        name: ['',[Validators.required]],
-        password: ['',[Validators.required]],
-        confirmPassword: ['',[Validators.required]],
-      },{validators: this.checkPasswords});
+        name: ['', [Validators.required]],
+        password: ['', [Validators.required]],
+        confirmPassword: ['', [Validators.required]],
+      }, {validators: this.checkPasswords});
     });
 
   }
@@ -125,7 +136,6 @@ export class LoginRegComponent implements OnInit{
     if (this.loginForm.invalid) {
       return;
     }
-
     this.loading = true;
     this.authService.login(this.f.username.value, this.f.password.value)
       .pipe(first())
@@ -142,5 +152,19 @@ export class LoginRegComponent implements OnInit{
         });
   }
 
+  getAllUser() {
+    this.userService.getAllUser().subscribe(data => {
+      this.users = data;
+    });
+  }
+
+  isExistUsername(): boolean {
+    for (let i = 0; i < this.users.length; i++) {
+      if (this.registerForm.value.name === this.users[i].username) {
+        return true;
+      }
+    }
+    return false;
+  }
 
 }
