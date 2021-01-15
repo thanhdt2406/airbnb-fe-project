@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../service/auth/auth.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {User} from '../../model/user';
@@ -15,12 +15,12 @@ export class NavComponent implements OnInit {
   returnUrl: string = '';
   isUserLoggedIn = false;
 
-  constructor(private authService:AuthService,
+  constructor(private authService: AuthService,
               private router: Router,
               private activatedRoute: ActivatedRoute) {
-    this.authService.currentUserSubject.subscribe( value => {
+    this.authService.currentUserSubject.subscribe(value => {
       this.currentUser = value;
-      if(this.currentUser){
+      if (this.currentUser) {
         this.isUserLoggedIn = true;
       }
     });
@@ -28,14 +28,16 @@ export class NavComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.currentUser);
   }
 
-  public logout(){
-    this.returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl'] || "/";
-    this.authService.logout();
-    this.isUserLoggedIn = false;
-    this.router.navigate([this.returnUrl]);
+  public logout() {
+    if (confirm('Bạn có chắc rằng muốn đăng xuất không?')) {
+      alert("Đăng xuất thành công!");
+      this.returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl'] || '/';
+      this.authService.logout();
+      this.isUserLoggedIn = false;
+      this.router.navigate([this.returnUrl]);
+    }
   }
 
 }

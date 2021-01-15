@@ -20,4 +20,8 @@ export class DistrictService {
   getDistrictById(id: number): Observable<District> {
     return this.http.get<District>(API_URL + `/districts/${id}`);
   }
+
+  getDistrictByProvinceId(id: number): Observable<District[]> {
+    return this.http.get<District[]>(API_URL + `/districts/province/${id}`);
+  }
 }

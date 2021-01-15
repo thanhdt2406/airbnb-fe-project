@@ -4,7 +4,6 @@ import {Ward} from './ward';
 export interface Apartment {
   id?: number;
   name?: string;
-  avatar?: string;
   address?: string;
   bathroom?: number;
   bedroom?: number;
@@ -19,4 +18,5 @@ export interface Apartment {
   description?: string;
   user?: User;
   ward?: Ward;
+  image?: any[];
 }
