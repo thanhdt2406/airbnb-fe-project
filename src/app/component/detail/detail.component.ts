@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {Apartment} from "../../model/apartment";
 import {ApartmentService} from "../../service/apartment/apartment.service";
 import {ActivatedRoute, Route} from "@angular/router";
+import {ImageService} from '../../service/image/image.service';
+import {Image} from '../../model/image';
 
 declare var $: any;
 
@@ -11,12 +13,30 @@ declare var $: any;
   styleUrls: ['./detail.component.css']
 })
 export class DetailComponent implements OnInit {
-  apartment: Apartment = {};
+  apartment = {
+    name: "",
+    description: "",
+    bedroom: "",
+    bathroom: "",
+    value: "",
+    address: "",
+    ward: {
+      name: "",
+      district: {
+        name: "",
+        province: {
+          name: ""
+        }
+      }
+    }
+  };
   // @ts-ignore
   id: number;
+  images: Image[] = [];
 
-  constructor(private apertmentService: ApartmentService,
-              private activatedRoute: ActivatedRoute) {
+  constructor(private apartmentService: ApartmentService,
+              private activatedRoute: ActivatedRoute,
+              private imageService: ImageService) {
   }
 
   ngOnInit(): void {
@@ -25,6 +45,7 @@ export class DetailComponent implements OnInit {
       this.id = +paramMap.get('id');
       // @ts-ignore
       this.getApartment(this.id);
+      // @ts-ignore
     })
     $(document).ready(function () {
       $('#image-gallery').lightSlider({
@@ -71,8 +92,16 @@ export class DetailComponent implements OnInit {
 
 // @ts-ignore
   getApartment() {
-    this.apertmentService.getApartmentById(this.id).subscribe(value => {
+    this.apartmentService.getApartmentById(this.id).subscribe(value => {
+      // @ts-ignore
       this.apartment = value;
-    })
+      this.getImageByApartment(value);
+    });
+  }
+
+  getImageByApartment(ap: Apartment) {
+    // @ts-ignore
+    this.imageService.getAllByApartment(ap.id).subscribe(data => {this.images = data;
+    });
   }
 }

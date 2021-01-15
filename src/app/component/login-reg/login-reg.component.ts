@@ -21,11 +21,11 @@ export class LoginRegComponent implements OnInit {
     id: 0
   };
   submitted = false;
-  registerForm: FormGroup = new FormGroup({
-    name: new FormControl(''),
-    password: new FormControl(''),
-    confirmPassword: new FormControl(''),
-  });
+  registerForm: FormGroup = this.formBuilder.group({
+    name: ['',[Validators.required]],
+    password: ['',[Validators.required]],
+    confirmPassword: ['',[Validators.required]],
+  },{validators: this.checkPasswords});
   loginForm: FormGroup = new FormBuilder().group({});
   loading = false;
   returnUrl: string = '';
@@ -88,21 +88,30 @@ export class LoginRegComponent implements OnInit {
     this.returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl'] || '/';
   }
 
+  checkPasswords(group: FormGroup) { // here we have the 'passwords' group
+    let pass = group.controls.password.value;
+    let confirmPass = group.controls.confirmPassword.value;
+
+    return pass === confirmPass ? null : {notSame: true};
+  }
+
   createUser() {
+    if (this.registerForm.invalid) {
+      return;
+    }
     this.user = {
       username: this.registerForm.value.name,
       password: this.registerForm.value.password
     };
-    console.log(this.user);
-    if (this.registerForm.invalid) {
-      return;
-    } else {
-      this.userService.registerUser(this.user).subscribe(() => {
-        this.output = 'Tạo Tài Khoản Thành Công';
-      },()=>{
-        console.log(1);
-      });
-    }
+    this.userService.registerUser(this.user).subscribe(() => {
+      this.output = 'Tạo Tài Khoản Thành Công';
+      this.registerForm = this.formBuilder.group({
+        name: ['',[Validators.required]],
+        password: ['',[Validators.required]],
+        confirmPassword: ['',[Validators.required]],
+      },{validators: this.checkPasswords});
+    });
+
   }
 
   get f() {
