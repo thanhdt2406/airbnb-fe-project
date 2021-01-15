@@ -4,158 +4,133 @@
     <div class="row  pr0 padding-top-40 properties-page">
       <div class="col-md-12 padding-bottom-40 large-search">
         <div class="search-form wow pulse">
-          <form action="" method="get" class=" form-inline">
-            <div class="col-md-12">
-              <div class="col-md-4">
-                <input type="text" class="form-control" placeholder="Key word">
+          <form action="/" method="get" (ngSubmit)="submitSearch()" class=" form-inline">
+            <div class="col-sm-12">
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>Province :</label>
+                  <select class="show-tick form-control" id="pro_id" style="width: 300px;"  name="pro_id" (change)="getAllDistrictsByProvinceId(pro_id)" [(ngModel)]="pro_id">
+                    <option value="">Chọn tỉnh thành</option>
+                    <option  *ngFor="let province of provinces" [value]="province.id">{{province.name}}</option>
+                  </select>
+                </div>
               </div>
-              <div class="col-md-4">
-                <select id="lunchBegins" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Select your city">
-                  <option>New york, CA</option>
-                  <option>Paris</option>
-                  <option>Casablanca</option>
-                  <option>Tokyo</option>
-                  <option>Marraekch</option>
-                  <option>kyoto , shibua</option>
-                </select>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>District :</label>
+                  <select title="Chọn Quận/Huyện"  class="show-tick form-control" id="dis_id"  style="width: 300px;" name="dis_id" (change)="getAllWardsByDistrictId(dis_id)" [(ngModel)]="dis_id">
+                    <option value=""></option>
+                    <option *ngFor="let dis of districts" [value]="dis.id">{{dis.name}}</option>
+                  </select>
+                </div>
               </div>
-              <div class="col-md-4">
-                <select id="basic" class="selectpicker show-tick form-control">
-                  <option> -Status- </option>
-                  <option>Rent </option>
-                  <option>Boy</option>
-                  <option>used</option>
-
+              <div class="col-sm-4">
+                <label>Wards :</label>
+                <select  class="show-tick form-control" name="ward" id="ward_id" style="width: 300px;">
+                  <option value="" selected></option>
+                  <option *ngFor="let war of wards" [value]="war.id">{{war.name}}</option>
                 </select>
               </div>
             </div>
             <div class="col-md-12 ">
               <div class="search-row">
+                <div class="col-md-4 row">
+                    <div class="col-sm-6">
+                      <label for="min-baths" >Min baths :</label>
+                      <input type="text" class="span2" name="test" data-slider-min="1"
+                             data-slider-max="6" data-slider-step="1"
+                             data-slider-value="[1]" id="min-baths" [defaultValue]="1" value=""><br />
+                      <b class="pull-left color">1</b>
+                      <b class="pull-right color">6</b>
+                    </div>
+                    <!-- End of  -->
 
-                <div class="col-sm-3">
-                  <label for="price-range">Price range ($):</label>
-                  <input type="text" class="span2" value="" data-slider-min="0"
-                         data-slider-max="600" data-slider-step="5"
-                         data-slider-value="[0,450]" id="price-range" ><br />
-                  <b class="pull-left color">2000$</b>
-                  <b class="pull-right color">100000$</b>
+                    <div class="col-sm-6">
+                      <label for="min-bed">Min bed :</label>
+                      <input type="text" class="span2" data-slider-min="1"
+                             data-slider-max="6" data-slider-step="1"
+                             data-slider-value="[1]" id="min-bed" [defaultValue]="1" value=""><br />
+                      <b class="pull-left color">1</b>
+                      <b class="pull-right color">6</b>
+                    </div>
+                    <!-- End of  -->
+                  </div>
+                <div class="col-md-8 row">
+                  <div class="col-sm-1"></div>
+                  <div class="col-sm-5">
+                    <label for="price-range">Range-Price</label>
+                    <input type="text" class="span2" value="" data-slider-min="100"
+                             data-slider-max="5000" data-slider-step="100"
+                             data-slider-value="[100,1200]"  [defaultValue]="[100,1200]" id="price-range" ><br />
+                    <b class="pull-left color">100</b>
+                    <b class="pull-right color">5000</b>
+                  </div>
                 </div>
-                <!-- End of  -->
-
-                <div class="col-sm-3">
-                  <label for="property-geo">Property geo (m2) :</label>
-                  <input type="text" class="span2" value="" data-slider-min="0"
-                         data-slider-max="600" data-slider-step="5"
-                         data-slider-value="[50,450]" id="property-geo" ><br />
-                  <b class="pull-left color">40m</b>
-                  <b class="pull-right color">12000m</b>
-                </div>
-                <!-- End of  -->
-
-                <div class="col-sm-3">
-                  <label for="price-range">Min baths :</label>
-                  <input type="text" class="span2" value="" data-slider-min="0"
-                         data-slider-max="600" data-slider-step="5"
-                         data-slider-value="[250,450]" id="min-baths" ><br />
-                  <b class="pull-left color">1</b>
-                  <b class="pull-right color">120</b>
-                </div>
-                <!-- End of  -->
-
-                <div class="col-sm-3">
-                  <label for="property-geo">Min bed :</label>
-                  <input type="text" class="span2" value="" data-slider-min="0"
-                         data-slider-max="600" data-slider-step="5"
-                         data-slider-value="[0,0]" id="min-bed" ><br />
-                  <b class="pull-left color">1</b>
-                  <b class="pull-right color">120</b>
-                </div>
-                <!-- End of  -->
-
-              </div>
+            </div>
 
               <div class="search-row">
-
-                <div class="col-sm-3">
-                  <div class="checkbox">
-                    <label>
-                      <input type="checkbox"> Fire Place(3100)
-                    </label>
+                <div class="col-sm-2">
+                  <div class="form-group">
+                    <select class="show-tick form-control" id="vipRoom" style="width: 150px;" >
+                      <option value="">Vip Room</option>
+                      <option value="1">True</option>
+                      <option value="0">False</option>
+                    </select>
                   </div>
                 </div>
-                <!-- End of  -->
-
-                <div class="col-sm-3">
-                  <div class="checkbox">
-                    <label>
-                      <input type="checkbox" onChange> Dual Sinks(500)
-                    </label>
+                <div class="col-sm-2">
+                  <div class="form-group">
+                    <select class="show-tick form-control" id="luxuryRoom" style="width: 150px;" >
+                      <option value="">Luxury Room</option>
+                      <option value="1">True</option>
+                      <option value="0">False</option>
+                    </select>
                   </div>
                 </div>
-                <!-- End of  -->
-
-                <div class="col-sm-3">
-                  <div class="checkbox">
-                    <label>
-                      <input type="checkbox"> Hurricane Shutters(99)
-                    </label>
+                <div class="col-sm-2">
+                  <div class="form-group">
+                    <select class="show-tick form-control" id="singleRoom" style="width: 150px;" >
+                      <option value="">Single Room</option>
+                      <option value="1">True</option>
+                      <option value="0">False</option>
+                    </select>
                   </div>
                 </div>
-                <!-- End of  -->
-
-                <div class="col-sm-3">
-                  <div class="checkbox">
-                    <label>
-                      <input type="checkbox"> Swimming Pool(1190)
-                    </label>
+                <div class="col-sm-2">
+                  <div class="form-group">
+                    <select class="show-tick form-control" id="coupleRoom" style="width: 150px;" >
+                      <option value="">Couple Room</option>
+                      <option value="1">True</option>
+                      <option value="0">False</option>
+                    </select>
                   </div>
                 </div>
-                <!-- End of  -->
-
-                <div class="col-sm-3">
-                  <div class="checkbox">
-                    <label>
-                      <input type="checkbox"> 2 Stories(4600)
-                    </label>
+                <div class="col-sm-2">
+                  <div class="form-group">
+                    <select class="show-tick form-control" id="presidentRoom" style="width: 150px;" >
+                      <option value="">President Room</option>
+                      <option value="1">True</option>
+                      <option value="0">False</option>
+                    </select>
                   </div>
                 </div>
-                <!-- End of  -->
-
-                <div class="col-sm-3">
-                  <div class="checkbox">
-                    <label>
-                      <input type="checkbox"> Emergency Exit(200)
-                    </label>
-                  </div>
-                </div>
-                <!-- End of  -->
-
-                <div class="col-sm-3">
-                  <div class="checkbox">
-                    <label>
-                      <input type="checkbox"> Laundry Room(10073)
-                    </label>
-                  </div>
-                </div>
-                <!-- End of  -->
-
-                <div class="col-sm-3">
-                  <div class="checkbox">
-                    <label>
-                      <input type="checkbox"> Jog Path(1503)
-                    </label>
-                  </div>
-                </div>
-                <!-- End of  -->
-
-                <div class="col-sm-3">
-                  <div class="checkbox">
-                    <label>
-                      <input type="checkbox"> 26' Ceilings(1200)
-                    </label>
-                  </div>
-                </div>
-                <!-- End of  -->
+                <div class="col-sm-2"></div>
+              </div>
+            </div>
+            <div class="col-sm-12 padding-top-15">
+              <div class="col-md-4">
+                <label id="">Check In</label>
+                <input type="text" id="timeCheckIn" style=" width: 300px"  class="form-control datepicker" [defaultValue]="" placeholder="Pick Date Check in">
+              </div>
+              <div class="col-md-4">
+                <label >Check Out</label>
+                <input type="text" id="timeCheckOut" style=" width: 300px"   class="form-control datepicker" [defaultValue]=" " placeholder="Pick Date Check out">
+              </div>
+            </div>
+            <div class="col-sm-12 padding-top-25">
+              <div class="col-sm-5"></div>
+              <div class="col-sm-6">
+                <input type="submit" name="submit" value="submit">
               </div>
             </div>
           </form>
@@ -177,7 +152,7 @@
             </li>
           </ul><!--/ .sort-by-list-->
 
-          <div class="items-per-page">
+  <!--        <div class="items-per-page">
             <label for="items_per_page"><b>Property per page :</b></label>
             <div class="sel">
               <select id="items_per_page" name="per_page">
@@ -190,8 +165,9 @@
                 <option value="45">45</option>
                 <option value="60">60</option>
               </select>
-            </div><!--/ .sel-->
-          </div><!--/ .items-per-page-->
+            </div>&lt;!&ndash;/ .sel&ndash;&gt;
+          </div>&lt;!&ndash;/ .items-per-page&ndash;&gt;-->
+
         </div>
 
         <div class="col-xs-2 layout-switcher">
