@@ -11,7 +11,7 @@ export interface Apartment {
   luxury_room?: number;
   president_room?: number;
   single_room?: number;
-  vip_room?: number;
+  vipRoom?: number;
   create_date?: Date;
   status?: number;
   value?: number;
