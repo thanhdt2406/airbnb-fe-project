@@ -139,7 +139,7 @@ export class UpdateComponent implements OnInit {
       luxury_room: this.apartForm.value.luxury_room === '' ? this.apartmentCurrent.luxury_room: this.apartForm.value.luxury_room,
       president_room: this.apartForm.value.president_room === '' ? this.apartmentCurrent.president_room: this.apartForm.value.president_room,
       single_room: this.apartForm.value.single_room === '' ? this.apartmentCurrent.single_room: this.apartForm.value.single_room,
-      vip_room: this.apartForm.value.vip_room === '' ? this.apartmentCurrent.vip_room: this.apartForm.value.vip_room,
+      vip_room: this.apartForm.value.vip_room === '' ? this.apartmentCurrent.vipRoom: this.apartForm.value.vip_room,
       ward: {
         id: this.apartForm.value.ward
       },
