@@ -52,4 +52,8 @@ export class ApartmentService {
   getApartmentByUser(id: number): Observable<Apartment[]> {
     return this.http.get<Apartment[]>(API_URL + `/apartments/user/${id}`)
   }
+
+  rentApartment(id: number, endDate: Date): Observable<Apartment>{
+    return this.http.post<Apartment>(API_URL + `/rents/${id}`, endDate);
+  }
 }

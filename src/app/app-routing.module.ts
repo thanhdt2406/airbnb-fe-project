@@ -19,7 +19,6 @@ const routes: Routes = [
     path: '',
     component: IndexComponent,
   },
-
   {
     path: 'list',
     component: ListComponent,
