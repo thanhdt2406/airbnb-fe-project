@@ -17,7 +17,7 @@ import {EditComponent} from "./component/edit/edit.component";
 const routes: Routes = [
   {
     path: '',
-    component: EditComponent,
+    component: IndexComponent,
   },
   {
     path: 'edit/:id',

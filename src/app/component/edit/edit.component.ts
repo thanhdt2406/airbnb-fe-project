@@ -13,7 +13,7 @@ export class EditComponent implements OnInit {
   apartment: Apartment = {};
   // @ts-ignore
   id: number;
-
+  private isAvailable: boolean = true;
 
   constructor(private apertmentService: ApartmentService,
               private activatedRoute: ActivatedRoute) {
@@ -25,7 +25,11 @@ export class EditComponent implements OnInit {
       this.id = +paramMap.get('id');
       // @ts-ignore
       this.getApartment(this.id);
-    })
+    });
+    if (this.apartment.luxury_room == false) {
+      this.isAvailable = false;
+      console.log(this.apartment.luxury_room);
+    }
   }
 
   // @ts-ignore

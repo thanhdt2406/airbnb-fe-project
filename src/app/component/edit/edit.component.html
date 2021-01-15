@@ -12,10 +12,12 @@
         <tr>
           <td>Price</td>
           <td><input type="text" name="value" [(ngModel)]="apartment.value"></td>
+          <th><input [(ngModel)]="apartment.single_room" [ngModelOptions]="{standalone: true}"></th>
         </tr>
         <tr>
           <td>Bathroom</td>
           <td><input type="text" name="bathroom" [(ngModel)]="apartment.bathroom"></td>
+          <th>{{apartment.luxury_room}}</th>
         </tr>
         <tr>
           <td>Bedroom</td>
