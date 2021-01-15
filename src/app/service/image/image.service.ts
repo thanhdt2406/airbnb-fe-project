@@ -34,4 +34,7 @@ export class ImageService {
     return this.http.get<Image>(API_URL + `/images/${id}`);
   }
 
+  getAllByApartment(id: number): Observable<Image[]> {
+    return this.http.get<Image[]>(API_URL + `/images/apartment/${id}`)
+  }
 }

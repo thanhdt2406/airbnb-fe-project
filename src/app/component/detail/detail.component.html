@@ -30,20 +30,10 @@
                 </div>
 
                 <ul id="image-gallery" class="gallery list-unstyled cS-hidden">
-                  <li data-thumb="assets/img/property-1/property1.jpg">
+                  <li data-thumb="{{images.ima}}">
                     <img src="assets/img/property-1/property1.jpg" />
                   </li>
-                  <li data-thumb="assets/img/property-1/property2.jpg">
-                    <img src="assets/img/property-1/property3.jpg" />
-                  </li>
-                  <li data-thumb="assets/img/property-1/property3.jpg">
-                    <img src="assets/img/property-1/property3.jpg" />
-                  </li>
-                  <li data-thumb="assets/img/property-1/property4.jpg">
-                    <img src="assets/img/property-1/property4.jpg" />
-                  </li>
                 </ul>
-
               </div>
             </div>
           </div>
@@ -52,10 +42,38 @@
             <div class="section">
               <h4 class="s-property-title">Description</h4>
               <div class="s-property-content">
-                <p>Nulla quis dapibus nisl. Suspendisse ultricies Nulla quis dapibus nisl. Suspendisse ultricies commodo arcu nec pretium. Nullam sed arcu ultricies commodo arcu nec pretium. Nullam sed arcu ultricies Nulla quis dapibus nisl. Suspendisse ultricies commodo arcu nec pretium. Nullam sed arcu ultricies Nulla quis dapibus nisl. Suspendisse ultricies commodo arcu nec pretium. Nullam sed arcu ultricies                                </p>
+                <p>{{apartment.description}}</p>
               </div>
             </div>
             <!-- End description area  -->
+
+            <div class="section additional-details">
+
+              <h4 class="s-property-title">Address</h4>
+
+              <ul class="additional-details-list clearfix">
+                <li>
+                  <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Province</span>
+                  <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">{{apartment.ward.district.province.name}}</span>
+                </li>
+
+                <li>
+                  <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">District</span>
+                  <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">{{apartment.ward.district.name}}</span>
+                </li>
+                <li>
+                  <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Ward</span>
+                  <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">{{apartment.ward.name}}</span>
+                </li>
+
+                <li>
+                  <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Address</span>
+                  <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">{{apartment.address}}</span>
+                </li>
+
+              </ul>
+            </div>
+            <!-- End additional-details area  -->
 
             <div class="section additional-details">
 
@@ -63,32 +81,27 @@
 
               <ul class="additional-details-list clearfix">
                 <li>
-                  <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Waterfront</span>
-                  <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">Yes</span>
+                  <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Vip Room</span>
+                  <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry"></span>
                 </li>
 
                 <li>
-                  <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Built In</span>
-                  <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">2003</span>
+                  <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">luxury Room</span>
+                  <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry"></span>
                 </li>
                 <li>
-                  <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Parking</span>
-                  <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">2 Or More Spaces,Covered Parking,Valet Parking</span>
-                </li>
-
-                <li>
-                  <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Waterfront</span>
-                  <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">Yes</span>
+                  <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Single Room</span>
+                  <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry"></span>
                 </li>
 
                 <li>
-                  <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">View</span>
-                  <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">Intracoastal View,Direct ew</span>
+                  <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Couple Room</span>
+                  <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry"></span>
                 </li>
 
                 <li>
-                  <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Waterfront Description:</span>
-                  <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">Intracoastal Front,Ocean Access</span>
+                  <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">President Room</span>
+                  <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry"></span>
                 </li>
 
               </ul>
@@ -151,73 +164,24 @@
 
                 <div class="property-meta entry-meta clearfix ">
 
-                  <div class="col-xs-4 col-sm-4 col-md-4 p-b-15">
-                                                <span class="property-info-icon icon-tag">
-                                                    <img src="assets/img/icon/sale-orange.png">
-                                                </span>
-                    <span class="property-info-entry">
-                                                    <span class="property-info-label">Status</span>
-                                                    <span class="property-info-value">For Sale</span>
-                                                </span>
-                  </div>
 
                   <div class="col-xs-4 col-sm-4 col-md-4 p-b-15">
-                                                <span class="property-info icon-area">
-                                                    <img src="assets/img/icon/room-orange.png">
-                                                </span>
+                    <span class="property-info-icon icon-bed">
+                      <img src="assets/img/icon/bed-orange.png">
+                    </span>
                     <span class="property-info-entry">
-                                                    <span class="property-info-label">Area</span>
-                                                    <span class="property-info-value">3500<b class="property-info-unit">Sq Ft</b></span>
-                                                </span>
-                  </div>
-
-                  <div class="col-xs-4 col-sm-4 col-md-4 p-b-15">
-                                                <span class="property-info-icon icon-bed">
-                                                    <img src="assets/img/icon/bed-orange.png">
-                                                </span>
-                    <span class="property-info-entry">
-                                                    <span class="property-info-label">Bedrooms</span>
-                                                    <span class="property-info-value">{{apartment.bedroom}}</span>
-                                                </span>
-                  </div>
-
-                  <div class="col-xs-4 col-sm-4 col-md-4 p-b-15">
-                                                <span class="property-info-icon icon-bath">
-                                                    <img src="assets/img/icon/cars-orange.png">
-                                                </span>
-                    <span class="property-info-entry">
-                                                    <span class="property-info-label">Bathrooms</span>
-                                                    <span class="property-info-value">3.5</span>
-                                                </span>
+                      <span class="property-info-label">Bedrooms</span>
+                      <span class="property-info-value">{{apartment.bedroom}}</span>
+                    </span>
                   </div>
                   <div class="col-xs-4 col-sm-4 col-md-4 p-b-15">
-                                                <span class="property-info-icon icon-bath">
-                                                    <img src="assets/img/icon/os-orange.png">
-                                                </span>
+                    <span class="property-info-icon icon-garage">
+                      <img src="assets/img/icon/shawer-orange.png">
+                    </span>
                     <span class="property-info-entry">
-                                                    <span class="property-info-label">Bathrooms</span>
-                                                    <span class="property-info-value">{{apartment.bathroom}}</span>
-                                                </span>
-                  </div>
-
-                  <div class="col-xs-4 col-sm-4 col-md-4 p-b-15">
-                                                <span class="property-info-icon icon-garage">
-                                                    <img src="assets/img/icon/room-orange.png">
-                                                </span>
-                    <span class="property-info-entry">
-                                                    <span class="property-info-label">Garages</span>
-                                                    <span class="property-info-value">2</span>
-                                                </span>
-                  </div>
-
-                  <div class="col-xs-4 col-sm-4 col-md-4 p-b-15">
-                                                <span class="property-info-icon icon-garage">
-                                                    <img src="assets/img/icon/shawer-orange.png">
-                                                </span>
-                    <span class="property-info-entry">
-                                                    <span class="property-info-label">Garages</span>
-                                                    <span class="property-info-value">2</span>
-                                                </span>
+                      <span class="property-info-label">Bathrooms</span>
+                      <span class="property-info-value">{{apartment.bathroom}}</span>
+                    </span>
                   </div>
 
 
