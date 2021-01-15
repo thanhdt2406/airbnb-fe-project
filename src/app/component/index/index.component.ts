@@ -57,7 +57,7 @@ export class IndexComponent implements OnInit {
 
   rent(){
     this.date = new Date();
-    this.service.rentApartment(1,this.date).subscribe(()=>{
+    this.service.rentApartment(1, this.date, this.date).subscribe(() => {
       alert("thanh cong");
     }, error => {
       alert('xay ra loi');
