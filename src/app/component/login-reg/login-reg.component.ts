@@ -1,20 +1,20 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {User} from '../../model/user';
 import {UserService} from '../../service/user/user.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AuthService} from '../../service/auth/auth.service';
 import {first} from 'rxjs/operators';
-
 declare var $: any;
 let isValidated = true;
-
+declare const gapi: any;
+declare var Swal: any;
 @Component({
   selector: 'app-login-reg',
   templateUrl: './login-reg.component.html',
   styleUrls: ['./login-reg.component.css']
 })
-export class LoginRegComponent implements OnInit {
+export class LoginRegComponent implements OnInit{
   output = '';
   loginFail: string = '';
   user: User = {
@@ -30,6 +30,7 @@ export class LoginRegComponent implements OnInit {
   loading = false;
   returnUrl: string = '';
   error = '';
+  auth2: any;
 
   constructor(private userService: UserService,
               private formBuilder: FormBuilder,
@@ -87,7 +88,6 @@ export class LoginRegComponent implements OnInit {
     // get return url from route parameters or default to '/'
     this.returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl'] || '/';
   }
-
   checkPasswords(group: FormGroup) { // here we have the 'passwords' group
     let pass = group.controls.password.value;
     let confirmPass = group.controls.confirmPassword.value;
@@ -141,5 +141,6 @@ export class LoginRegComponent implements OnInit {
           this.router.navigate(['/login']);
         });
   }
+
 
 }
