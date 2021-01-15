@@ -45,7 +45,7 @@ export class DetailComponent implements OnInit {
       this.id = +paramMap.get('id');
       // @ts-ignore
       this.getApartment(this.id);
-      this.getImageByApartment(this.id);
+      // @ts-ignore
     })
     $(document).ready(function () {
       $('#image-gallery').lightSlider({
@@ -95,11 +95,13 @@ export class DetailComponent implements OnInit {
     this.apartmentService.getApartmentById(this.id).subscribe(value => {
       // @ts-ignore
       this.apartment = value;
+      this.getImageByApartment(value);
     });
   }
 
-  getImageByApartment(id: number) {
-    this.imageService.getAllByApartment(id).subscribe(data => {this.images = data;
+  getImageByApartment(ap: Apartment) {
+    // @ts-ignore
+    this.imageService.getAllByApartment(ap.id).subscribe(data => {this.images = data;
     });
   }
 }

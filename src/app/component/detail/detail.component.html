@@ -28,11 +28,12 @@
                     <i class="fa fa-print"></i>
                   </a>
                 </div>
-
                 <ul id="image-gallery" class="gallery list-unstyled cS-hidden">
-                  <li data-thumb="{{images.ima}}">
-                    <img src="assets/img/property-1/property1.jpg" />
-                  </li>
+                  <ng-container *ngFor="let i of images">
+                    <li>
+                      <img src="{{i.image}}" style="height: 500px" alt="{{apartment.name}}"/>
+                    </li>
+                  </ng-container>
                 </ul>
               </div>
             </div>
@@ -159,7 +160,7 @@
               <div class="inner-wrapper">
                 <div class="single-property-header">
                   <h1 class="property-title">{{apartment.name}}</h1>
-                  <span class="property-price">$825,000</span>
+                  <span class="property-price">{{apartment.value | currency}}</span>
                 </div>
 
                 <div class="property-meta entry-meta clearfix ">
