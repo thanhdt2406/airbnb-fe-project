@@ -4,6 +4,8 @@ import {ApartmentService} from "../../service/apartment/apartment.service";
 import {ActivatedRoute, Route} from "@angular/router";
 import {ImageService} from '../../service/image/image.service';
 import {Image} from '../../model/image';
+import {UserService} from '../../service/user/user.service';
+import {User} from '../../model/user';
 
 declare var $: any;
 
@@ -38,10 +40,12 @@ export class DetailComponent implements OnInit {
   // @ts-ignore
   id: number;
   images: Image[] = [];
+  user: User = {};
 
   constructor(private apartmentService: ApartmentService,
               private activatedRoute: ActivatedRoute,
-              private imageService: ImageService) {
+              private imageService: ImageService,
+              private userService: UserService) {
   }
 
   ngOnInit(): void {
@@ -107,5 +111,10 @@ export class DetailComponent implements OnInit {
     // @ts-ignore
     this.imageService.getAllByApartment(ap.id).subscribe(data => {this.images = data;
     });
+  }
+
+  getUserByApartment(ap: Apartment) {
+    // @ts-ignore
+    this.userService.getUserById(ap.id).subscribe(user => {this.user})
   }
 }
