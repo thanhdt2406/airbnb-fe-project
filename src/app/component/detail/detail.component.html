@@ -154,9 +154,13 @@
       </div>
 
       <div class="col-md-4 p0">
+
         <aside class="sidebar sidebar-property blog-asside-right property-style2">
           <div class="dealer-widget">
             <div class="dealer-content">
+              <div class="dealer-section-space">
+                <span>Apartment Information</span>
+              </div>
               <div class="inner-wrapper">
                 <div class="single-property-header">
                   <h1 class="property-title">{{apartment.name}}</h1>
@@ -193,13 +197,12 @@
                 <div class="clear">
                   <div class="col-xs-4 col-sm-4 dealer-face">
                     <a href="">
-                      <img src="assets/img/client-face1.png" class="img-circle">
+                      <img src="{{user.avatar}}" class="img-circle">
                     </a>
                   </div>
                   <div class="col-xs-8 col-sm-8 ">
                     <h3 class="dealer-name">
-                      <a href="">Nathan James</a>
-                      <span>Real Estate Agent</span>
+                      <a href="">{{user.name}}</a>
                     </h3>
                     <div class="dealer-social-media">
                       <a class="twitter" target="_blank" href="">
@@ -224,11 +227,10 @@
 
                 <div class="clear">
                   <ul class="dealer-contacts">
-                    <li><i class="pe-7s-map-marker strong"> </i> 9089 your adress her</li>
-                    <li><i class="pe-7s-mail strong"> </i> email@yourcompany.com</li>
-                    <li><i class="pe-7s-call strong"> </i> +1 908 967 5906</li>
+                    <li><i class="pe-7s-map-marker strong"> </i> {{user.address}}</li>
+                    <li><i class="pe-7s-mail strong"> </i> {{user.email}}</li>
+                    <li><i class="pe-7s-call strong"> </i> {{user.phoneNumber}}</li>
                   </ul>
-                  <p>Duis mollis  blandit tempus porttitor curabiturDuis mollis  blandit tempus porttitor curabitur , est non…</p>
                 </div>
 
               </div>

@@ -15,7 +15,7 @@
     <div class="row">
       <div class="col-sm-10 col-sm-offset-1 profiel-container">
 
-        <form action="" method="">
+        <form (ngSubmit)="submit()" [formGroup]="userProfileForm" id="uerProfile-form">
           <div class="profiel-header">
             <h3>
               <b>BUILD</b> YOUR PROFILE <br>
@@ -28,36 +28,33 @@
             <div class="col-sm-3 col-sm-offset-1">
               <div class="picture-container">
                 <div class="picture">
-                  <img src="assets/img/avatar.png" class="picture-src" id="wizardPicturePreview" title=""/>
-                  <input type="file" id="wizard-picture">
+                  <img [src]="currentUser.avatar" class="picture-src" #upload  id="wizardPicturePreview" title=""/>
+                  <input type="file" id="wizard-picture" name="avatar" formControlName="avatar"
+                         (change)="showPreview($event)">
                 </div>
-                <h6>Choose Picture</h6>
+                <h6 (click)="upload.click()">Choose Picture</h6>
               </div>
             </div>
 
             <div class="col-sm-3 padding-top-25">
 
               <div class="form-group">
-                <label>First Name <small>(required)</small></label>
-                <input name="firstname" type="text" class="form-control" placeholder="Andrew...">
-              </div>
-              <div class="form-group">
-                <label>Last Name <small>(required)</small></label>
-                <input name="lastname" type="text" class="form-control" placeholder="Smith...">
+                <label>Name <small>(required)</small></label>
+                <input name="name" type="text" formControlName="name" class="form-control" placeholder="Enter name" [value]="currentUser.name">
               </div>
               <div class="form-group">
                 <label>Email <small>(required)</small></label>
-                <input name="email" type="email" class="form-control" placeholder="andrew@email@email.com.com">
+                <input name="email" type="email" formControlName="email" placeholder="abc123@example.com" class="form-control" placeholder="Enter email..." [value]="currentUser.email">
+              </div>
+              <div class="form-group">
+                <label>Phone Number <small>(required)</small></label>
+                <input name="phone_number" type="text" formControlName="phone_number" class="form-control" placeholder="Enter phone number..." [value]="currentUser.phoneNumber">
               </div>
             </div>
             <div class="col-sm-3 padding-top-25">
               <div class="form-group">
-                <label>Password <small>(required)</small></label>
-                <input name="Password" type="password" class="form-control">
-              </div>
-              <div class="form-group">
-                <label>Confirm password : <small>(required)</small></label>
-                <input type="password" class="form-control">
+                <label>Address <small>(required)</small></label>
+                <input name="address" type="text" formControlName="address" class="form-control" [value]="currentUser.address">
               </div>
             </div>
 
@@ -101,7 +98,7 @@
 
           <div class="col-sm-5 col-sm-offset-1">
             <br>
-            <input type='button' class='btn btn-finish btn-primary' name='finish' value='Finish' />
+            <input type='submit' class='btn btn-finish btn-primary' name='finish' value='Finish' />
           </div>
           <br>
         </form>

@@ -22,6 +22,13 @@ export class UserService {
     return this.http.post<User>(API_URL + `/register`, user);
   }
 
+  getUserById(id: number): Observable<User> {
+    return this.http.get<User>(API_URL + `/users/${id}`);
+  }
+  updateUserById(id: number, user: User): Observable<User> {
+    return  this.http.put<User>(API_URL + `/users/${id}`, user);
+  }
+
   changePassword(user: User): Observable<User> {
     // @ts-ignore
     return this.http.put<User>(API_URL + '/users/passwords', user);
