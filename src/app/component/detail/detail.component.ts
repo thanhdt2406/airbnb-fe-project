@@ -4,6 +4,8 @@ import {ApartmentService} from "../../service/apartment/apartment.service";
 import {ActivatedRoute, Route} from "@angular/router";
 import {ImageService} from '../../service/image/image.service';
 import {Image} from '../../model/image';
+import {UserService} from '../../service/user/user.service';
+import {User} from '../../model/user';
 
 declare var $: any;
 
@@ -25,6 +27,7 @@ export class DetailComponent implements OnInit {
     singleRoom: 0,
     presidentRoom: 0,
     coupleRoom: 0,
+    user: null,
     ward: {
       name: "",
       district: {
@@ -38,10 +41,12 @@ export class DetailComponent implements OnInit {
   // @ts-ignore
   id: number;
   images: Image[] = [];
+  user: User = {};
 
   constructor(private apartmentService: ApartmentService,
               private activatedRoute: ActivatedRoute,
-              private imageService: ImageService) {
+              private imageService: ImageService,
+              private userService: UserService) {
   }
 
   ngOnInit(): void {
@@ -57,7 +62,7 @@ export class DetailComponent implements OnInit {
         item: 1,
         thumbItem: 9,
         slideMargin: 0,
-        speed: 800,
+        speed: 1200   ,
         auto: true,
         loop: true,
         onSliderLoad: function () {
@@ -100,6 +105,8 @@ export class DetailComponent implements OnInit {
       // @ts-ignore
       this.apartment = value;
       this.getImageByApartment(value);
+      // @ts-ignore
+      this.getUserByApartment(value);
     });
   }
 
@@ -107,5 +114,10 @@ export class DetailComponent implements OnInit {
     // @ts-ignore
     this.imageService.getAllByApartment(ap.id).subscribe(data => {this.images = data;
     });
+  }
+
+  getUserByApartment(ap: Apartment) {
+    // @ts-ignore
+    this.userService.getUserById(ap.user.id).subscribe(user => {this.user = user});
   }
 }
