@@ -24,7 +24,7 @@ export class NavComponent implements OnInit {
         this.isUserLoggedIn = true;
       }
     });
-
+``
   }
 
   ngOnInit(): void {

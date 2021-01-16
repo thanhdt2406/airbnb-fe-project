@@ -39,8 +39,7 @@ import { UpdateComponent } from './component/update/update.component';
     UserProfileComponent,
     UserHouseComponent,
     ChangePassComponent,
-    UpdateComponent,
-
+    UpdateComponent
   ],
   imports: [
     BrowserModule,

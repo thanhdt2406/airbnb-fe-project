@@ -20,6 +20,8 @@ export class DetailComponent implements OnInit {
     bathroom: "",
     value: "",
     address: "",
+    vipRoom: 0,
+    pr: 0,
     ward: {
       name: "",
       district: {
@@ -53,7 +55,7 @@ export class DetailComponent implements OnInit {
         item: 1,
         thumbItem: 9,
         slideMargin: 0,
-        speed: 500,
+        speed: 800,
         auto: true,
         loop: true,
         onSliderLoad: function () {

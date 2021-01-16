@@ -11,7 +11,6 @@ import {UserHouseComponent} from './component/user-house/user-house.component';
 import {ChangePassComponent} from './component/change-pass/change-pass.component';
 import {AuthGuard} from './helper/auth-guard';
 import {NavComponent} from "./component/nav/nav.component";
-import {UpdateComponent} from "./component/update/update.component";
 
 
 const routes: Routes = [
