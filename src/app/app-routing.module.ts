@@ -11,16 +11,21 @@ import {UserHouseComponent} from './component/user-house/user-house.component';
 import {ChangePassComponent} from './component/change-pass/change-pass.component';
 import {AuthGuard} from './helper/auth-guard';
 import {NavComponent} from "./component/nav/nav.component";
+import {UpdateApartmentComponent} from "./component/update-apartment/update-apartment.component";
 
 
 const routes: Routes = [
   {
     path: '',
-    component: IndexComponent,
+    component: UpdateApartmentComponent,
   },
   {
     path: 'list',
     component: ListComponent,
+  },
+  {
+    path: 'update/:id',
+    component: UpdateApartmentComponent,
   },
   {
     path: 'detail/:id',
@@ -40,7 +45,7 @@ const routes: Routes = [
     component: ContactComponent,
   },
   {
-    path: 'user-frofile',
+    path: 'user-profile',
     component: UserProfileComponent,
   },
   {

@@ -69,7 +69,7 @@
                     <img src="assets/img/icon/bed.png">{{ap.bedroom}}|
                     <img src="assets/img/icon/shawer.png">{{ap.bathroom}}|
                     <div class="dealer-action pull-right">
-                      <a href="" class="button" *ngIf="ap.status != 1">Edit </a>
+                      <a routerLink="/update/{{ap.id}}" *ngIf="ap.status != 1">Edit </a>
                       <a routerLink="/detail/{{ap.id}}" class="button">View</a>
                       <a routerLink="#" *ngIf="ap.status == 0" (click)="stopApartment(ap.id)"  class="button delete_user_car">Stop</a>
                       <a routerLink="#" *ngIf="ap.status == 0" (click)="repairApartment(ap.id)"   class="button delete_user_car">Repair</a>
