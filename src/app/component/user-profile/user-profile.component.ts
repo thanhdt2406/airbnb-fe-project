@@ -92,36 +92,42 @@ export class UserProfileComponent implements OnInit {
     this.userService.updateUserById(id, this.userProfile).toPromise();
   }
 
-  submit() {
+  showImage(){
     if (this.selectedImages !== null) {
       const filePath = `${this.currentUser.username}/${this.selectedImages.name.split('.').slice(0, -1).join('.')}_${new Date().getTime()}`;
       const fileRef = this.storage.ref(filePath);
       this.storage.upload(filePath, this.selectedImages).snapshotChanges().pipe(
         finalize(() => {
           fileRef.getDownloadURL().subscribe(async url => {
-            this.userProfile = {
-              id: this.currentUser.id,
-              name: this.userProfileForm.value.name === '' ? this.currentUser.name : this.userProfileForm.value.name,
-              email: this.userProfileForm.value.email === '' ? this.currentUser.email : this.userProfileForm.value.email,
-              phoneNumber: this.userProfileForm.value.phone_number === '' ? this.currentUser.phoneNumber : this.userProfileForm.value.phone_number,
-              address: this.userProfileForm.value.address === '' ? this.currentUser.address : this.userProfileForm.value.address,
-              avatar: url
-            };
-            // @ts-ignore
-            await this.updateUserProfile(this.currentUser.id);
-            alert('Success!');
-            this.router.navigate(['/']);
+            this.currentUser.avatar = url;
           });
         })
       ).subscribe();
     }
   }
 
+  submit() {
+    this.userProfile = {
+      id: this.currentUser.id,
+      name: this.userProfileForm.value.name === '' ? this.currentUser.name : this.userProfileForm.value.name,
+      email: this.userProfileForm.value.email === '' ? this.currentUser.email : this.userProfileForm.value.email,
+      phoneNumber: this.userProfileForm.value.phone_number === '' ? this.currentUser.phoneNumber : this.userProfileForm.value.phone_number,
+      address: this.userProfileForm.value.address === '' ? this.currentUser.address : this.userProfileForm.value.address,
+      avatar: this.currentUser.avatar
+    };
+    // @ts-ignore
+    this.updateUserProfile(this.currentUser.id);
+    alert('Success!');
+    this.router.navigate(['/']);
+  }
+
   showPreview(event: any) {
     if (event.target.files && event.target.files[0]) {
       const reader = new FileReader();
+      reader.onload = (e: any) => this.imgSrc = e.target.result
       reader.readAsDataURL(event.target.files[0]);
       this.selectedImages = event.target.files[0];
+      this.showImage();
     } else {
       this.selectedImages = null;
     }
