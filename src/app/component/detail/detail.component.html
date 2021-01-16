@@ -83,27 +83,26 @@
               <ul class="additional-details-list clearfix">
                 <li>
                   <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Vip Room</span>
-                  <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry" *ngIf="apartment.vipRoom == 1">True</span>
-                  <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry" *ngIf="apartment.vipRoom == 0">False</span>
+                  <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry" *ngIf="apartment.vipRoom == 1"><img alt="" style="width: 20px; height: 20px" src="assets/img/true.png"></span>
                 </li>
 
                 <li>
                   <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">luxury Room</span>
-                  <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry"></span>
+                  <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry" *ngIf="apartment.luxuryRoom == 1"><img alt="" style="width: 20px; height: 20px" src="assets/img/true.png"></span>
                 </li>
                 <li>
-                  <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Single Room</span>
-                  <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry"></span>
+                  <span class="col-xs-6 col-sm-4 col-md-4 add-d-title" >Single Room</span>
+                  <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry" *ngIf="apartment.singleRoom == 1"><img alt="" style="width: 20px; height: 20px" src="assets/img/true.png"></span>
                 </li>
 
                 <li>
                   <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Couple Room</span>
-                  <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry"></span>
+                  <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry" *ngIf="apartment.coupleRoom == 1"><img alt="" style="width: 20px; height: 20px" src="assets/img/true.png"></span>
                 </li>
 
                 <li>
                   <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">President Room</span>
-                  <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry"></span>
+                  <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry" *ngIf="apartment.presidentRoom == 1"><img alt="" style="width: 20px; height: 20px" src="assets/img/true.png"></span>
                 </li>
 
               </ul>

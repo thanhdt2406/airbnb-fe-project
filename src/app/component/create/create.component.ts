@@ -310,18 +310,31 @@ export class CreateComponent implements OnInit {
 
   // @ts-ignore
   createApartment() {
+    let bed = $('#min-bed').val();
+    let bath = $('#min-baths').val();
+    let vipRoom = parseInt($('#vipRoom').val());
+    let luxuryRoom = parseInt($('#luxuryRoom').val());
+    let singleRoom = parseInt($('#singleRoom').val());
+    let coupleRoom = parseInt($('#coupleRoom').val());
+    let presidentRoom = parseInt($('#presidentRoom').val());
+    if(bed == 0) {
+      bed = 1;
+    }
+    if (bath == 0) {
+      bath = 1;
+    }
     const apartment = {
       name: this.apartForm.value.name,
       value: this.apartForm.value.value,
       description: this.apartForm.value.description,
       address: this.apartForm.value.address,
-      bathroom: this.apartForm.value.bathroom,
-      bedroom: this.apartForm.value.bedroom,
-      couple_room: this.apartForm.value.couple_room,
-      luxury_room: this.apartForm.value.luxury_room,
-      president_room: this.apartForm.value.president_room,
-      single_room: this.apartForm.value.single_room,
-      vip_room: this.apartForm.value.vip_room,
+      bathroom: bath,
+      bedroom: bed,
+      coupleRoom: coupleRoom,
+      luxuryRoom: luxuryRoom,
+      presidentRoom: presidentRoom,
+      singleRoom: singleRoom,
+      vipRoom: vipRoom,
       ward: {
         id: this.apartForm.value.ward
       },
@@ -331,8 +344,10 @@ export class CreateComponent implements OnInit {
       status: 0,
     };
     if (isValidated) {
+      // @ts-ignore
       return this.apartmentService.createApartment(apartment).toPromise();
     }
+
   }
 
   showPreview(event: any) {
@@ -352,7 +367,6 @@ export class CreateComponent implements OnInit {
   }
 
   getAllDistrictsByProvinceId(id: number) {
-    console.log(id);
     this.districtService.getDistrictByProvinceId(id).subscribe(districtList => {
       // @ts-ignore
       this.districts = districtList;
@@ -360,7 +374,6 @@ export class CreateComponent implements OnInit {
   }
 
   getAllWardsByDistrictId(id: number) {
-    console.log(id)
     this.wardService.getAllWardByDistricts(id).subscribe(wardList => {
       this.wards = wardList;
     })
