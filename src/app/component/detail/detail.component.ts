@@ -50,27 +50,12 @@ export class DetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.activatedRoute.paramMap.subscribe(paramMap => {
+    this.activatedRoute.paramMap.subscribe( paramMap => {
       // @ts-ignore
       this.id = +paramMap.get('id');
-      // @ts-ignore
-      this.getApartment(this.id);
     })
-    $(document).ready(function () {
-      $('#image-gallery').lightSlider({
-        gallery: true,
-        item: 1,
-        thumbItem: 9,
-        slideMargin: 0,
-        speed: 1200   ,
-        auto: true,
-        loop: true,
-        onSliderLoad: function () {
-          $('#image-gallery').removeClass('cS-hidden');
-        }
-      });
-    });
-
+    // @ts-ignore
+    this.getApartment(this.id);
     $(function () {
       'use strict';
       var nowTemp = new Date();
@@ -99,6 +84,20 @@ export class DetailComponent implements OnInit {
     });
   }
 
+  slickImage() {
+    $('#image-gallery').lightSlider({
+      gallery: true,
+      item: 1,
+      thumbItem: 9,
+      slideMargin: 0,
+      speed: 1200 ,
+      auto: true,
+      loop: true,
+      onSliderLoad: function () {
+        $('#image-gallery').removeClass('cS-hidden');
+      }
+    });
+  }
 // @ts-ignore
   getApartment() {
     this.apartmentService.getApartmentById(this.id).subscribe(value => {
@@ -113,8 +112,10 @@ export class DetailComponent implements OnInit {
   getImageByApartment(ap: Apartment) {
     // @ts-ignore
     this.imageService.getAllByApartment(ap.id).subscribe(data => {this.images = data;
+      this.slickImage();
     });
   }
+
 
   getUserByApartment(ap: Apartment) {
     // @ts-ignore
