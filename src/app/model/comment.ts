@@ -5,5 +5,5 @@ export interface Comment {
   id?: number;
   content?: string;
   user?: User;
-  apartment: Apartment;
+  apartment?: Apartment;
 }

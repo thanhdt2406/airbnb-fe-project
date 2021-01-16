@@ -47,7 +47,9 @@ export class DetailComponent implements OnInit {
   images: Image[] = [];
   user: User = {};
 
-  currentUser: User = this.authService.currentUserValue;
+  // @ts-ignore
+  userId: number = this.authService.currentUserValue.id;
+  currentUser: User = {};
   // @ts-ignore
   comments: Comment[] = [];
   commentContent: string = '';
@@ -66,6 +68,8 @@ export class DetailComponent implements OnInit {
     })
     // @ts-ignore
     this.getApartment(this.id);
+    this.getCurrentUser();
+    // @ts-ignore
     $(function () {
       'use strict';
       var nowTemp = new Date();
@@ -116,7 +120,14 @@ export class DetailComponent implements OnInit {
       this.getImageByApartment(value);
       // @ts-ignore
       this.getUserByApartment(value);
+      this.getAllCommentByApartmentId(value);
     });
+  }
+
+  getCurrentUser(){
+    this.userService.getUserById(this.userId).subscribe(data=>{
+      this.currentUser = data;
+    })
   }
 
   getImageByApartment(ap: Apartment) {
@@ -142,10 +153,14 @@ export class DetailComponent implements OnInit {
       }
     }
     // @ts-ignore
-    this.commentService.createApartment(comment).subscribe(this.getAllCommentByApartment(this.id))
+    this.commentService.createApartment(comment).subscribe(()=>{
+      // @ts-ignore
+      this.getAllCommentByApartmentId(this.apartment);
+    })
   }
 
-  getAllCommentByApartment(id: number) {
-    this.commentService.getComment(this.apartment.id).subscribe(data => {this.comments = data})
+  getAllCommentByApartmentId(apartment:Apartment) {
+    // @ts-ignore
+    this.commentService.getCommentByApartmentId(apartment.id).subscribe(data => {this.comments = data})
   }
 }

@@ -129,11 +129,12 @@
                           </div>
                         </fieldset>
                       </form>
-                      <h3>4 Comments</h3>
+                      <h3 *ngIf="comments.length >= 2">{{comments.length}} comments</h3>
+                      <h3 *ngIf="comments.length < 2">{{comments.length}} comment</h3>
                       <!-- COMMENT 1 - START -->
                       <ng-container *ngFor="let comment of comments">
                       <div class="media">
-                        <a class="pull-left" href="#"><img class="media-object" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt=""></a>
+                        <a class="pull-left"><img class="media-object" [src]="comment.user?.avatar" alt=""></a>
                         <div class="media-body">
                           <h4 class="media-heading"></h4>
                           <p>{{comment.content}}</p>

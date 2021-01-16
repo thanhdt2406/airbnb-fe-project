@@ -111,7 +111,8 @@ export class LoginRegComponent implements OnInit {
     }
     this.user = {
       username: this.registerForm.value.name,
-      password: this.registerForm.value.password
+      password: this.registerForm.value.password,
+      avatar: 'https://scontent.fhan3-3.fna.fbcdn.net/v/t1.0-9/26167250_359494654515083_903712992958152993_n.jpg?_nc_cat=101&ccb=2&_nc_sid=8bfeb9&_nc_ohc=gP0gysssidUAX9LQrYI&_nc_ht=scontent.fhan3-3.fna&oh=0417bd2fc31d3ecc981849910c92b7ec&oe=6028799C'
     };
     this.userService.registerUser(this.user).subscribe(() => {
       this.output = 'Tạo Tài Khoản Thành Công';
