@@ -38,7 +38,23 @@ export class AuthService {
       }));
   }
 
-  
+  // @ts-ignore
+  // @ts-ignore
+  public logingg() {
+    alert("login service");
+    // @ts-ignore
+    return this.http.get<any>("https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://localhost:8080/login-google&response_type=code" +
+      "&client_id=561611648857-c5mrt1fafm2da053ojdpkm282psk768o.apps.googleusercontent.com")
+      .pipe(map(user => {
+        localStorage.setItem('user', JSON.stringify(user));
+        // @ts-ignore
+        this.currentUserSubject.next(user);
+        // this.update.emit('login');
+        return user;
+      }));
+  }
+
+  // @ts-ignore
   public logout() {
     localStorage.removeItem('user');
     // @ts-ignore
