@@ -28,7 +28,7 @@
             <div class="col-sm-3 col-sm-offset-1">
               <div class="picture-container">
                 <div class="picture">
-                  <img [src]="imgSrc" class="picture-src" #upload  id="wizardPicturePreview" title=""/>
+                  <img [src]="currentUser.avatar" class="picture-src" #upload  id="wizardPicturePreview" title=""/>
                   <input type="file" id="wizard-picture" name="avatar" formControlName="avatar"
                          (change)="showPreview($event)">
                 </div>

@@ -23,6 +23,7 @@ export class UserProfileComponent implements OnInit {
   // @ts-ignore
   currentUser: User;
   userProfileForm: FormGroup = new FormGroup({});
+  userProfile: User = {};
 
   constructor(private userService: UserService,
               private activatedRoute: ActivatedRoute,
@@ -87,14 +88,8 @@ export class UserProfileComponent implements OnInit {
   }
 
   updateUserProfile(id: number) {
-    const userProfile: User = {
-      id: this.currentUser.id,
-      name: this.userProfileForm.value.name === '' ? this.currentUser.name : this.userProfileForm.value.name,
-      email: this.userProfileForm.value.email === '' ? this.currentUser.email : this.userProfileForm.value.email,
-      phoneNumber: this.userProfileForm.value.phone_number === '' ? this.currentUser.phoneNumber : this.userProfileForm.value.phone_number,
-      address: this.userProfileForm.value.address === '' ? this.currentUser.address : this.userProfileForm.value.address,
-    };
-    this.userService.updateUserById(id, userProfile).toPromise();
+
+    this.userService.updateUserById(id, this.userProfile).toPromise();
   }
 
   submit() {
@@ -104,7 +99,14 @@ export class UserProfileComponent implements OnInit {
       this.storage.upload(filePath, this.selectedImages).snapshotChanges().pipe(
         finalize(() => {
           fileRef.getDownloadURL().subscribe(async url => {
-            this.currentUser.avatar = url;
+            this.userProfile = {
+              id: this.currentUser.id,
+              name: this.userProfileForm.value.name === '' ? this.currentUser.name : this.userProfileForm.value.name,
+              email: this.userProfileForm.value.email === '' ? this.currentUser.email : this.userProfileForm.value.email,
+              phoneNumber: this.userProfileForm.value.phone_number === '' ? this.currentUser.phoneNumber : this.userProfileForm.value.phone_number,
+              address: this.userProfileForm.value.address === '' ? this.currentUser.address : this.userProfileForm.value.address,
+              avatar: url
+            };
             // @ts-ignore
             await this.updateUserProfile(this.currentUser.id);
             alert('Success!');
