@@ -135,11 +135,11 @@ export class UpdateComponent implements OnInit {
       address: this.apartForm.value.address === '' ? this.apartmentCurrent.address: this.apartForm.value.address,
       bathroom: this.apartForm.value.bathroom === '' ? this.apartmentCurrent.bathroom: this.apartForm.value.bathroom,
       bedroom: this.apartForm.value.bedroom === '' ? this.apartmentCurrent.bedroom: this.apartForm.value.bedroom,
-      couple_room: this.apartForm.value.couple_room === '' ? this.apartmentCurrent.couple_room: this.apartForm.value.couple_room,
-      luxury_room: this.apartForm.value.luxury_room === '' ? this.apartmentCurrent.luxury_room: this.apartForm.value.luxury_room,
-      president_room: this.apartForm.value.president_room === '' ? this.apartmentCurrent.president_room: this.apartForm.value.president_room,
-      single_room: this.apartForm.value.single_room === '' ? this.apartmentCurrent.single_room: this.apartForm.value.single_room,
-      vip_room: this.apartForm.value.vip_room === '' ? this.apartmentCurrent.vipRoom: this.apartForm.value.vip_room,
+      coupleRoom: this.apartForm.value.couple_room === '' ? this.apartmentCurrent.coupleRoom: this.apartForm.value.couple_room,
+      luxuryRoom: this.apartForm.value.luxury_room === '' ? this.apartmentCurrent.luxuryRoom: this.apartForm.value.luxury_room,
+      presidentRoom: this.apartForm.value.president_room === '' ? this.apartmentCurrent.presidentRoom: this.apartForm.value.president_room,
+      singleRoom: this.apartForm.value.single_room === '' ? this.apartmentCurrent.singleRoom: this.apartForm.value.single_room,
+      vipRoom: this.apartForm.value.vip_room === '' ? this.apartmentCurrent.vipRoom: this.apartForm.value.vipRoom,
       ward: {
         id: this.apartForm.value.ward
       },
