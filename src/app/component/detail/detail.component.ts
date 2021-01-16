@@ -57,7 +57,7 @@ export class DetailComponent implements OnInit {
         item: 1,
         thumbItem: 9,
         slideMargin: 0,
-        speed: 800,
+        speed: 1200   ,
         auto: true,
         loop: true,
         onSliderLoad: function () {
