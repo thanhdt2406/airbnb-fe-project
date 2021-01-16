@@ -23,7 +23,7 @@ export class UserService {
   }
 
   getUserById(id: number): Observable<User> {
-    return this.http.get<User>(API_URL + `/user/${id}`);
+    return this.http.get<User>(API_URL + `/users/${id}`);
   }
   updateUserById(id: number, user: User): Observable<User> {
     return  this.http.put<User>(API_URL + `/users/${id}`, user);
