@@ -6,6 +6,9 @@ import {ImageService} from '../../service/image/image.service';
 import {Image} from '../../model/image';
 import {UserService} from '../../service/user/user.service';
 import {User} from '../../model/user';
+import {AuthService} from '../../service/auth/auth.service';
+import {Comment} from '../../model/comment';
+import {CommentService} from '../../service/comment/comment.service';
 
 declare var $: any;
 
@@ -16,6 +19,7 @@ declare var $: any;
 })
 export class DetailComponent implements OnInit {
   apartment = {
+    id: -1,
     name: "",
     description: "",
     bedroom: "",
@@ -43,10 +47,16 @@ export class DetailComponent implements OnInit {
   images: Image[] = [];
   user: User = {};
 
+  currentUser: User = this.authService.currentUserValue;
+  // @ts-ignore
+  comments: Comment[] = [];
+  commentContent: string = '';
   constructor(private apartmentService: ApartmentService,
               private activatedRoute: ActivatedRoute,
               private imageService: ImageService,
-              private userService: UserService) {
+              private userService: UserService,
+              private authService: AuthService,
+              private commentService: CommentService) {
   }
 
   ngOnInit(): void {
@@ -116,9 +126,26 @@ export class DetailComponent implements OnInit {
     });
   }
 
-
   getUserByApartment(ap: Apartment) {
     // @ts-ignore
     this.userService.getUserById(ap.user.id).subscribe(user => {this.user = user});
+  }
+
+  submitComment(){
+    const comment = {
+      content: this.commentContent,
+      apartment: {
+        id: this.apartment.id,
+      },
+      user: {
+        id: this.currentUser.id,
+      }
+    }
+    // @ts-ignore
+    this.commentService.createApartment(comment).subscribe(this.getAllCommentByApartment(this.id))
+  }
+
+  getAllCommentByApartment(id: number) {
+    this.commentService.getComment(this.apartment.id).subscribe(data => {this.comments = data})
   }
 }
