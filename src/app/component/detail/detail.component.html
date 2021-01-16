@@ -121,7 +121,7 @@
                         <fieldset>
                           <div class="row">
                             <div class="col-sm-3 col-lg-2 hidden-xs">
-                              <img class="img-responsive" src="{{currentUser.avatar}}" style="width: 90px ; height: 100px" alt="">
+                              <img class="img-responsive" src="{{currentUser.avatar}}" style="width: 90px; padding: 0 ; height: 130px" alt="">
                             </div>
                             <div class="form-group col-xs-12 col-sm-9 col-lg-10">
                               <textarea class="form-control" [(ngModel)]="commentContent" name="commentContent" id="message" placeholder="Your message" required=""></textarea>
@@ -129,19 +129,26 @@
                           </div>
                         </fieldset>
                       </form>
-                      <h3 *ngIf="comments.length >= 2">{{comments.length}} comments</h3>
-                      <h3 *ngIf="comments.length < 2">{{comments.length}} comment</h3>
+                      <h3 >{{comments.length}} comment{{comments.length > 1 ? 's' : ''}}</h3>
                       <!-- COMMENT 1 - START -->
                       <ng-container *ngFor="let comment of comments">
                       <div class="media">
-                        <a class="pull-left"><img class="media-object" [src]="comment.user?.avatar" alt=""></a>
-                        <div class="media-body">
-                          <h4 class="media-heading"></h4>
-                          <p>{{comment.content}}</p>
-                          <ul class="list-unstyled list-inline media-detail pull-left">
-                            <li><i class="fa fa-calendar"></i>27/02/2014</li>
-                          </ul>
+
+                        <div class="row">
+                          <div class="col-sm-2">
+                            <a class="pull-left"><img class="media-object" style="width: 90px; height: 100px" [src]="comment.user?.avatar" alt=""></a>
+                          </div>
+                          <div class="col-sm-10">
+                            <div class="media-body">
+                              <h4 class="media-heading"> {{comment.user?.name ? comment.user?.name : "Test"}} </h4>
+                              <p>{{comment.content}}</p>
+                              <ul class="list-unstyled list-inline media-detail pull-left">
+                                <li><i class="fa fa-calendar"></i>{{comment.date | date:'fullDate'}}</li>
+                              </ul>
+                            </div>
+                          </div>
                         </div>
+
                       </div>
                       </ng-container>
                       <!-- COMMENT 1 - END -->

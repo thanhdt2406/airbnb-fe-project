@@ -107,6 +107,7 @@ export class DetailComponent implements OnInit {
       speed: 1200 ,
       auto: true,
       loop: true,
+      pause: 5000,
       onSliderLoad: function () {
         $('#image-gallery').removeClass('cS-hidden');
       }
@@ -156,11 +157,14 @@ export class DetailComponent implements OnInit {
     this.commentService.createApartment(comment).subscribe(()=>{
       // @ts-ignore
       this.getAllCommentByApartmentId(this.apartment);
-    })
+    });
+    // @ts-ignore
+
   }
 
   getAllCommentByApartmentId(apartment:Apartment) {
     // @ts-ignore
-    this.commentService.getCommentByApartmentId(apartment.id).subscribe(data => {this.comments = data})
+    this.commentService.getCommentByApartmentId(apartment.id).subscribe(data => { this.comments = data})
   }
+
 }
