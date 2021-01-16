@@ -88,16 +88,20 @@
                       <div class="col-sm-4">
                         <div class="col-sm-12 padding-top-15">
                           <div class="col-sm-6">
-                            <div class="form-group">
-                              <label>Bedroom</label>
-                              <input name="bedroom" type="number" class="form-control" placeholder="Bedroom...." formControlName="bedroom">
-                            </div>
+                              <label for="min-bed">Bedroom :</label>
+                              <input type="text" class="span2" data-slider-min="1"
+                                     data-slider-max="6" data-slider-step="1"
+                                     data-slider-value="[1]" id="min-bed" [defaultValue]="1" value="" formControlName="bedroom"><br />
+                              <b class="pull-left color">1</b>
+                              <b class="pull-right color">6</b>
                           </div>
                           <div class="col-sm-6">
-                            <div class="form-group">
-                              <label>Bathroom</label>
-                              <input name="bathroom" type="number" class="form-control" placeholder="Bathroom...." formControlName="bathroom">
-                            </div>
+                            <label for="min-baths" >Bathroom :</label>
+                            <input type="text" class="span2" name="test" data-slider-min="1"
+                                   data-slider-max="6" data-slider-step="1"
+                                   data-slider-value="[1]" id="min-baths" [defaultValue]="1" value="" formControlName="bathroom"><br />
+                            <b class="pull-left color">1</b>
+                            <b class="pull-right color">6</b>
                           </div>
                         </div>
                       </div>
@@ -105,49 +109,49 @@
                         <div class="col-sm-12 padding-top-15">
                           <div class="col-sm-4">
                             <div class="form-group">
-                              <div class="checkbox">
-                                <label>
-                                  <input value="1" type="checkbox"> Vip Room
-                                </label>
-                              </div>
+                              <label for="min-bed">Vip Room :</label>
+                              <select class="show-tick form-control" id="vipRoom" style="width: 150px;" >
+                                <option value="0">False</option>
+                                <option value="1">True</option>
+                              </select>
                             </div>
                           </div>
                           <div class="col-sm-4">
                             <div class="form-group">
-                              <div class="checkbox">
-                                <label>
-                                  <input type="checkbox"> Luxury Room
-                                </label>
-                              </div>
+                              <label>Luxury Room</label>
+                              <select class="show-tick form-control" id="luxuryRoom" style="width: 150px;" >
+                                <option value="0">False</option>
+                                <option value="1">True</option>
+                              </select>
                             </div>
                           </div>
                           <div class="col-sm-4">
                             <div class="form-group">
-                              <div class="checkbox">
-                                <label>
-                                  <input type="checkbox"> Single Room
-                                </label>
-                              </div>
+                              <label>Single Room</label>
+                              <select class="show-tick form-control" id="singleRoom" style="width: 150px;" >
+                                <option value="0">False</option>
+                                <option value="1">True</option>
+                              </select>
                             </div>
                           </div>
                         </div>
                         <div class="col-sm-12 padding-bottom-15">
                           <div class="col-sm-4">
                             <div class="form-group">
-                              <div class="checkbox">
-                                <label>
-                                  <input type="checkbox" (change)="toggleEditable($event)"> Couple Room
-                                </label>
-                              </div>
+                              <label>Couple Room</label>
+                              <select class="show-tick form-control" id="coupleRoom" style="width: 150px;" >
+                                <option value="0">False</option>
+                                <option value="1">True</option>
+                              </select>
                             </div>
                           </div>
                           <div class="col-sm-4">
                             <div class="form-group">
-                              <div class="checkbox">
-                                <label>
-                                  <input type="checkbox"> President Room
-                                </label>
-                              </div>
+                              <label> President Room</label>
+                              <select class="show-tick form-control" id="presidentRoom" style="width: 150px;" >
+                                <option value="0">False</option>
+                                <option value="1">True</option>
+                              </select>
                             </div>
                           </div>
                         </div>
@@ -160,21 +164,6 @@
                         <label for="property-images">Chose Images :</label>
                         <input class="form-control" formControlName="image" name="image" type="file" id="property-images" multiple (change)="showPreview($event)">
                         <p class="help-block">Select multipel images for your property .</p>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <p>
-                        <label><strong>Terms and Conditions</strong></label>
-                        By accessing or using  GARO ESTATE services, such as
-                        posting your property advertisement with your personal
-                        information on our website you agree to the
-                        collection, use and disclosure of your personal information
-                        in the legal proper manner
-                      </p>
-                      <div class="checkbox" style="margin-left: -20px">
-                        <label>
-                          <input type="checkbox" /> <strong> Accept termes and conditions.</strong>
-                        </label>
                       </div>
                     </div>
                   </div>
