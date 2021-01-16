@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ApartmentService} from "../../service/apartment/apartment.service";
 declare var $: any;
 @Component({
   selector: 'app-index',
@@ -6,8 +7,9 @@ declare var $: any;
   styleUrls: ['./index.component.css']
 })
 export class IndexComponent implements OnInit {
-
-  constructor() { }
+  // @ts-ignore
+  date: Date;
+  constructor(private service: ApartmentService) { }
 
   ngOnInit(): void {
     $(() => {
@@ -53,5 +55,13 @@ export class IndexComponent implements OnInit {
     });
   }
 
+  rent(){
+    this.date = new Date();
+    this.service.rentApartment(1, this.date, this.date).subscribe(() => {
+      alert("thanh cong");
+    }, error => {
+      alert('xay ra loi');
+    })
+  }
 
 }
