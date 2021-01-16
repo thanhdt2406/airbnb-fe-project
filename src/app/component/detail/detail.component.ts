@@ -27,6 +27,7 @@ export class DetailComponent implements OnInit {
     singleRoom: 0,
     presidentRoom: 0,
     coupleRoom: 0,
+    user: null,
     ward: {
       name: "",
       district: {
@@ -104,6 +105,8 @@ export class DetailComponent implements OnInit {
       // @ts-ignore
       this.apartment = value;
       this.getImageByApartment(value);
+      // @ts-ignore
+      this.getUserByApartment(value);
     });
   }
 
@@ -115,6 +118,6 @@ export class DetailComponent implements OnInit {
 
   getUserByApartment(ap: Apartment) {
     // @ts-ignore
-    this.userService.getUserById(ap.id).subscribe(user => {this.user})
+    this.userService.getUserById(ap.user.id).subscribe(user => {this.user = user});
   }
 }
