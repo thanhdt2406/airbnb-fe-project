@@ -21,7 +21,10 @@ export class DetailComponent implements OnInit {
     value: "",
     address: "",
     vipRoom: 0,
-    pr: 0,
+    luxuryRoom: 0,
+    singleRoom: 0,
+    presidentRoom: 0,
+    coupleRoom: 0,
     ward: {
       name: "",
       district: {
@@ -47,7 +50,6 @@ export class DetailComponent implements OnInit {
       this.id = +paramMap.get('id');
       // @ts-ignore
       this.getApartment(this.id);
-      // @ts-ignore
     })
     $(document).ready(function () {
       $('#image-gallery').lightSlider({
