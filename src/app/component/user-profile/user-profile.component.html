@@ -2,7 +2,10 @@
   <div class="container">
     <div class="row">
       <div class="page-head-content">
-        <h1 class="page-title">Hello : <span class="orange strong">Kimaro kyoto</span></h1>
+        <h1 class="page-title">Hello :
+          <span class="orange strong" *ngIf="currentUser.name">{{currentUser.name}}</span>
+          <span class="orange strong" *ngIf="!currentUser.name">{{currentUser.name}}</span>
+        </h1>
       </div>
     </div>
   </div>

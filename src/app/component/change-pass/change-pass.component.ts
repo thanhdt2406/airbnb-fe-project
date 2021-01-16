@@ -13,7 +13,9 @@ import {User} from '../../model/user';
 })
 export class ChangePassComponent implements OnInit {
 
-  currentUser: User = this.authService.currentUserValue;
+  // @ts-ignore
+  userId: number = this.authService.currentUserValue.id;
+  currentUser: User = {};
   myForm: FormGroup;
   notExist: string = '';
   notMinLength: string = '';
@@ -24,11 +26,11 @@ export class ChangePassComponent implements OnInit {
               private authService: AuthService,
               private userService: UserService) {
     this.myForm = this.formBuilder.group({
-      oldPassword: ['',[Validators.required]],
+      oldPassword: ['', [Validators.required]],
       newPassword: ['', [Validators.required]],
       confirmPassword: ['']
     }, {validator: this.checkPasswords});
-
+    this.getCurrentUser();
   }
 
   checkPasswords(group: FormGroup) { // here we have the 'passwords' group
@@ -46,7 +48,7 @@ export class ChangePassComponent implements OnInit {
     if (this.myForm.invalid) {
       return;
     }
-    if(this.myForm.controls.newPassword.value.length<6){
+    if (this.myForm.controls.newPassword.value.length < 6) {
       this.notMinLength = 'Mật khẩu mới phải có tối thiểu 6 ki tự';
       return;
     }
@@ -54,11 +56,16 @@ export class ChangePassComponent implements OnInit {
     //   this.notExist = 'Wrong password!';
     //   return;
     // }
-    let newUser = this.currentUser;
-    newUser.password = this.myForm.controls.newPassword.value;
-    this.userService.changePassword(newUser).subscribe(() => {
+    this.currentUser.password = this.myForm.controls.newPassword.value;
+    this.userService.changePassword(this.currentUser).subscribe(() => {
       alert('Đổi mật khẩu thành công!');
       this.router.navigate(['/']);
+    });
+  }
+
+  getCurrentUser() {
+    this.userService.getUserById(this.userId).subscribe(data => {
+      this.currentUser = data;
     });
   }
 }
