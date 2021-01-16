@@ -22,7 +22,6 @@ import {ErrorInterceptor} from './helper/error-interceptor';
 import {AngularFireStorage, AngularFireStorageModule} from '@angular/fire/storage';
 import {AngularFireModule} from '@angular/fire';
 import {environment} from '../environments/environment';
-import { UpdateComponent } from './component/update/update.component';
 // @ts-ignore
 @NgModule({
   declarations: [
@@ -39,7 +38,6 @@ import { UpdateComponent } from './component/update/update.component';
     UserProfileComponent,
     UserHouseComponent,
     ChangePassComponent,
-    UpdateComponent
   ],
   imports: [
     BrowserModule,
