@@ -65,6 +65,7 @@
                       <div class="form-group">
                         <label>District :</label>
                         <select  class="show-tick form-control" formControlName="district" name="dis_id" (change)="getAllWardsByDistrictId(dis_id)" [(ngModel)]="dis_id">
+                          <option [selected]="2">select</option>
                           <option *ngFor="let dis of districts" [value]="dis.id">{{dis.name}}</option>
                         </select>
                       </div>
