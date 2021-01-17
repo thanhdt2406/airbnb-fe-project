@@ -275,7 +275,7 @@
             <div class="panel-heading">
               <h3 class="panel-title">Đặt Phòng </h3>
             </div>
-            <form method="GET">
+            <form method="POST" (ngSubmit)="rentApartment()">
               <div class="form-group">
                 <label for="timeCheckIn">Check In: </label><br>
                 <input type="text" id="timeCheckIn" name="checkIn" class="form-control" style="float: left; width: 250px" /><img src="assets/img/lich.JPG" class="img-circle" style="width: 35px; height: 25px; float: left; margin-left: -40px; margin-top: 10px;">
