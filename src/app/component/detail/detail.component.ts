@@ -74,10 +74,9 @@ export class DetailComponent implements OnInit {
       'use strict';
       var nowTemp = new Date();
       var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
-
       var checkin = $('#timeCheckIn').datepicker({
         onRender: function (date: any) {
-          return date.valueOf() < now.valueOf() ? 'disabled' : '';
+          return date.valueOf() == now.valueOf() ? 'disabled' : '';
         }
       }).on('changeDate', function (ev: any) {
         if (ev.date.valueOf() > checkout.date.valueOf()) {
@@ -96,6 +95,15 @@ export class DetailComponent implements OnInit {
         checkout.hide();
       }).data('datepicker');
     });
+
+    /*$(function(){
+      'use strict';
+      var checkin = $('#timeCheckIn').datepicker({
+        onRender: function (date: any) {
+          return date.getDay() == 20  ? 'disabled' : '';
+        }
+      }).data('datepicker');
+    })*/
   }
 
   slickImage() {
