@@ -37,7 +37,8 @@ import {environment} from '../environments/environment';
     ContactComponent,
     UserProfileComponent,
     UserHouseComponent,
-    ChangePassComponent
+    ChangePassComponent,
+    UserHouseComponent
   ],
   imports: [
     BrowserModule,
