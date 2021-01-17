@@ -17,7 +17,7 @@ import {UpdateApartmentComponent} from "./component/update-apartment/update-apar
 const routes: Routes = [
   {
     path: '',
-    component: UpdateApartmentComponent,
+    component: IndexComponent,
   },
   {
     path: 'list',
