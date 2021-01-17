@@ -72,8 +72,8 @@
                   <div class="form-group">
                     <select class="show-tick form-control" id="vipRoom" style="width: 150px;" >
                       <option value="">Vip Room</option>
-                      <option value="1">True</option>
-                      <option value="0">False</option>
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
                     </select>
                   </div>
                 </div>
@@ -81,8 +81,8 @@
                   <div class="form-group">
                     <select class="show-tick form-control" id="luxuryRoom" style="width: 150px;" >
                       <option value="">Luxury Room</option>
-                      <option value="1">True</option>
-                      <option value="0">False</option>
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
                     </select>
                   </div>
                 </div>
@@ -90,8 +90,8 @@
                   <div class="form-group">
                     <select class="show-tick form-control" id="singleRoom" style="width: 150px;" >
                       <option value="">Single Room</option>
-                      <option value="1">True</option>
-                      <option value="0">False</option>
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
                     </select>
                   </div>
                 </div>
@@ -99,8 +99,8 @@
                   <div class="form-group">
                     <select class="show-tick form-control" id="coupleRoom" style="width: 150px;" >
                       <option value="">Couple Room</option>
-                      <option value="1">True</option>
-                      <option value="0">False</option>
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
                     </select>
                   </div>
                 </div>
@@ -108,8 +108,8 @@
                   <div class="form-group">
                     <select class="show-tick form-control" id="presidentRoom" style="width: 150px;" >
                       <option value="">President Room</option>
-                      <option value="1">True</option>
-                      <option value="0">False</option>
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
                     </select>
                   </div>
                 </div>
@@ -178,25 +178,28 @@
       <div class="col-md-12 clear ">
         <div id="list-type" class="proerty-th">
           <ng-container *ngFor="let apartment of apartments">
-          <div class="col-sm-6 col-md-3 p0" style="height: 390px">
-            <div class="box-two proerty-item">
-              <div class="item-thumb">
-                <a [routerLink]="['/detail/',apartment.id]"><img src="assets/img/demo/property-3.jpg"></a>
-              </div>
-              <div class="item-entry overflow">
-                <h5><a href="property-1.html"> {{apartment.name}} </a></h5>
-                <div class="dot-hr"></div>
-                <span class="pull-left"><b> Area :</b> 120m </span>
-                <span class="proerty-price pull-right"> $ 300,000</span>
-                <p style="display: none;">{{apartment.description}}</p>
-                <div class="property-icon">
-                  <img src="assets/img/icon/bed.png">({{apartment.bedroom}})|
-                  <img src="assets/img/icon/shawer.png">({{apartment.bathroom}})|
-                  <img src="assets/img/icon/cars.png">(1)
+            <ng-container *ngIf="apartment.status!=3">
+              <div class="col-sm-6 col-md-3 p0" style="height: 390px">
+                <div class="box-two proerty-item">
+                  <div class="item-thumb">
+                    <a [routerLink]="['/detail/',apartment.id]"><img src="assets/img/demo/property-3.jpg"></a>
+                  </div>
+                  <div class="item-entry overflow">
+                    <h5><a href="property-1.html"> {{apartment.name}} </a></h5>
+                    <div class="dot-hr"></div>
+                    <span *ngIf="apartment.status==2" class="pull-left" style="color: red"><b>Upgrading</b></span>
+                    <span class="proerty-price pull-right">{{apartment.value | currency: 'USD'}}</span>
+                    <p style="display: none;">{{apartment.description}}</p>
+                    <div class="property-icon">
+                      <img src="assets/img/icon/bed.png">({{apartment.bedroom}})|
+                      <img src="assets/img/icon/shawer.png">({{apartment.bathroom}})|
+                      <img src="assets/img/icon/cars.png">(1)
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
+            </ng-container>
+
       </ng-container>
         </div>
       </div>
