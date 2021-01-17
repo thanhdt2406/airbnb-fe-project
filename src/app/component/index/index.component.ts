@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {ApartmentService} from "../../service/apartment/apartment.service";
+import {Apartment} from '../../model/apartment';
+import {User} from '../../model/user';
+import {UserService} from '../../service/user/user.service';
 declare var $: any;
 @Component({
   selector: 'app-index',
@@ -9,7 +12,19 @@ declare var $: any;
 export class IndexComponent implements OnInit {
   // @ts-ignore
   date: Date;
-  constructor(private service: ApartmentService) { }
+  apartments: Apartment[] = [];
+  apartments1: Apartment[] = [];
+  apartments2: Apartment[] = [];
+  newApartments: Apartment[] = [];
+
+  // @ts-ignore
+  users: User[];
+  constructor(private apartmentService: ApartmentService,
+              private userService: UserService) {
+    this.getAllApartment();
+    this.getAllUser();
+    this.get7NewApartment();
+  }
 
   ngOnInit(): void {
     $(() => {
@@ -55,13 +70,36 @@ export class IndexComponent implements OnInit {
     });
   }
 
-  rent(){
-    this.date = new Date();
-    this.service.rentApartment(1, this.date, this.date).subscribe(() => {
-      alert("thanh cong");
-    }, error => {
-      alert('xay ra loi');
-    })
+  getAllApartment() {
+    this.apartmentService.getAllApartment().subscribe(rs => {
+      this.apartments = rs;
+      this.getAllApartment1();
+      this.getAllApartment2();
+    });
+  }
+
+  getAllApartment1() {
+    for (let i = 0; i < this.apartments.length ; i++){
+      if (this.apartments[i].status == 0){
+        this.apartments1.push(this.apartments[i]);
+      }
+    }
+  }
+
+  getAllApartment2() {
+    for (let i = 0; i < this.apartments.length ; i++){
+      if (this.apartments[i].status == 1){
+        this.apartments2.push(this.apartments[i]);
+      }
+    }
+  }
+
+  get7NewApartment() {
+    this.apartmentService.getSevenApartment().subscribe(data => (this.newApartments = data));
+  }
+
+  getAllUser() {
+    this.userService.getAllUser().subscribe(data =>(this.users = data));
   }
 
 }

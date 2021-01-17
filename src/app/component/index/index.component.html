@@ -1,4 +1,3 @@
-<h1><button (click)="rent()">ADSADSD</button></h1>
 <div class="slide-2">
   <div id="slider" class="sl-slider-wrapper">
     <div class="sl-slider">
@@ -98,127 +97,39 @@
     <div class="row">
       <div class="col-md-10 col-md-offset-1 col-sm-12 text-center page-title">
         <!-- /.feature title -->
-        <h2>Top submitted property</h2>
-        <p>Nulla quis dapibus nisl. Suspendisse ultricies commodo arcu nec pretium. Nullam sed arcu ultricies . </p>
+        <h2>New Apartments</h2>
       </div>
     </div>
 
     <div class="row">
       <div class="proerty-th">
-        <div class="col-sm-6 col-md-3 p0">
+        <ng-container *ngFor="let i of newApartments">
+          <div class="col-sm-6 col-md-3 p0">
           <div class="box-two proerty-item">
             <div class="item-thumb">
-              <a href="property-1.html" ><img src="assets/img/demo/property-6.jpg"></a>
+              <a routerLink="/detail/{{i.id}}" ><img src="assets/img/demo/property-6.jpg"></a>
             </div>
             <div class="item-entry overflow">
-              <h5><a href="property-1.html" >Super nice villa </a></h5>
+              <h5><a href="/" >{{i.name}} </a></h5>
               <div class="dot-hr"></div>
               <span class="pull-left"><b>Area :</b> 120m </span>
               <span class="proerty-price pull-right">$ 300,000</span>
             </div>
           </div>
         </div>
-
-        <div class="col-sm-6 col-md-3 p0">
-          <div class="box-two proerty-item">
-            <div class="item-thumb">
-              <a href="property-2.html" ><img src="assets/img/demo/property-2.jpg"></a>
-            </div>
-            <div class="item-entry overflow">
-              <h5><a href="property-2.html" >Super nice villa </a></h5>
-              <div class="dot-hr"></div>
-              <span class="pull-left"><b>Area :</b> 120m </span>
-              <span class="proerty-price pull-right">$ 300,000</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-sm-6 col-md-3 p0">
-          <div class="box-two proerty-item">
-            <div class="item-thumb">
-              <a href="property-3.html" ><img src="assets/img/demo/property-5.jpg"></a>
-
-            </div>
-            <div class="item-entry overflow">
-              <h5><a href="property-3.html" >Super nice villa </a></h5>
-              <div class="dot-hr"></div>
-              <span class="pull-left"><b>Area :</b> 120m </span>
-              <span class="proerty-price pull-right">$ 300,000</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-sm-6 col-md-3 p0">
-          <div class="box-two proerty-item">
-            <div class="item-thumb">
-              <a href="property-1.html" ><img src="assets/img/demo/property-4.jpg"></a>
-
-            </div>
-            <div class="item-entry overflow">
-              <h5><a href="property-1.html" >Super nice villa </a></h5>
-              <div class="dot-hr"></div>
-              <span class="pull-left"><b>Area :</b> 120m </span>
-              <span class="proerty-price pull-right">$ 300,000</span>
-            </div>
-          </div>
-        </div>
-
-
-        <div class="col-sm-6 col-md-3 p0">
-          <div class="box-two proerty-item">
-            <div class="item-thumb">
-              <a href="property-3.html" ><img src="assets/img/demo/property-5.jpg"></a>
-            </div>
-            <div class="item-entry overflow">
-              <h5><a href="property-3.html" >Super nice villa </a></h5>
-              <div class="dot-hr"></div>
-              <span class="pull-left"><b>Area :</b> 120m </span>
-              <span class="proerty-price pull-right">$ 300,000</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-sm-6 col-md-3 p0">
-          <div class="box-two proerty-item">
-            <div class="item-thumb">
-              <a href="property-2.html" ><img src="assets/img/demo/property-3.jpg"></a>
-            </div>
-            <div class="item-entry overflow">
-              <h5><a href="property-2.html" >Super nice villa </a></h5>
-              <div class="dot-hr"></div>
-              <span class="pull-left"><b>Area :</b> 120m </span>
-              <span class="proerty-price pull-right">$ 300,000</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-sm-6 col-md-3 p0">
-          <div class="box-two proerty-item">
-            <div class="item-thumb">
-              <a href="property-1.html" ><img src="assets/img/demo/property-6.jpg"></a>
-            </div>
-            <div class="item-entry overflow">
-              <h5><a href="property-1.html" >Super nice villa </a></h5>
-              <div class="dot-hr"></div>
-              <span class="pull-left"><b>Area :</b> 120m </span>
-              <span class="proerty-price pull-right">$ 300,000</span>
-            </div>
-          </div>
-        </div>
-
+        </ng-container>
         <div class="col-sm-6 col-md-3 p0">
           <div class="box-tree more-proerty text-center">
             <div class="item-tree-icon">
               <i class="fa fa-th"></i>
             </div>
             <div class="more-entry overflow">
-              <h5><a href="property-1.html" >CAN'T DECIDE ? </a></h5>
-              <h5 class="tree-sub-ttl">Show all properties</h5>
-              <button class="btn border-btn more-black" value="All properties">All properties</button>
+              <h5>Apartments</h5>
+              <h5 class="tree-sub-ttl">Show all Apartments</h5>
+              <button class="btn border-btn more-black" value="All properties">All Apartments</button>
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </div>
@@ -235,7 +146,7 @@
             <div class="row">
               <div class="col-md-10 col-md-offset-1 col-sm-12 text-center page-title">
                 <!-- /.feature title -->
-                <h2>GARO ESTATE </h2>
+                <h2> W Land </h2>
               </div>
             </div>
           </div>
@@ -354,7 +265,7 @@
     <div class="row">
       <div class="col-md-10 col-md-offset-1 col-sm-12 text-center page-title">
         <!-- /.feature title -->
-        <h2>You can trust Us </h2>
+        <h2>Information</h2>
       </div>
     </div>
     <div class="row">
@@ -366,8 +277,20 @@
                 <span class="pe-7s-users"></span>
               </div>
               <div class="chart" data-percent="5000">
-                <h2 class="percent" id="counter">0</h2>
-                <h5>HAPPY CUSTOMER </h5>
+                <h2>{{users.length}}</h2>
+                <h5>Users</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3 col-xs-6">
+            <div class="count-item">
+              <div class="count-item-circle">
+                <span class="pe-7s-home">
+                </span>
+              </div>
+              <div class="chart" data-percent="12000">
+                <h2> {{apartments.length}}</h2>
+                <h5>All Apartments</h5>
               </div>
             </div>
           </div>
@@ -377,33 +300,21 @@
                 <span class="pe-7s-home"></span>
               </div>
               <div class="chart" data-percent="12000">
-                <h2 class="percent" id="counter1">0</h2>
-                <h5>Properties in stock</h5>
+                <h2>{{apartments1.length}}</h2>
+                <h5>Apartments in stock</h5>
               </div>
             </div>
           </div>
           <div class="col-sm-3 col-xs-6">
             <div class="count-item">
               <div class="count-item-circle">
-                <span class="pe-7s-flag"></span>
+                <span class="pe-7s-home"></span>
               </div>
-              <div class="chart" data-percent="120">
-                <h2 class="percent" id="counter2">0</h2>
-                <h5>City registered </h5>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-3 col-xs-6">
-            <div class="count-item">
-              <div class="count-item-circle">
-                <span class="pe-7s-graph2"></span>
-              </div>
-              <div class="chart" data-percent="5000">
-                <h2 class="percent"  id="counter3">5000</h2>
-                <h5>DEALER BRANCHES</h5>
+              <div class="chart" data-percent="12000">
+                <h2>{{apartments2.length}}</h2>
+                <h5>Apartments is being rented</h5>
               </div>
             </div>
-
           </div>
         </div>
       </div>
