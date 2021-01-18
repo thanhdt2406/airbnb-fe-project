@@ -9,6 +9,7 @@ import {User} from '../../model/user';
 import {AuthService} from '../../service/auth/auth.service';
 import {Comment} from '../../model/comment';
 import {CommentService} from '../../service/comment/comment.service';
+import {RentService} from '../../service/rent/rent.service';
 
 declare var $: any;
 
@@ -58,7 +59,8 @@ export class DetailComponent implements OnInit {
               private imageService: ImageService,
               private userService: UserService,
               private authService: AuthService,
-              private commentService: CommentService) {
+              private commentService: CommentService,
+              private rentService: RentService) {
   }
 
   ngOnInit(): void {
@@ -74,10 +76,9 @@ export class DetailComponent implements OnInit {
       'use strict';
       var nowTemp = new Date();
       var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
-
       var checkin = $('#timeCheckIn').datepicker({
         onRender: function (date: any) {
-          return date.valueOf() < now.valueOf() ? 'disabled' : '';
+          return date.valueOf() <= now.valueOf() ? 'disabled' : '';
         }
       }).on('changeDate', function (ev: any) {
         if (ev.date.valueOf() > checkout.date.valueOf()) {
@@ -96,6 +97,15 @@ export class DetailComponent implements OnInit {
         checkout.hide();
       }).data('datepicker');
     });
+
+    /*$(function(){
+      'use strict';
+      var checkin = $('#timeCheckIn').datepicker({
+        onRender: function (date: any) {
+          return date.getDay() == 20  ? 'disabled' : '';
+        }
+      }).data('datepicker');
+    })*/
   }
 
   slickImage() {
@@ -167,4 +177,19 @@ export class DetailComponent implements OnInit {
     this.commentService.getCommentByApartmentId(apartment.id).subscribe(data => { this.comments = data})
   }
 
+  rentApartment() {
+    debugger
+    let checkin = $('#timeCheckIn').val().split("/");
+    let checkout = $('#timeCheckOut').val().split("/");
+    let date1 = checkin[2] + '-' + checkin[0] + '-' + checkin[1];
+    let date2 = checkout[2] + '-' + checkout[0] + '-' + checkout[1];
+    const rent = {
+      startDate: date1,
+      endDate: date2,
+      user: this.currentUser,
+      apartment: this.apartment,
+    }
+    // @ts-ignore
+    this.rentService.saveRent(rent).subscribe(alert("Success"));
+  }
 }
