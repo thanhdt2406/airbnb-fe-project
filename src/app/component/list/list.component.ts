@@ -23,10 +23,10 @@ export class ListComponent implements OnInit {
   apartments: Apartment[] = [];
   provinces: Province[] = [];
   districts: District[] = [];
-  avatar: string = "";
   wards: Ward[] = [];
   pro_id: number = 0;
   dis_id: number = 0;
+  images: Image[] = [];
   dateCheckIn: string = '';
 
   constructor(private apartmentService: ApartmentService,
@@ -197,20 +197,14 @@ export class ListComponent implements OnInit {
     this.getAllApartment();
   }
 
-  getAvatarByApartment(id: number) {
-    // @ts-ignore
-    this.imageService.getAllByApartment(id).subscribe(data => {
-      // @ts-ignore
-      this.avatar = data[1].image;
-    });
-  }
-
   getAllApartment() {
     this.apartmentService.getAllApartment().subscribe(rs => {
       this.apartments = rs;
       for (let i = 0; i < this.apartments.length; i++) {
         // @ts-ignore
-        this.apartments[i].avatar = this.getAvatarByApartment(this.apartments[i].id);
+        this.imageService.getAllByApartment(this.apartments[i].id).subscribe(images => {
+          this.apartments[i].avatar = images[1].image;
+        })
       }
     });
   }
