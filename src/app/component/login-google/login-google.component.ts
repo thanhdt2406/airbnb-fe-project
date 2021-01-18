@@ -28,9 +28,6 @@ export class LoginGoogleComponent implements OnInit {
       });
     });
     this.logingg();
-    // @ts-ignore
-    this.code1 = encodeURIComponent(this.code).replace('%2');
-    this.code1 = "?code=4%2F0AY0e-g4UcClbPoKYYZrrK4lWN_GFTRf1QRf3-HahrHddQudvdgV6heT8m9r-90LKrE15WQ&scope=email%20https:%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email%20openid&authuser=0&prompt=consent";
   }
 
   ngOnInit(): void {
