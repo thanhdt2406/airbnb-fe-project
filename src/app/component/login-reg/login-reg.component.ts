@@ -123,7 +123,6 @@ export class LoginRegComponent implements OnInit {
         confirmPassword: ['', [Validators.required]],
       }, {validators: this.checkPasswords});
     });
-
   }
 
   get f() {
