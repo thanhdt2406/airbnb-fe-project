@@ -8,11 +8,8 @@
   </div>
 </div>
 <!-- End page header -->
-
-<h1><h2>Spring Boot Security Login with Google+</h2>
-  <a href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://localhost:8080/login-google&response_type=code
+<h1>4200: <a href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://localhost:4200/login-google&response_type=code
     &client_id=561611648857-c5mrt1fafm2da053ojdpkm282psk768o.apps.googleusercontent.com">Login With Gmail</a>
-  <button (click)="login_google()">Login btn</button>
 </h1>
 <!-- register-area -->
 <div class="register-area" style="background-color: rgb(249, 249, 249);">
@@ -69,21 +66,20 @@
             <div class="text-center">
               <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{loginFail}}</div>
               <button [disabled]="loading" class="btn btn-default">
-              <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-              Login
-            </button>
+                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                Login
+              </button>
             </div>
           </form>
           <br>
 
-          <h2>Social login :  </h2>
-          <a id="loginRef" style="color: white" class="g-signin2 btn btn-block btn-danger">
+          <h2>Social login : </h2>
+
+          <a id="loginRef" style="color: white" class="g-signin2 btn btn-block btn-danger" href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://localhost:4200/login-google&response_type=code
+    &client_id=561611648857-c5mrt1fafm2da053ojdpkm282psk768o.apps.googleusercontent.com">
             <i class="fab fa-google-plus mr-2"></i>
-            Đăng nhập với Google
-          </a>
-
+            Đăng nhập với Google</a>
         </div>
-
       </div>
     </div>
 

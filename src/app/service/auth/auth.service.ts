@@ -38,13 +38,9 @@ export class AuthService {
       }));
   }
 
-  // @ts-ignore
-  // @ts-ignore
-  public logingg() {
-    alert("login service");
+  public login_gg(code: String) {
     // @ts-ignore
-    return this.http.get<any>("https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://localhost:8080/login-google&response_type=code" +
-      "&client_id=561611648857-c5mrt1fafm2da053ojdpkm282psk768o.apps.googleusercontent.com")
+    return this.http.get<any>(API_URL + `/login-google?${code}`)
       .pipe(map(user => {
         localStorage.setItem('user', JSON.stringify(user));
         // @ts-ignore

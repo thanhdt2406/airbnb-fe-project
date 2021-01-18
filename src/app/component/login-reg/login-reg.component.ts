@@ -152,23 +152,6 @@ export class LoginRegComponent implements OnInit {
         });
   }
 
-  public login_google() {
-    this.loading = true;
-    alert("login cpn");
-    this.authService.logingg()
-      .pipe(first())
-      .subscribe(
-        data => {
-          alert('Đăng nhập thành công!');
-          this.router.navigate([this.returnUrl]);
-        },
-        error => {
-          this.error = error;
-          this.loading = false;
-          this.loginFail = 'Sai tên đăng nhập hoặc mật khẩu! Vui lòng đăng nhập lại...';
-          this.router.navigate(['/login']);
-        });
-  }
 
   getAllUser() {
     this.userService.getAllUser().subscribe(data => {

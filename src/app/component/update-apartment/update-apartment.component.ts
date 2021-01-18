@@ -46,7 +46,6 @@ export class UpdateApartmentComponent implements OnInit {
     ward: new FormControl(),
     district: new FormControl(),
     province: new FormControl(),
-    image: new FormControl(''),
   });
   // @ts-ignore
   currentApartment: Apartment = {};
