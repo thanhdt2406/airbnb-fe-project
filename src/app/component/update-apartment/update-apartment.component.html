@@ -19,13 +19,13 @@
       <div class="wizard-container">
 
         <div class="wizard-card ct-wizard-orange" id="wizardProperty">
-          <form action="" method="post" [formGroup]="apartForm" id="apartment-form" (ngSubmit)="updateApartment()">
+          <form action="" method="post" [formGroup]="apartForm" id="apartment-form" (ngSubmit)="createImage()">
             <div class="row col-sm-12">
               <div class="col-sm-4"></div>
               <div class="col-sm-6">
                 <div class="wizard-header">
                   <h3>
-                    <b>Edit</b> YOUR APARTMENT <br>
+                    <b>Submit</b> YOUR APARTMENT <br>
                     <small>Lorem ipsum dolor sit amet, consectetur adipisicing.</small>
                   </h3>
                 </div>
@@ -42,19 +42,19 @@
                       <div class="form-group">
                         <label>Apartment Name</label>
                         <input name="name" type="text" class="form-control" placeholder="Super villa ..."
-                               formControlName="name" [(ngModel)]="currentApartment.name">
+                               formControlName="name">
                       </div>
                       <div class="form-group">
                         <label>Apartment Value</label>
                         <input name="value" type="text" class="form-control" placeholder="3330000"
-                               formControlName="value" [(ngModel)]="currentApartment.value">
+                               formControlName="value">
                       </div>
                     </div>
                     <div class="col-sm-12">
                       <div class="form-group">
                         <label>Property Description :</label>
                         <textarea name="description" class="form-control" placeholder="Description ...."
-                                  formControlName="description" [(ngModel)]="currentApartment.description"></textarea>
+                                  formControlName="description"></textarea>
                       </div>
                     </div>
                   </div>
@@ -64,7 +64,6 @@
                         <label>Province :</label>
                         <select class="show-tick form-control" formControlName="province" name="pro_id"
                                 (change)="getAllDistrictsByProvinceId(pro_id)" [(ngModel)]="pro_id">
-                          <option [value]="currentProvice.id">{{currentProvice.name}}</option>
                           <option *ngFor="let province of provinces" [value]="province.id">{{province.name}}</option>
                         </select>
                       </div>
@@ -74,6 +73,7 @@
                         <label>District :</label>
                         <select class="show-tick form-control" formControlName="district" name="dis_id"
                                 (change)="getAllWardsByDistrictId(dis_id)" [(ngModel)]="dis_id">
+                          <option [selected]="2">select</option>
                           <option *ngFor="let dis of districts" [value]="dis.id">{{dis.name}}</option>
                         </select>
                       </div>
@@ -88,7 +88,7 @@
                       <div class="form-group">
                         <label>Address <small>(required)</small></label>
                         <input name="address" type="text" class="form-control" placeholder="Address...."
-                               formControlName="address" [(ngModel)]="currentApartment.address">
+                               formControlName="address">
                       </div>
                     </div>
 
@@ -179,22 +179,21 @@
                         <p class="help-block">Select multipel images for your property .</p>
                       </div>
                     </div>
-                    <label for="currentImg">Current Images :</label>
-                    <table id="currentImg" [(ngModel)]="currentImages">
-                      <tr>
-                        <ng-container *ngFor="let img of currentImages">
-                          <td style="padding-right: 20px"><img [src]="img.image" alt="" width="150" height="150"></td>
-                        </ng-container>
-                      </tr>
-                      <tr>
-                        <ng-container *ngFor="let img of currentImages">
-                          <td style="padding-left: 20px"><a (click)="deleteImage(img.id)">Delete</a></td>
-                        </ng-container>
-                      </tr>
-                    </table>
-                    <hr>
                   </div>
-
+                  <label for="currentImg">Current Images :</label>
+                  <table id="currentImg" [(ngModel)]="currentImages">
+                    <tr>
+                      <ng-container *ngFor="let img of currentImages">
+                        <td style="padding-right: 20px"><img [src]="img.image" alt="" width="150" height="150"></td>
+                      </ng-container>
+                    </tr>
+                    <tr>
+                      <ng-container *ngFor="let img of currentImages">
+                        <td style="padding-left: 20px"><a (click)="deleteImage(img.id)">Delete</a></td>
+                      </ng-container>
+                    </tr>
+                  </table>
+                  <hr>
                   <div class="col-sm-12 padding-top-15">
                     <div class="col-sm-5"></div>
                     <div class="col-sm-2">

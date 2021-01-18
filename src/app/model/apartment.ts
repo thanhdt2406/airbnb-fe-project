@@ -23,4 +23,5 @@ export interface Apartment {
   district?: District;
   province?: Province;
   image?: any[];
+  avatar?: string;
 }
