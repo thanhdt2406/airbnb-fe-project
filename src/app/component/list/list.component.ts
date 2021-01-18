@@ -8,6 +8,8 @@ import {Ward} from '../../model/ward';
 import {WardService} from '../../service/ward/ward.service';
 import {DistrictService} from '../../service/district/district.service';
 import {ProvinceService} from '../../service/province/province.service';
+import {Image} from "../../model/image";
+import {ImageService} from "../../service/image/image.service";
 
 declare var $: any;
 
@@ -21,6 +23,7 @@ export class ListComponent implements OnInit {
   apartments: Apartment[] = [];
   provinces: Province[] = [];
   districts: District[] = [];
+  avatar: string = "";
   wards: Ward[] = [];
   pro_id: number = 0;
   dis_id: number = 0;
@@ -29,7 +32,8 @@ export class ListComponent implements OnInit {
   constructor(private apartmentService: ApartmentService,
               private wardService: WardService,
               private districtService: DistrictService,
-              private provinceService: ProvinceService) {
+              private provinceService: ProvinceService,
+              private imageService: ImageService) {
     this.getAllProvince();
   }
 
@@ -185,7 +189,7 @@ export class ListComponent implements OnInit {
         onRender: function(date: any) {
           return date.valueOf() <= checkin.date.valueOf() ? 'disabled' : '';
         }
-      }).on('changeDate', function(ev: any) {
+      }).on('changeDate', function (ev: any) {
         checkout.hide();
       }).data('datepicker');
     });
@@ -193,9 +197,21 @@ export class ListComponent implements OnInit {
     this.getAllApartment();
   }
 
+  getAvatarByApartment(id: number) {
+    // @ts-ignore
+    this.imageService.getAllByApartment(id).subscribe(data => {
+      // @ts-ignore
+      this.avatar = data[1].image;
+    });
+  }
+
   getAllApartment() {
     this.apartmentService.getAllApartment().subscribe(rs => {
       this.apartments = rs;
+      for (let i = 0; i < this.apartments.length; i++) {
+        // @ts-ignore
+        this.apartments[i].avatar = this.getAvatarByApartment(this.apartments[i].id);
+      }
     });
   }
 
