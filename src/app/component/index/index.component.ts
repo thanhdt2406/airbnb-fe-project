@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import {ApartmentService} from "../../service/apartment/apartment.service";
+import {Component, OnInit} from '@angular/core';
+import {ApartmentService} from '../../service/apartment/apartment.service';
 import {Apartment} from '../../model/apartment';
 import {User} from '../../model/user';
 import {UserService} from '../../service/user/user.service';
+
 declare var $: any;
+
 @Component({
   selector: 'app-index',
   templateUrl: './index.component.html',
@@ -17,8 +19,8 @@ export class IndexComponent implements OnInit {
   apartments2: Apartment[] = [];
   newApartments: Apartment[] = [];
 
-  // @ts-ignore
-  users: User[];
+  users: User[] = [];
+
   constructor(private apartmentService: ApartmentService,
               private userService: UserService) {
     this.getAllApartment();
@@ -31,7 +33,7 @@ export class IndexComponent implements OnInit {
       var Page = (() => {
         var $nav = $('#nav-dots > span'),
           slitslider = $('#slider').slitslider({
-            onBeforeChange: (slide : any, pos : any) => {
+            onBeforeChange: (slide: any, pos: any) => {
               $nav.removeClass('nav-dot-current');
               $nav.eq(pos).addClass('nav-dot-current');
             }
@@ -61,7 +63,7 @@ export class IndexComponent implements OnInit {
 
     });
 
-    $("#testimonial-slider").owlCarousel({
+    $('#testimonial-slider').owlCarousel({
       navigation: false, // Show next and prev buttons
       slideSpeed: 100,
       pagination: true,
@@ -79,16 +81,16 @@ export class IndexComponent implements OnInit {
   }
 
   getAllApartment1() {
-    for (let i = 0; i < this.apartments.length ; i++){
-      if (this.apartments[i].status == 0){
+    for (let i = 0; i < this.apartments.length; i++) {
+      if (this.apartments[i].status == 0) {
         this.apartments1.push(this.apartments[i]);
       }
     }
   }
 
   getAllApartment2() {
-    for (let i = 0; i < this.apartments.length ; i++){
-      if (this.apartments[i].status == 1){
+    for (let i = 0; i < this.apartments.length; i++) {
+      if (this.apartments[i].status == 1) {
         this.apartments2.push(this.apartments[i]);
       }
     }
@@ -99,7 +101,9 @@ export class IndexComponent implements OnInit {
   }
 
   getAllUser() {
-    this.userService.getAllUser().subscribe(data =>(this.users = data));
+    this.userService.getAllUser().subscribe(data => {
+      (this.users = data);
+    });
   }
 
 }

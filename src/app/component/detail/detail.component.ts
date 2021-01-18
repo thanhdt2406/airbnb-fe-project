@@ -32,7 +32,7 @@ export class DetailComponent implements OnInit {
     singleRoom: 0,
     presidentRoom: 0,
     coupleRoom: 0,
-    user: null,
+    status: -1,
     ward: {
       name: "",
       district: {
@@ -41,19 +41,24 @@ export class DetailComponent implements OnInit {
           name: ""
         }
       }
+    },
+    user: {
+      id: -1
     }
   };
   // @ts-ignore
   id: number;
   images: Image[] = [];
   user: User = {};
-
   // @ts-ignore
   userId: number = this.authService.currentUserValue.id;
   currentUser: User = {};
   // @ts-ignore
   comments: Comment[] = [];
   commentContent: string = '';
+  message: string = '';
+  isShow: boolean = false;
+
   constructor(private apartmentService: ApartmentService,
               private activatedRoute: ActivatedRoute,
               private imageService: ImageService,
@@ -114,7 +119,7 @@ export class DetailComponent implements OnInit {
       item: 1,
       thumbItem: 9,
       slideMargin: 0,
-      speed: 1200 ,
+      speed: 1200,
       auto: true,
       loop: true,
       pause: 5000,
@@ -123,7 +128,8 @@ export class DetailComponent implements OnInit {
       }
     });
   }
-// @ts-ignore
+
+  // @ts-ignore
   getApartment() {
     this.apartmentService.getApartmentById(this.id).subscribe(value => {
       // @ts-ignore
@@ -178,7 +184,6 @@ export class DetailComponent implements OnInit {
   }
 
   rentApartment() {
-    debugger
     let checkin = $('#timeCheckIn').val().split("/");
     let checkout = $('#timeCheckOut').val().split("/");
     let date1 = checkin[2] + '-' + checkin[0] + '-' + checkin[1];
@@ -190,6 +195,21 @@ export class DetailComponent implements OnInit {
       apartment: this.apartment,
     }
     // @ts-ignore
-    this.rentService.saveRent(rent).subscribe(alert("Success"));
+    this.rentService.saveRent(rent).subscribe(() => {
+      // @ts-ignore
+      this.message = 'Đặt nhà thành công';
+      this.rentingApartment();
+    });
   }
+
+  rentingApartment() {
+    this.apartmentService.renting(this.apartment.id).subscribe(() => {
+      console.log("dê")
+    });
+  }
+
+  showHide() {
+    this.isShow = !this.isShow;
+  }
+
 }
