@@ -32,7 +32,6 @@ export class DetailComponent implements OnInit {
     singleRoom: 0,
     presidentRoom: 0,
     coupleRoom: 0,
-    user: null,
     status: -1,
     ward: {
       name: "",
@@ -42,6 +41,9 @@ export class DetailComponent implements OnInit {
           name: ""
         }
       }
+    },
+    user: {
+      id: -1
     }
   };
   // @ts-ignore
@@ -55,6 +57,7 @@ export class DetailComponent implements OnInit {
   comments: Comment[] = [];
   commentContent: string = '';
   message: string = '';
+  isShow : boolean = false;
   constructor(private apartmentService: ApartmentService,
               private activatedRoute: ActivatedRoute,
               private imageService: ImageService,
@@ -79,7 +82,7 @@ export class DetailComponent implements OnInit {
       var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
       var checkin = $('#timeCheckIn').datepicker({
         onRender: function (date: any) {
-          return date.valueOf() <= now.valueOf() ? 'disabled' : '';
+          return date.valueOf() <= now.valueOf()  ? 'disabled' : '';
         }
       }).on('changeDate', function (ev: any) {
         if (ev.date.valueOf() > checkout.date.valueOf()) {
@@ -124,7 +127,7 @@ export class DetailComponent implements OnInit {
       }
     });
   }
-// @ts-ignore
+  // @ts-ignore
   getApartment() {
     this.apartmentService.getApartmentById(this.id).subscribe(value => {
       // @ts-ignore
@@ -189,13 +192,20 @@ export class DetailComponent implements OnInit {
       user: this.currentUser,
       apartment: this.apartment,
     }
-    debugger
     // @ts-ignore
     this.rentService.saveRent(rent).subscribe(()=>{
       // @ts-ignore
       this.message = 'Đặt nhà thành công';
+      this.rentingApartment();
     });
   }
 
+  rentingApartment() {
+    this.apartmentService.renting(this.apartment.id).subscribe( () => {console.log("dê")});
+  }
+
+  showHide() {
+    this.isShow = !this.isShow;
+  }
 
 }
