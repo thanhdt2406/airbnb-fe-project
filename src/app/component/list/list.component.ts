@@ -201,7 +201,7 @@ export class ListComponent implements OnInit {
     // @ts-ignore
     this.imageService.getAllByApartment(id).subscribe(data => {
       // @ts-ignore
-      this.avatar = data[1].image;
+      this.avatar = data[0].image;
     });
   }
 
