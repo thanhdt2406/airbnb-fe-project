@@ -114,7 +114,7 @@
               <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
               <div class="row">
                 <h3 class="pull-left s-property-title" style="color: #FFA500; font-size: 18px; margin-left: 10px">Comments</h3>
-                <button type="button" class="btn btn-normal pull-right" style=" font-weight: bold; font-size: 18px;" (click)="showHide()">{{isShow ? 'Hide Comments' : 'Show Comments'}}</button>
+                <button type="button" class="btn btn-normal pull-right" style="font-size: 16px; margin-top: 4px" (click)="showHide()">{{isShow ? 'Hide Comments' : 'Show Comments'}}</button>
               </div>
               <div class="row" [ngClass]="{'hiddenContent': !isShow}">
                   <section class="content-item"  id="comments">
