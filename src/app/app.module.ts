@@ -22,6 +22,9 @@ import {ErrorInterceptor} from './helper/error-interceptor';
 import {AngularFireStorage, AngularFireStorageModule} from '@angular/fire/storage';
 import {AngularFireModule} from '@angular/fire';
 import {environment} from '../environments/environment';
+import {UpdateApartmentComponent} from "./component/update-apartment/update-apartment.component";
+import {LoginGoogleComponent} from "./component/login-google/login-google.component";
+
 // @ts-ignore
 @NgModule({
   declarations: [
@@ -38,7 +41,8 @@ import {environment} from '../environments/environment';
     UserProfileComponent,
     UserHouseComponent,
     ChangePassComponent,
-    UserHouseComponent
+    UpdateApartmentComponent,
+    LoginGoogleComponent
   ],
   imports: [
     BrowserModule,

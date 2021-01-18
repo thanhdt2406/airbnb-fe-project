@@ -12,6 +12,7 @@ import {ChangePassComponent} from './component/change-pass/change-pass.component
 import {AuthGuard} from './helper/auth-guard';
 import {NavComponent} from "./component/nav/nav.component";
 import {UpdateApartmentComponent} from "./component/update-apartment/update-apartment.component";
+import {LoginGoogleComponent} from "./component/login-google/login-google.component";
 
 
 const routes: Routes = [
@@ -20,8 +21,12 @@ const routes: Routes = [
     component: IndexComponent,
   },
   {
-    path: 'update',
+    path: 'update/:id',
     component: UpdateApartmentComponent,
+  },
+  {
+    path: 'login-google',
+    component: LoginGoogleComponent,
   },
   {
     path: 'list',
