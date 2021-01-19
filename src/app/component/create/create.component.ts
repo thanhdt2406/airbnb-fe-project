@@ -268,9 +268,7 @@ export class CreateComponent implements OnInit {
                     id: apartment.id
                   }
                 };
-                this.imageService.createImage(image).subscribe(() => {
-                }, () => {
-                });
+                this.imageService.createImage(image);
               });
             })
           ).subscribe();
