@@ -177,8 +177,8 @@
 
       <div class="col-md-12 clear ">
         <div id="list-type" class="proerty-th">
-          <ng-container *ngFor="let apartment of apartments">
-          <div class="col-sm-6 col-md-3 p0" style="height: 390px">
+          <ng-container *ngFor="let apartment of apartments | paginate: { itemsPerPage: 1, currentPage: p }">
+            <div class="col-sm-6 col-md-3 p0" style="height: 390px">
             <div class="box-two proerty-item">
               <div class="item-thumb">
                 <a [routerLink]="['/detail/'+apartment.id]"><img [src]="apartment.avatar" style="height: 170px;"></a>
@@ -197,22 +197,13 @@
               </div>
             </div>
           </div>
-      </ng-container>
+          </ng-container>
         </div>
       </div>
 
       <div class="col-md-12 clear">
         <div class="pull-right">
-          <div class="pagination">
-            <ul>
-              <li><a href="#">Prev</a></li>
-              <li><a href="#">1</a></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">4</a></li>
-              <li><a href="#">Next</a></li>
-            </ul>
-          </div>
+            <pagination-controls (pageChange)="p = $event" (pageChange)="pageChanged($event)"></pagination-controls>
         </div>
       </div>
     </div>

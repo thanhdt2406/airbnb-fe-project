@@ -25,6 +25,7 @@ import {environment} from '../environments/environment';
 import {LoginGoogleComponent} from "./component/login-google/login-google.component";
 import { RentListComponent } from './component/rent-list/rent-list.component';
 import { RentalHistoryComponent } from './component/rental-history/rental-history.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 // @ts-ignore
 @NgModule({
@@ -53,7 +54,8 @@ import { RentalHistoryComponent } from './component/rental-history/rental-histor
     ReactiveFormsModule,
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    NgxPaginationModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
