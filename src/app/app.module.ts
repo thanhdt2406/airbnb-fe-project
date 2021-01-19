@@ -26,6 +26,7 @@ import {UpdateApartmentComponent} from "./component/update-apartment/update-apar
 import {LoginGoogleComponent} from "./component/login-google/login-google.component";
 import {RentListComponent} from './component/rent-list/rent-list.component';
 import {RentedHistoryComponent} from './component/rented-history/rented-history.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 // @ts-ignore
 @NgModule({
@@ -55,7 +56,8 @@ import {RentedHistoryComponent} from './component/rented-history/rented-history.
     ReactiveFormsModule,
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    NgxPaginationModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
