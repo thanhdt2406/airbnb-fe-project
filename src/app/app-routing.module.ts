@@ -13,6 +13,7 @@ import {AuthGuard} from './helper/auth-guard';
 import {NavComponent} from "./component/nav/nav.component";
 import {UpdateApartmentComponent} from "./component/update-apartment/update-apartment.component";
 import {LoginGoogleComponent} from "./component/login-google/login-google.component";
+import {RentUserComponent} from "./component/rent-user/rent-user.component";
 
 
 const routes: Routes = [
@@ -23,6 +24,10 @@ const routes: Routes = [
   {
     path: 'update/:id',
     component: UpdateApartmentComponent,
+  },
+  {
+    path: 'rent-user',
+    component: RentUserComponent,
   },
   {
     path: 'login-google',

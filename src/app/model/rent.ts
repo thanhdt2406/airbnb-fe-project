@@ -7,4 +7,5 @@ export interface Rent {
   apartment?: Apartment;
   endDate?: string;
   startDate?: string;
+  createDate?: string;
 }
