@@ -24,5 +24,7 @@ export class RentService {
   cancelBooking(id1: number, id2: number): Observable<Rent> {
     return this.http.delete<Rent>(API_URL + `/rents/${id1}/${id2}`);
   }
-
+  getAllBookingApartmentByUserId(id: number) : Observable<Rent[]> {
+    return this.http.get<Rent[]>(API_URL + `/rents/user/${id}`)
+  }
 }
