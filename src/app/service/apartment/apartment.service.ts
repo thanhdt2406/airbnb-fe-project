@@ -3,6 +3,7 @@ import {environment} from '../../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Apartment} from '../../model/apartment';
+import {Rent} from '../../model/rent';
 
 const API_URL = `${environment.apiUrl}`;
 @Injectable({
@@ -74,5 +75,7 @@ export class ApartmentService {
   searchApartmentByCondition(province: string, districts: string, ward: string, bath: string, bed: string, checkin: string, checkout: string, vip: string, luxury: string, single: string, couple: string, president: string, minPrice: string, maxPrice: string): Observable<Apartment[]> {
     return this.http.get<Apartment[]>(API_URL + `/apartments/searchs?province=${province}&district=${districts}&ward=${ward}&bath=${bath}&bed=${bed}&cr=${couple}&lr=${luxury}&pr=${president}&sr=${single}&vr=${vip}&checkin=${checkin}&checkout=${checkout}&minp=${minPrice}&maxp=${maxPrice}`)
   }
+
+
 
 }

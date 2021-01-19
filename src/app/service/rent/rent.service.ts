@@ -16,5 +16,8 @@ export class RentService {
   saveRent(rent: Rent): Observable<Rent> {
     return this.http.post<Rent>(API_URL + `/rents`, rent);
   }
+  cancelBooking(id1: number, id2:number): Observable<Rent> {
+    return this.http.delete<Rent>(API_URL + `/rents/${id1}/${id2}`);
+  }
 
 }
