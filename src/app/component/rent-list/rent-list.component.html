@@ -54,22 +54,23 @@
 
         <div class="section" >
           <div id="list-type" class="proerty-th-list">
-            <ng-container *ngFor="let rt of listRentBooking">
+            <ng-container *ngFor="let ap of apartments">
               <div class="col-md-4 p0">
                 <div class="box-two proerty-item">
                   <div class="item-thumb">
-                    <a href="" ><img src="{{rt.apartment?.avatar}}" alt=""></a>
+                    <a href="" ><img [src]="ap.avatar" alt=""></a>
                   </div>
                   <div class="item-entry overflow">
-                    <h5>(<!--<small style="font-weight: bold; color: #FDC600" id="content-status"><i *ngIf="ap.status == 0">Được Thuê</i><i *ngIf="ap.status == 1">Đang Thuê</i><i *ngIf="ap.status == 2">Đang nâng cấp</i><i *ngIf="ap.status == 3">Vô Hiệu Hóa</i></small>-->)</h5>
+                    <h5>{{ap.name}}</h5>
                     <div class="dot-hr"></div>
-                    <span class="proerty-price pull-right"> $</span>
+                    <span class="proerty-price pull-right">{{ap.value | currency: 'USD'}}</span>
+
                     <p style="display: none;"></p>
                     <div class="property-icon">
-                      <img src="assets/img/icon/bed.png">|
-                      <img src="assets/img/icon/shawer.png">|
+                      <img src="assets/img/icon/bed.png">| {{ap.bedroom}}
+                      <img src="assets/img/icon/shawer.png">| {{ap.bathroom}}
                       <div class="dealer-action pull-right">
-                        <a routerLink="" class="button">View</a>
+                        <a routerLink="/rent-list" *ngIf="isCheck" (click)="cancelBooking()" class="button">CancelBooking</a>
                       </div>
                     </div>
                   </div>
