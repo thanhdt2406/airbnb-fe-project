@@ -22,53 +22,6 @@
         </li>
 
         <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="" [routerLink]="['/list']" >Properties</a></li>
-        <li class="dropdown yamm-fw" data-wow-delay="0.1s">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200">Template <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li>
-              <div class="yamm-content">
-                <div class="row">
-                  <div class="col-sm-3">
-                    <h5>Home pages</h5>
-                    <ul>
-                      <li>
-                        <a href="index.html">Home Style 1</a>
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="col-sm-3">
-                    <h5>Pages and blog</h5>
-                    <ul>
-                      <li><a href="blog.html">Blog listing</a>  </li>
-                    </ul>
-                  </div>
-                  <div class="col-sm-3">
-                    <h5>Property</h5>
-                    <ul>
-                      <li><a href="property-1.html">Property pages style (1)</a> </li>
-                    </ul>
-
-                    <h5>Properties list</h5>
-                    <ul>
-                      <li><a [routerLink]="['/list']">properties list</a> </li>
-                    </ul>
-                  </div>
-                  <div class="col-sm-3">
-                    <h5>Property process</h5>
-                    <ul>
-                      <li><a href="submit-property.html">Submit - step 1</a> </li>
-                    </ul>
-                    <h5>User account</h5>
-                    <ul>
-                      <li><a href="register.html">Register / login</a>   </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <!-- /.yamm-content -->
-            </li>
-          </ul>
-        </li>
         <li class="wow fadeInDown" data-wow-delay="0.4s"><a routerLink="/contact">Contact</a></li>
         <li class="dropdown yamm-fw" data-wow-delay="0.1s" *ngIf="isUserLoggedIn" >
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" *ngIf="userFromDB && userFromDB.name" data-delay="200">{{userFromDB.name}}<b class="caret"></b></a>
@@ -87,7 +40,7 @@
                     <li><a routerLink="/rent-list">Your Rent Lists</a> </li>
                   </ul>
                   <ul>
-                    <li><a routerLink="/rental-history">Rental History</a></li>
+                    <li><a routerLink="/rented-history">Rented History</a></li>
                   </ul>
                   <ul>
                     <li><a routerLink="#" (click)="logout()">Log Out</a></li>
