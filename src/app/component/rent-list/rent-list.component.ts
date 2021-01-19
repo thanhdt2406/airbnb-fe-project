@@ -13,7 +13,7 @@ import {ImageService} from '../../service/image/image.service';
   styleUrls: ['./rent-list.component.scss']
 })
 export class RentListComponent implements OnInit {
-  isCheck: boolean = false;
+  isCheck: boolean[] = [];
   currentUser: User = {};
   listRentBooking: Rent[] = [];
 
@@ -25,13 +25,12 @@ export class RentListComponent implements OnInit {
               private rentService: RentService,
               private userService: UserService,
               private imageService: ImageService,) {
-
+    this.getAllBookingApartmentByUserId(this.userId);
   }
 
   ngOnInit(): void {
     this.getCurrentUser()
     // @ts-ignore
-    this.getAllBookingApartmentByUserId(this.userId);
   }
 
   getAllBookingApartmentByUserId(id: number) {
@@ -43,16 +42,19 @@ export class RentListComponent implements OnInit {
         let today = new Date();
         if (start>today) {
           // @ts-ignore
-          this.isCheck = true;
+          this.isCheck[i] = true;
+        }else {
+          this.isCheck[i] = false;
         }
-        console.log(today<start);
       }
       this.getApartments();
     });
   }
 
-  cancelBooking() {
-
+  cancelBooking(id: number) {
+    this.rentService.cancelBooking(id, this.userId).subscribe(() => {
+      this.getAllBookingApartmentByUserId(this.userId)
+    })
   }
 
   getCurrentUser(){
@@ -71,9 +73,6 @@ export class RentListComponent implements OnInit {
 
       })
     }
-  }
-  chekCancelBooking() {
-
   }
 
 }
