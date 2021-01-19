@@ -12,7 +12,6 @@ import {ChangePassComponent} from './component/change-pass/change-pass.component
 import {AuthGuard} from './helper/auth-guard';
 import {LoginGoogleComponent} from "./component/login-google/login-google.component";
 import {RentListComponent} from './component/rent-list/rent-list.component';
-import {RentedHistoryComponent} from './component/rented-history/rented-history.component';
 
 
 const routes: Routes = [
@@ -61,10 +60,6 @@ const routes: Routes = [
     path: 'rent-list',
     component: RentListComponent
   },
-  {
-    path: 'rented-history',
-    component: RentedHistoryComponent
-  }
 ];
 
 
