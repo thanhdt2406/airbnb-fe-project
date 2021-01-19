@@ -10,8 +10,6 @@ import {UserProfileComponent} from './component/user-profile/user-profile.compon
 import {UserHouseComponent} from './component/user-house/user-house.component';
 import {ChangePassComponent} from './component/change-pass/change-pass.component';
 import {AuthGuard} from './helper/auth-guard';
-import {NavComponent} from "./component/nav/nav.component";
-import {UpdateApartmentComponent} from "./component/update-apartment/update-apartment.component";
 import {LoginGoogleComponent} from "./component/login-google/login-google.component";
 import {RentListComponent} from './component/rent-list/rent-list.component';
 import {RentalHistoryComponent} from './component/rental-history/rental-history.component';
@@ -21,10 +19,6 @@ const routes: Routes = [
   {
     path: '',
     component: IndexComponent,
-  },
-  {
-    path: 'update/:id',
-    component: UpdateApartmentComponent,
   },
   {
     path: 'login-google',
