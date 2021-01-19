@@ -1,10 +1,11 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {environment} from '../../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Rent} from '../../model/rent';
 
 const API_URL = `${environment.apiUrl}`;
+
 @Injectable({
   providedIn: 'root'
 })
@@ -24,7 +25,12 @@ export class RentService {
   cancelBooking(id1: number, id2: number): Observable<Rent> {
     return this.http.delete<Rent>(API_URL + `/rents/${id1}/${id2}`);
   }
-  getAllBookingApartmentByUserId(id: number) : Observable<Rent[]> {
+
+  getAllBookingApartmentByUserId(id: number): Observable<Rent[]> {
     return this.http.get<Rent[]>(API_URL + `/rents/user/${id}`);
   }
+
+  getBookingApartmentByUserIdAndApartment(apartmentId: number, userId: number): Observable<Rent> {
+    return this.http.get<Rent>(API_URL + `/rents/apartments/${apartmentId}/users/${userId}`);
+  };
 }

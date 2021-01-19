@@ -13,23 +13,23 @@ import {ImageService} from '../../service/image/image.service';
   styleUrls: ['./rent-list.component.scss']
 })
 export class RentListComponent implements OnInit {
-  isCheck: boolean = false;
+
   currentUser: User = {};
   listRentBooking: Rent[] = [];
-
+  rent: Rent = {};
   apartments: Apartment[] = [];
   // @ts-ignore
   userId: number = this.authService.currentUserValue.id;
+  check: boolean = false;
 
   constructor(private authService: AuthService,
               private rentService: RentService,
               private userService: UserService,
               private imageService: ImageService,) {
-
   }
 
   ngOnInit(): void {
-    this.getCurrentUser()
+    this.getCurrentUser();
     // @ts-ignore
     this.getAllBookingApartmentByUserId(this.userId);
   }
@@ -37,28 +37,42 @@ export class RentListComponent implements OnInit {
   getAllBookingApartmentByUserId(id: number) {
     this.rentService.getAllBookingApartmentByUserId(id).subscribe(data => {
       this.listRentBooking = data;
-      for(let i=0;i<data.length;i++){
+      for (let i = 0; i < data.length; i++) {
         // @ts-ignore
         let start = new Date(data[i].startDate);
         let today = new Date();
-        if (start>today) {
+        if (start > today) {
           // @ts-ignore
           this.isCheck = true;
         }
-        console.log(today<start);
+        console.log(today < start);
       }
       this.getApartments();
     });
   }
 
-  cancelBooking() {
-
+  isCheck(apartmentId: number): boolean {
+    this.rentService.getBookingApartmentByUserIdAndApartment(apartmentId, this.userId).subscribe(data => {
+      this.rent = data;
+    });
+    // @ts-ignore
+    if (new Date(this.rent.startDate) > new Date()) {
+      debugger
+      return  true;
+    } else {
+      return  false;
+    }
   }
 
-  getCurrentUser(){
-    this.userService.getUserById(this.userId).subscribe(data=>{
+
+  cancelBooking() {
+    alert(1);
+  }
+
+  getCurrentUser() {
+    this.userService.getUserById(this.userId).subscribe(data => {
       this.currentUser = data;
-    })
+    });
   }
 
   getApartments() {
@@ -69,9 +83,10 @@ export class RentListComponent implements OnInit {
       this.imageService.getAllByApartment(this.apartments[i].id).subscribe(images => {
         this.apartments[i].avatar = images[0].image;
 
-      })
+      });
     }
   }
+
   chekCancelBooking() {
 
   }
