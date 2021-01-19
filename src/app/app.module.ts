@@ -27,7 +27,6 @@ import {RentListComponent} from './component/rent-list/rent-list.component';
 import {RentedHistoryComponent} from './component/rented-history/rented-history.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 
-// @ts-ignore
 @NgModule({
   declarations: [
     AppComponent,
