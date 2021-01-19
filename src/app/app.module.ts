@@ -22,7 +22,6 @@ import {ErrorInterceptor} from './helper/error-interceptor';
 import {AngularFireStorage, AngularFireStorageModule} from '@angular/fire/storage';
 import {AngularFireModule} from '@angular/fire';
 import {environment} from '../environments/environment';
-import {UpdateApartmentComponent} from "./component/update-apartment/update-apartment.component";
 import {LoginGoogleComponent} from "./component/login-google/login-google.component";
 import {RentListComponent} from './component/rent-list/rent-list.component';
 import {RentedHistoryComponent} from './component/rented-history/rented-history.component';
@@ -44,7 +43,6 @@ import {NgxPaginationModule} from 'ngx-pagination';
     UserProfileComponent,
     UserHouseComponent,
     ChangePassComponent,
-    UpdateApartmentComponent,
     LoginGoogleComponent,
     RentListComponent,
     RentedHistoryComponent
