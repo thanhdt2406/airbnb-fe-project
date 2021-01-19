@@ -20,6 +20,6 @@ export class RentService {
     return this.http.delete<Rent>(API_URL + `/rents/${id1}/${id2}`);
   }
   getAllBookingApartmentByUserId(id: number) : Observable<Rent[]> {
-    return this.http.get<Rent[]>(API_URL + `/rents/user/${id}`)
+    return this.http.get<Rent[]>(API_URL + `/rents/user/${id}`);
   }
 }

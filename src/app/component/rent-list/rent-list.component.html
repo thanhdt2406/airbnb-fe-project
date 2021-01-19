@@ -52,12 +52,13 @@
 
         </div>
 
-        <div class="section">
+        <div class="section" >
           <div id="list-type" class="proerty-th-list">
+            <ng-container *ngFor="let rt of listRentBooking">
               <div class="col-md-4 p0">
                 <div class="box-two proerty-item">
                   <div class="item-thumb">
-                    <a href="" ><img src="assets/img/demo/property-3.jpg" alt=""></a>
+                    <a href="" ><img src="{{rt.apartment.avatar}}" alt=""></a>
                   </div>
                   <div class="item-entry overflow">
                     <h5>(<!--<small style="font-weight: bold; color: #FDC600" id="content-status"><i *ngIf="ap.status == 0">Được Thuê</i><i *ngIf="ap.status == 1">Đang Thuê</i><i *ngIf="ap.status == 2">Đang nâng cấp</i><i *ngIf="ap.status == 3">Vô Hiệu Hóa</i></small>-->)</h5>
@@ -74,6 +75,7 @@
                   </div>
                 </div>
               </div>
+            </ng-container>
           </div>
         </div>
 
