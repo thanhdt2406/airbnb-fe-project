@@ -13,7 +13,8 @@ import {AuthGuard} from './helper/auth-guard';
 import {NavComponent} from "./component/nav/nav.component";
 import {UpdateApartmentComponent} from "./component/update-apartment/update-apartment.component";
 import {LoginGoogleComponent} from "./component/login-google/login-google.component";
-import {RentUserComponent} from "./component/rent-user/rent-user.component";
+import {RentListComponent} from './component/rent-list/rent-list.component';
+import {RentalHistoryComponent} from './component/rental-history/rental-history.component';
 
 
 const routes: Routes = [
@@ -24,10 +25,6 @@ const routes: Routes = [
   {
     path: 'update/:id',
     component: UpdateApartmentComponent,
-  },
-  {
-    path: 'rent-user',
-    component: RentUserComponent,
   },
   {
     path: 'login-google',
@@ -65,6 +62,14 @@ const routes: Routes = [
   {
     path: 'change-pass',
     component: ChangePassComponent,
+  },
+  {
+    path: 'rent-list',
+    component: RentListComponent
+  },
+  {
+    path: 'rental-history',
+    component: RentalHistoryComponent
   },
 ];
 

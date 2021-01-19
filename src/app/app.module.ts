@@ -24,7 +24,8 @@ import {AngularFireModule} from '@angular/fire';
 import {environment} from '../environments/environment';
 import {UpdateApartmentComponent} from "./component/update-apartment/update-apartment.component";
 import {LoginGoogleComponent} from "./component/login-google/login-google.component";
-import {RentUserComponent} from './component/rent-user/rent-user.component';
+import { RentListComponent } from './component/rent-list/rent-list.component';
+import { RentalHistoryComponent } from './component/rental-history/rental-history.component';
 
 // @ts-ignore
 @NgModule({
@@ -44,7 +45,8 @@ import {RentUserComponent} from './component/rent-user/rent-user.component';
     ChangePassComponent,
     UpdateApartmentComponent,
     LoginGoogleComponent,
-    RentUserComponent
+    RentListComponent,
+    RentalHistoryComponent
   ],
   imports: [
     BrowserModule,

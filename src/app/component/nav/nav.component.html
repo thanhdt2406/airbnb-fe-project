@@ -71,8 +71,8 @@
         </li>
         <li class="wow fadeInDown" data-wow-delay="0.4s"><a routerLink="/contact">Contact</a></li>
         <li class="dropdown yamm-fw" data-wow-delay="0.1s" *ngIf="isUserLoggedIn" >
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" *ngIf="currentUser.name " data-delay="200">{{currentUser.name}}<b class="caret"></b></a>
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" *ngIf="!currentUser.name " data-delay="200">Anonymous<b class="caret"></b></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" *ngIf="userFromDB && userFromDB.name" data-delay="200">{{userFromDB.name}}<b class="caret"></b></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" *ngIf="!userFromDB" data-delay="200">Anonymous<b class="caret"></b></a>
           <ul class="dropdown-menu" style="width: 250px; margin-left: 73%">
             <li>
               <div class="yamm-content" >
@@ -81,13 +81,13 @@
                     <li><a routerLink="/user-profile">Your Profile</a> </li>
                   </ul>
                   <ul>
-                    <li><a routerLink="/user-house">Your House</a></li>
+                    <li><a routerLink="/user-house">Your Apartments</a></li>
                   </ul>
                   <ul>
-                    <li><a routerLink="/rent-user">Your Rent List</a></li>
+                    <li><a routerLink="/rent-list">Your Rent Lists</a> </li>
                   </ul>
                   <ul>
-                    <li><a routerLink="/change-pass">Change Pass</a></li>
+                    <li><a routerLink="/rental-history">Rental History</a></li>
                   </ul>
                   <ul>
                     <li><a routerLink="#" (click)="logout()">Log Out</a></li>

@@ -4,7 +4,7 @@
       <div class="page-head-content">
         <h1 class="page-title">Hello :
           <span class="orange strong" *ngIf="currentUser.name">{{currentUser.name}}</span>
-          <span class="orange strong" *ngIf="!currentUser.name">{{currentUser.name}}</span>
+          <span class="orange strong" *ngIf="!currentUser.name">{{currentUser.username}}</span>
         </h1>
       </div>
     </div>
@@ -65,52 +65,12 @@
             </div>
 
           </div>
-
-          <div class="clear">
             <br>
-            <hr>
-            <br>
-            <div class="col-sm-5 col-sm-offset-1">
-              <div class="form-group">
-                <label>Facebook :</label>
-                <input name="Facebook" type="text" class="form-control" placeholder="https://facebook.com/user">
-              </div>
-              <div class="form-group">
-                <label>Twitter :</label>
-                <input name="Twitter" type="text" class="form-control" placeholder="https://Twitter.com/@user">
-              </div>
-              <div class="form-group">
-                <label>Website :</label>
-                <input name="website" type="text" class="form-control" placeholder="https://yoursite.com/">
-              </div>
-            </div>
-
-            <div class="col-sm-5">
-              <div class="form-group">
-                <label>Public email :</label>
-                <input name="p-email" type="email" class="form-control" placeholder="p-email@rmail.com">
-              </div>
-              <div class="form-group">
-                <label>Phone :</label>
-                <input name="Phone" type="text" class="form-control" placeholder="+1 9090909090">
-              </div>
-              <div class="form-group">
-                <label>FAX :</label>
-                <input name="FAX" type="text" class="form-control" placeholder="+1 9090909090">
-              </div>
-            </div>
-
-          </div>
-
-          <div class="col-sm-5 col-sm-offset-1">
-            <br>
-            <input type='submit' class='btn btn-finish btn-primary' name='finish' value='Finish' />
-          </div>
+            <input style="margin-left: 47%;" type='submit' class='btn btn-finish btn-primary' name='finish' value='Finish' />
           <br>
         </form>
-
       </div>
+      <app-change-pass></app-change-pass>
     </div><!-- end row -->
-
   </div>
 </div>
