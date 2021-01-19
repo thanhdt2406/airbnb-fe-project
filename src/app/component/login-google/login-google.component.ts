@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {ApartmentService} from "../../service/apartment/apartment.service";
 import {first} from "rxjs/operators";
 import {AuthService} from "../../service/auth/auth.service";
 

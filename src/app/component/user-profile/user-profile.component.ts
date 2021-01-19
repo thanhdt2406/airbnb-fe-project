@@ -115,6 +115,8 @@ export class UserProfileComponent implements OnInit {
       address: this.userProfileForm.value.address === '' ? this.currentUser.address : this.userProfileForm.value.address,
       avatar: this.currentUser.avatar
     };
+    this.router.navigate(["/"]);
+
     // @ts-ignore
     this.updateUserProfile(this.currentUser.id);
     alert('Success!');
@@ -136,6 +138,8 @@ export class UserProfileComponent implements OnInit {
   getCurrentUser() {
     // @ts-ignore
     this.userService.getUserById(this.userId).subscribe(data => {
+      localStorage.setItem('currentUser', JSON.stringify(data));
+      this.authService.currentUserSubjectFromDB.next(data);
       this.currentUser = data;
       this.userProfileForm = new FormGroup({
         name: new FormControl(this.currentUser.name, Validators.required),

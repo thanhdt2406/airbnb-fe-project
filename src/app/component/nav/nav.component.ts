@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../service/auth/auth.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {User} from '../../model/user';
+import {UserService} from '../../service/user/user.service';
 
 @Component({
   selector: 'app-nav',
@@ -11,23 +12,30 @@ import {User} from '../../model/user';
 export class NavComponent implements OnInit {
 
   // @ts-ignore
-  currentUser = this.authService.currentUserValue;
+  // userId: number = this.authService.currentUserValue.id;
+  userFromDB: User = {};
+  currentUser: User = {};
   returnUrl: string = '';
   isUserLoggedIn = false;
 
   constructor(private authService: AuthService,
               private router: Router,
-              private activatedRoute: ActivatedRoute) {
+              private activatedRoute: ActivatedRoute,
+              private userService: UserService) {
     this.authService.currentUserSubject.subscribe(value => {
       this.currentUser = value;
       if (this.currentUser) {
         this.isUserLoggedIn = true;
       }
     });
+    this.authService.currentUserSubjectFromDB.subscribe(value => {
+      this.userFromDB = value;
+    });
 ``
   }
 
   ngOnInit(): void {
+    // this.getCurrentUser();
   }
 
   public logout() {
@@ -40,4 +48,9 @@ export class NavComponent implements OnInit {
     }
   }
 
+  // getCurrentUser(){
+  //   this.userService.getUserById(this.userId).subscribe(data=>{
+  //     this.currentUser = data;
+  //   })
+  // }
 }
