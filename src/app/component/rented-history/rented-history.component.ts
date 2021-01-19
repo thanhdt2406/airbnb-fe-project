@@ -23,7 +23,6 @@ export class RentedHistoryComponent implements OnInit {
               private imageService: ImageService) {
     // @ts-ignore
     this.getAllrented();
-
   }
 
   getAllrented() {
@@ -40,6 +39,7 @@ export class RentedHistoryComponent implements OnInit {
     for (let i = 0; i < this.rents.length; i++) {
       // @ts-ignore
       this.apartments[i] = this.rents[i].apartment;
+
       // @ts-ignore
       this.imageService.getAllByApartment(this.apartments[i].id).subscribe(images => {
         this.apartments[i].avatar = images[0].image;
