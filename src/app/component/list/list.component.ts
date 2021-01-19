@@ -203,7 +203,7 @@ export class ListComponent implements OnInit {
       for (let i = 0; i < this.apartments.length; i++) {
         // @ts-ignore
         this.imageService.getAllByApartment(this.apartments[i].id).subscribe(images => {
-          this.apartments[i].avatar = images[1].image;
+          this.apartments[i].avatar = images[0].image;
         })
       }
     });

@@ -54,29 +54,34 @@
 
         <div class="section">
           <div id="list-type" class="proerty-th-list">
-            <div class="col-md-4 p0">
-              <div class="box-two proerty-item">
-                <div class="item-thumb">
-                  <a href="" ><img src="assets/img/demo/property-3.jpg" alt=""></a>
-                </div>
-                <div class="item-entry overflow">
-                  <h5>(<!--<small style="font-weight: bold; color: #FDC600" id="content-status"><i *ngIf="ap.status == 0">Được Thuê</i><i *ngIf="ap.status == 1">Đang Thuê</i><i *ngIf="ap.status == 2">Đang nâng cấp</i><i *ngIf="ap.status == 3">Vô Hiệu Hóa</i></small>-->)</h5>
-                  <div class="dot-hr"></div>
-                  <span class="proerty-price pull-right"> $</span>
-                  <p style="display: none;"></p>
-                  <div class="property-icon">
-                    <img src="assets/img/icon/bed.png">|
-                    <img src="assets/img/icon/shawer.png">|
-                    <div class="dealer-action pull-right">
-                      <a routerLink="" class="button">View</a>
+            <ng-container *ngFor="let apartment of apartments">
+              <div class="col-md-4 p0">
+                <div class="box-two proerty-item">
+                  <div class="item-thumb">
+                    <a href=""><img [src]="apartment.avatar" alt=""></a>
+                  </div>
+                  <div class="item-entry overflow">
+                    <h5>{{apartment.name}}</h5>
+                    <div class="dot-hr"></div>
+                    <span class="proerty-price pull-right"> {{apartment.value}}$</span>
+                    <ul *ngFor="let rent of rents">
+                      <li>start: {{rent.startDate}}</li>
+                      <li>end: {{rent.startDate}}</li>
+                    </ul>
+                    <p style="display: none;"></p>
+                    <div class="property-icon">
+                      <img src="assets/img/icon/bed.png">|{{apartment.bedroom}}
+                      <img src="assets/img/icon/shawer.png">|{{apartment.bathroom}}
+                      <div class="dealer-action pull-right">
+                        <a routerLink="/detail/{{apartment.id}}" class="button">View</a>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </ng-container>
           </div>
         </div>
-
         <div class="section">
           <div class="pull-right">
             <div class="pagination">
@@ -96,7 +101,7 @@
 
       <div class="col-md-3 p0 padding-top-40">
         <div class="blog-asside-right">
-          <div class="panel panel-default sidebar-menu wow fadeInRight animated" >
+          <div class="panel panel-default sidebar-menu wow fadeInRight animated">
             <div class="panel-heading">
               <h3 class="panel-title">Hello <small *ngIf="currentUser.name">{{currentUser.name}}</small>
                 <small *ngIf="!currentUser.name">Anonymous</small></h3>
