@@ -14,7 +14,7 @@ import {NavComponent} from "./component/nav/nav.component";
 import {UpdateApartmentComponent} from "./component/update-apartment/update-apartment.component";
 import {LoginGoogleComponent} from "./component/login-google/login-google.component";
 import {RentListComponent} from './component/rent-list/rent-list.component';
-import {RentalHistoryComponent} from './component/rental-history/rental-history.component';
+import {RentedHistoryComponent} from './component/rented-history/rented-history.component';
 
 
 const routes: Routes = [
@@ -68,9 +68,9 @@ const routes: Routes = [
     component: RentListComponent
   },
   {
-    path: 'rental-history',
-    component: RentalHistoryComponent
-  },
+    path: 'rented-history',
+    component: RentedHistoryComponent
+  }
 ];
 
 
