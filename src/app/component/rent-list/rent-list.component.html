@@ -70,7 +70,7 @@
                       <img src="assets/img/icon/bed.png">| {{ap.bedroom}}
                       <img src="assets/img/icon/shawer.png">| {{ap.bathroom}}
                       <div class="dealer-action pull-right">
-                        <a routerLink="/rent-list" *ngIf="isCheck[i]" (click)="cancelBooking(ap.id)" class="button">CancelBooking</a>
+                        <a routerLink="/rent-list" *ngIf="isCheck[i]" (click)="cancelBooking(ap?.id)" class="button">CancelBooking</a>
                       </div>
                     </div>
                   </div>
