@@ -51,7 +51,7 @@ export class RentListComponent implements OnInit {
     });
   }
 
-  cancelBooking(id: number) {
+  cancelBooking(id: any) {
     this.rentService.cancelBooking(id, this.userId).subscribe(() => {
       this.getAllBookingApartmentByUserId(this.userId)
     })
