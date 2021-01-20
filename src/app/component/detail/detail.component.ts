@@ -182,15 +182,14 @@ export class DetailComponent implements OnInit {
 
   rentApartment() {
     let checkin = $('#timeCheckIn').val().split("/");
+    console.log(checkin);
     let checkout = $('#timeCheckOut').val().split("/");
     let date1 = checkin[2] + '-' + checkin[0] + '-' + checkin[1];
     let date2 = checkout[2] + '-' + checkout[0] + '-' + checkout[1];
     let mouthCheckin = parseInt(checkin[0][1]) - 1
     let mouthCheckout = parseInt(checkout[0][1]) - 1
     let checkDate1  = new Date(checkin[2], mouthCheckin, checkin[1], 7, 0, 0, 0);
-    console.log(checkDate1)
     let checkDate2  = new Date(checkout[2], mouthCheckout, checkout[1], 7, 0, 0, 0);
-    console.log(checkDate2)
     for (let i = 0; i < this.rents.length ; i ++){
       // @ts-ignore
       if (!this.checkDate(checkDate1, this.rents[i])){
@@ -201,7 +200,6 @@ export class DetailComponent implements OnInit {
         this.checkoutCheck = true;
       }
     }
-    console.log(this.rents);
     for (let i = 0; i < this.rents.length ; i ++){
       // @ts-ignore
       if (!this.checkDate(checkDate2, this.rents[i])){
@@ -238,10 +236,25 @@ export class DetailComponent implements OnInit {
     }
   }
 
+  // @ts-ignore
   checkDate(value: Date, rent: Rent): boolean {
-
     // @ts-ignore
-    if (value >= new Date(rent.startDate) && value <= new Date(rent.endDate)){
+    let checkin1 = rent.startDate.split("T");
+    // @ts-ignore
+    let checkin2 = rent.endDate.split("T");
+    // @ts-ignore
+    let dateCheckin = checkin1[0].split("-");
+    let dateCheckout = checkin2[0].split("-");
+    let mouthCheckin = parseInt(dateCheckin[0][1]) ;
+    let mouthCheckout = parseInt(dateCheckout[0][1]) ;
+    // @ts-ignore
+    let checkDate1  = new Date(dateCheckin[0], mouthCheckin, dateCheckin[2], 7, 0, 0, 0);
+    // @ts-ignore
+    let checkDate2  = new Date(dateCheckout[0], mouthCheckout, dateCheckout[2], 7, 0, 0, 0);
+    console.log(checkDate1);
+    console.log(checkDate2);
+    // @ts-ignore
+    if (value >= checkDate1 && value <= checkDate2){
       return false;
     }
     return true;
@@ -249,7 +262,6 @@ export class DetailComponent implements OnInit {
 
   rentingApartment() {
     this.apartmentService.renting(this.apartment.id).subscribe(() => {
-      console.log("dê")
     });
   }
 
