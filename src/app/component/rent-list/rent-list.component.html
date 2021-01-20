@@ -1,114 +1,114 @@
-<div class="page-head">
-  <div class="container">
-    <div class="row">
-      <div class="page-head-content">
-        <h1 class="page-title">List Layout With Sidebar</h1>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- End page header -->
+<!--<div class="page-head">-->
+<!--  <div class="container">-->
+<!--    <div class="row">-->
+<!--      <div class="page-head-content">-->
+<!--        <h1 class="page-title">List Layout With Sidebar</h1>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+<!--&lt;!&ndash; End page header &ndash;&gt;-->
 
-<!-- property area -->
-<div class="content-area recent-property" style="background-color: #FFF;">
-  <div class="container">
-    <div class="row">
+<!--&lt;!&ndash; property area &ndash;&gt;-->
+<!--<div class="content-area recent-property" style="background-color: #FFF;">-->
+<!--  <div class="container">-->
+<!--    <div class="row">-->
 
-      <div class="col-md-9 pr-30 padding-top-40 properties-page user-properties">
+<!--      <div class="col-md-9 pr-30 padding-top-40 properties-page user-properties">-->
 
-        <div class="section">
-          <div class="page-subheader sorting pl0 pr-10">
+<!--        <div class="section">-->
+<!--          <div class="page-subheader sorting pl0 pr-10">-->
 
 
-            <ul class="sort-by-list pull-left">
-              <li class="active">
-                <a href="javascript:void(0);" class="order_by_date" data-orderby="property_date" data-order="ASC">
-                  Property Date <i class="fa fa-sort-amount-asc"></i>
-                </a>
-              </li>
-              <li class="">
-                <a href="javascript:void(0);" class="order_by_price" data-orderby="property_price" data-order="DESC">
-                  Property Price <i class="fa fa-sort-numeric-desc"></i>
-                </a>
-              </li>
-            </ul><!--/ .sort-by-list-->
+<!--            <ul class="sort-by-list pull-left">-->
+<!--              <li class="active">-->
+<!--                <a href="javascript:void(0);" class="order_by_date" data-orderby="property_date" data-order="ASC">-->
+<!--                  Property Date <i class="fa fa-sort-amount-asc"></i>-->
+<!--                </a>-->
+<!--              </li>-->
+<!--              <li class="">-->
+<!--                <a href="javascript:void(0);" class="order_by_price" data-orderby="property_price" data-order="DESC">-->
+<!--                  Property Price <i class="fa fa-sort-numeric-desc"></i>-->
+<!--                </a>-->
+<!--              </li>-->
+<!--            </ul>&lt;!&ndash;/ .sort-by-list&ndash;&gt;-->
 
-            <div class="items-per-page pull-right">
-              <label for="items_per_page"><b>Property per page :</b></label>
-              <div class="sel">
-                <select id="items_per_page" name="per_page">
-                  <option value="3">3</option>
-                  <option value="6">6</option>
-                  <option value="9">9</option>
-                  <option selected="selected" value="12">12</option>
-                  <option value="15">15</option>
-                  <option value="30">30</option>
-                  <option value="45">45</option>
-                  <option value="60">60</option>
-                </select>
-              </div><!--/ .sel-->
-            </div><!--/ .items-per-page-->
-          </div>
+<!--            <div class="items-per-page pull-right">-->
+<!--              <label for="items_per_page"><b>Property per page :</b></label>-->
+<!--              <div class="sel">-->
+<!--                <select id="items_per_page" name="per_page">-->
+<!--                  <option value="3">3</option>-->
+<!--                  <option value="6">6</option>-->
+<!--                  <option value="9">9</option>-->
+<!--                  <option selected="selected" value="12">12</option>-->
+<!--                  <option value="15">15</option>-->
+<!--                  <option value="30">30</option>-->
+<!--                  <option value="45">45</option>-->
+<!--                  <option value="60">60</option>-->
+<!--                </select>-->
+<!--              </div>&lt;!&ndash;/ .sel&ndash;&gt;-->
+<!--            </div>&lt;!&ndash;/ .items-per-page&ndash;&gt;-->
+<!--          </div>-->
 
-        </div>
+<!--        </div>-->
 
-        <div class="section" >
-          <div id="list-type" class="proerty-th-list">
-            <ng-container *ngFor="let ap of apartments, let i = index" >
-              <div class="col-md-4 p0">
-                <div class="box-two proerty-item">
-                  <div class="item-thumb">
-                    <a href="" ><img [src]="ap.avatar" alt=""></a>
-                  </div>
-                  <div class="item-entry overflow">
-                    <h5>{{ap.name}}</h5>
-                    <div class="dot-hr"></div>
-                    <span class="proerty-price pull-right">{{ap.value | currency: 'USD'}}</span>
+<!--        <div class="section" >-->
+<!--          <div id="list-type" class="proerty-th-list">-->
+<!--            <ng-container *ngFor="let ap of apartments, let i = index" >-->
+<!--              <div class="col-md-4 p0">-->
+<!--                <div class="box-two proerty-item">-->
+<!--                  <div class="item-thumb">-->
+<!--                    <a href="" ><img [src]="ap.avatar" alt=""></a>-->
+<!--                  </div>-->
+<!--                  <div class="item-entry overflow">-->
+<!--                    <h5>{{ap.name}}</h5>-->
+<!--                    <div class="dot-hr"></div>-->
+<!--                    <span class="proerty-price pull-right">{{ap.value | currency: 'USD'}}</span>-->
+<!--                    <p style="display: none;">{{ap.description}}</p>-->
+<!--                    <p style="display: none;"></p>-->
+<!--                    <div class="property-icon">-->
+<!--                      <img src="assets/img/icon/bed.png">| {{ap.bedroom}}-->
+<!--                      <img src="assets/img/icon/shawer.png">| {{ap.bathroom}}-->
+<!--                      <div class="dealer-action pull-right">-->
+<!--                        <a routerLink="/rent-list" *ngIf="isCheck[i]" (click)="cancelBooking(ap?.id)" class="button">CancelBooking</a>-->
+<!--                      </div>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </ng-container>-->
+<!--          </div>-->
+<!--        </div>-->
 
-                    <p style="display: none;"></p>
-                    <div class="property-icon">
-                      <img src="assets/img/icon/bed.png">| {{ap.bedroom}}
-                      <img src="assets/img/icon/shawer.png">| {{ap.bathroom}}
-                      <div class="dealer-action pull-right">
-                        <a routerLink="/rent-list" *ngIf="isCheck[i]" (click)="cancelBooking(ap.id)" class="button">CancelBooking</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </ng-container>
-          </div>
-        </div>
+<!--        <div class="section">-->
+<!--          <div class="pull-right">-->
+<!--            <div class="pagination">-->
+<!--              <ul>-->
+<!--                <li><a href="#">Prev</a></li>-->
+<!--                <li><a href="#">1</a></li>-->
+<!--                <li><a href="#">2</a></li>-->
+<!--                <li><a href="#">3</a></li>-->
+<!--                <li><a href="#">4</a></li>-->
+<!--                <li><a href="#">Next</a></li>-->
+<!--              </ul>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
 
-        <div class="section">
-          <div class="pull-right">
-            <div class="pagination">
-              <ul>
-                <li><a href="#">Prev</a></li>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">Next</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
+<!--      </div>-->
 
-      </div>
-
-      <div class="col-md-3 p0 padding-top-40">
-        <div class="blog-asside-right">
-          <div class="panel panel-default sidebar-menu wow fadeInRight animated" >
-            <div class="panel-heading">
-              <h3 class="panel-title">Hello <small *ngIf="currentUser.name">{{currentUser.name}}</small>
-                <small *ngIf="!currentUser.name">Anonymous</small></h3>
-            </div>
-            <div class="panel-body search-widget">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<!--      <div class="col-md-3 p0 padding-top-40">-->
+<!--        <div class="blog-asside-right">-->
+<!--          <div class="panel panel-default sidebar-menu wow fadeInRight animated" >-->
+<!--            <div class="panel-heading">-->
+<!--              <h3 class="panel-title">Hello <small *ngIf="currentUser.name">{{currentUser.name}}</small>-->
+<!--                <small *ngIf="!currentUser.name">Anonymous</small></h3>-->
+<!--            </div>-->
+<!--            <div class="panel-body search-widget">-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->

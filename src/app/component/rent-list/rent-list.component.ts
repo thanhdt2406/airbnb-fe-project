@@ -34,6 +34,7 @@ export class RentListComponent implements OnInit {
   }
 
   getAllBookingApartmentByUserId(id: number) {
+    // @ts-ignore
     this.rentService.getAllBookingApartmentByUserId(id).subscribe(data => {
       this.listRentBooking = data;
       for(let i=0;i<data.length;i++){
@@ -51,7 +52,8 @@ export class RentListComponent implements OnInit {
     });
   }
 
-  cancelBooking(id: any) {
+  cancelBooking(id: number) {
+    // @ts-ignore
     this.rentService.cancelBooking(id, this.userId).subscribe(() => {
       this.getAllBookingApartmentByUserId(this.userId)
     })
