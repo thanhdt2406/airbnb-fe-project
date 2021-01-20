@@ -14,8 +14,10 @@ declare var Chart: any;
   styleUrls: ['./total-income.component.scss']
 })
 export class TotalIncomeComponent implements OnInit {
-  currentYear: number = 0;
+  currentYear: number = new Date().getFullYear();
   currUserId = this.authService.currentUserValue.id;
+  monthTotalGet: number[] = [];
+  money: number = 0;
 
 
   constructor(private rentService: RentService,
@@ -23,17 +25,21 @@ export class TotalIncomeComponent implements OnInit {
   }
 
   async ngOnInit() {
-    this.currentYear = new Date().getFullYear();
-    let  monthTotalGet = [];
-    for (let i = 0; i < 12; i++) {
+
+    for (let i = 0; i< 12; i++) {
       // @ts-ignore
-      let totalGetByMonth: any = await this.getTotalIncome(this.currUserId, this.currentYear, i + 1);
-      if (totalGetByMonth == null) {
-        totalGetByMonth = 0;
-      }
-      monthTotalGet.push(totalGetByMonth);
+      await this.rentService.getTotalIncomeByUserId(this.currUserId,this.currentYear, i + 1 ).subscribe(value => {
+        if (value == null) {
+          this.money = 0
+        }else {
+        this.money = value;
+        }
+        this.monthTotalGet.push(this.money);
+      });
     }
-    console.log(monthTotalGet)
+    console.log(this.monthTotalGet);
+      // @ts-ignore
+
 
     let areaChartData = {
       labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August',
@@ -48,7 +54,7 @@ export class TotalIncomeComponent implements OnInit {
           pointStrokeColor: '#c1c7d1',
           pointHighlightFill: '#fff',
           pointHighlightStroke: 'rgba(220,220,220,1)',
-          data: monthTotalGet
+          data: this.monthTotalGet,
         }
       ]
     };
@@ -81,7 +87,6 @@ export class TotalIncomeComponent implements OnInit {
   val: number = 0;
 
   getTotalIncome(userId: number, year: number, month: number) {
-    this.rentService.getTotalIncomeByUserId(userId, year, month).subscribe(value => {
-    })
+    this.rentService.getTotalIncomeByUserId(userId, year, month).toPromise()
   }
 }
