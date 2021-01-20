@@ -166,13 +166,15 @@ export class DetailComponent implements OnInit {
         id: this.currentUser.id,
       }
     }
-    // @ts-ignore
-    this.commentService.createApartment(comment).subscribe(()=>{
+    if (this.commentContent) {
       // @ts-ignore
-      this.getAllCommentByApartmentId(this.apartment);
-    });
-    // @ts-ignore
-
+      this.commentService.createApartment(comment).subscribe(()=>{
+        // @ts-ignore
+        this.getAllCommentByApartmentId(this.apartment);
+      });
+    }else {
+      return;
+    }
   }
 
   getAllCommentByApartmentId(apartment:Apartment) {
