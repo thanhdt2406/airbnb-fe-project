@@ -27,4 +27,8 @@ export class RentService {
   getAllBookingApartmentByUserId(id: number) : Observable<Rent[]> {
     return this.http.get<Rent[]>(API_URL + `/rents/user/${id}`);
   }
+
+  getAllRentedByApartment(id: number): Observable<Rent[]> {
+    return this.http.get<Rent[]>(API_URL + `/rents/list/${id}`)
+  }
 }

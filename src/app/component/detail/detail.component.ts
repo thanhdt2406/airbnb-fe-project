@@ -10,6 +10,7 @@ import {AuthService} from '../../service/auth/auth.service';
 import {Comment} from '../../model/comment';
 import {CommentService} from '../../service/comment/comment.service';
 import {RentService} from '../../service/rent/rent.service';
+import {Rent} from '../../model/rent';
 
 declare var $: any;
 
@@ -19,6 +20,7 @@ declare var $: any;
   styleUrls: ['./detail.component.css']
 })
 export class DetailComponent implements OnInit {
+  p: number = 1;
   apartment = {
     id: -1,
     name: "",
@@ -58,6 +60,7 @@ export class DetailComponent implements OnInit {
   commentContent: string = '';
   message: string = '';
   isShow: boolean = false;
+  rents: Rent[] = [];
 
   constructor(private apartmentService: ApartmentService,
               private activatedRoute: ActivatedRoute,
@@ -138,6 +141,7 @@ export class DetailComponent implements OnInit {
       // @ts-ignore
       this.getUserByApartment(value);
       this.getAllCommentByApartmentId(value);
+      this.getAllRentedByApartment(value);
     });
   }
 
@@ -212,4 +216,10 @@ export class DetailComponent implements OnInit {
     this.isShow = !this.isShow;
   }
 
+  getAllRentedByApartment(ap: Apartment) {
+    // @ts-ignore
+    this.rentService.getAllRentedByApartment(ap.id).subscribe(data => {
+      this.rents = data;
+    })
+  }
 }

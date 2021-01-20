@@ -279,7 +279,27 @@
               </div>
             </div>
           </div>
-
+          <div class="panel panel-default sidebar-menu wow fadeInRight animated">
+            <div class="panel-heading">
+              <h3 class="panel-title" style="margin-bottom: 20px">Lịch Đặt </h3>
+              <div class="col-sm-12 content" style="height: 215px">
+                <ng-container *ngFor="let rent of rents | paginate: { itemsPerPage: 2, currentPage: p }">
+                <div style=" margin-bottom: 10px;border-bottom: grey 1px solid; padding-bottom: 10px;">
+                  <div><span style="font-weight: bold; color: #777">Customer Name:</span><small>{{rent.user?.name}}</small></div>
+                  <div class="row" >
+                    <div class="col-sm-6">
+                      <div><span style="font-weight: bold; color: #777">Check in:</span><br>&nbsp;&nbsp;<small>{{rent.startDate | date:'mediumDate'}}</small></div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div><span style="font-weight: bold; color: #777">Check out:</span><br>&nbsp;&nbsp;<small>{{rent.endDate | date:'mediumDate'}}</small></div>
+                    </div>
+                  </div>
+                </div>
+                </ng-container>
+              </div>
+              <small><pagination-controls (pageChange)="p = $event" style="font-size: 10px;"></pagination-controls></small>
+            </div>
+          </div>
           <div class="panel panel-default sidebar-menu wow fadeInRight animated"
                [ngClass]="{'hiddenContent' : currentUser?.id == user.id}">
             <div class="panel-heading">
@@ -289,20 +309,15 @@
               {{message}}
               <div class="form-group">
                 <label for="timeCheckIn">Check In: </label><br>
-                <input type="text" id="timeCheckIn" name="checkIn" class="form-control"
-                       style="float: left; width: 250px"/><img src="assets/img/lich.JPG" class="img-circle"
-                                                               style="width: 35px; height: 25px; float: left; margin-left: -40px; margin-top: 10px;">
+                <input type="text" id="timeCheckIn" name="checkIn" class="form-control" style="float: left; width: 250px"/><img src="assets/img/lich.JPG" class="img-circle"style="width: 35px; height: 25px; float: left; margin-left: -40px; margin-top: 10px;">
               </div>
               <div class="form-group" style="margin-top: 50px">
                 <label for="timeCheckOut">Check Out: </label><br>
-                <input type="text" id="timeCheckOut" name="checkOut" class="form-control"
-                       style="float: left; width: 250px"/><img src="assets/img/lich.JPG" class="img-circle"
-                                                               style="width: 35px; height: 25px; float: left; margin-left: -40px; margin-top: 10px;">
+                <input type="text" id="timeCheckOut" name="checkOut" class="form-control" style="float: left; width: 250px"/><img src="assets/img/lich.JPG" class="img-circle" style="width: 35px; height: 25px; float: left; margin-left: -40px; margin-top: 10px;">
               </div>
               <button type="submit" class="btn btn-default" style="margin-top: 40px; margin-left: -130px">Rent</button>
             </form>
           </div>
-
         </aside>
       </div>
 
