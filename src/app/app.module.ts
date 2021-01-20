@@ -26,6 +26,7 @@ import {LoginGoogleComponent} from "./component/login-google/login-google.compon
 import {RentListComponent} from './component/rent-list/rent-list.component';
 import {RentedHistoryComponent} from './component/rented-history/rented-history.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+import {RatingComponent} from './component/rating/rating.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     ChangePassComponent,
     LoginGoogleComponent,
     RentListComponent,
-    RentedHistoryComponent
+    RentedHistoryComponent,
+    RatingComponent
   ],
   imports: [
     BrowserModule,
