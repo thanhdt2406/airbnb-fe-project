@@ -23,7 +23,6 @@ export class RentedHistoryComponent implements OnInit {
               private imageService: ImageService) {
     // @ts-ignore
     this.getAllrented();
-
   }
 
   getAllrented() {
