@@ -203,7 +203,7 @@ export class ListComponent implements OnInit {
       for (let i = 0; i < this.apartments.length; i++) {
         // @ts-ignore
         this.imageService.getAllByApartment(this.apartments[i].id).subscribe(images => {
-          this.apartments[i].avatar = images[0].image;
+          this.apartments[i].avatar = images[0]?.image;
         })
       }
     });
@@ -271,11 +271,6 @@ export class ListComponent implements OnInit {
 
     // @ts-ignore
     this.apartmentService.searchApartmentByCondition(pro_id, dis_id, ward_id, bath, check_in,check_out, vipRoom, luxuryRoom, singleRoom,coupleRoom, presidentRoom, min_price, max_price).subscribe(apartments => { this.apartments = apartments; });
-  }
-
-  pageChanged(event: any){
-    // @ts-ignore
-    this.config.currentPage = event;
   }
 
 }
