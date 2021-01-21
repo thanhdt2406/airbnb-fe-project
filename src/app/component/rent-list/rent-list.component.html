@@ -52,25 +52,28 @@
 
         </div>
 
-        <div class="section" >
+        <div class="section">
           <div id="list-type" class="proerty-th-list">
-            <ng-container *ngFor="let ap of apartments, let i = index" >
+            <ng-container *ngFor="let ap of apartments, let i = index">
               <div class="col-md-4 p0">
                 <div class="box-two proerty-item">
                   <div class="item-thumb">
-                    <a href="" ><img [src]="ap.avatar" alt=""></a>
+                    <a href=""><img [src]="ap.avatar" alt=""></a>
                   </div>
                   <div class="item-entry overflow">
-                    <h5>{{ap.name}}</h5>
+                    <h5>{{ap.name}}<span *ngIf="listRentBooking[i].status"><i>(Checked-in)</i></span></h5>
                     <div class="dot-hr"></div>
-                    <span class="proerty-price pull-right">{{ap.value | currency: 'USD'}}</span>
-                    <p style="display: none;">{{ap.description}}</p>
-                    <p style="display: none;"></p>
+                    <span class="proerty-price pull-right">{{price[i] | currency: 'USD'}} / {{day[i] }}
+                      day{{day[i] > 1 ? 's' : ''}}</span>
+                    <p style="display: none;"><b>Start:</b> {{start[i]}}</p>
+                    <p style="display: none;"><b>End:</b> {{end[i]}}</p>
+                    <p style="display: none;"> </p>
                     <div class="property-icon">
                       <img src="assets/img/icon/bed.png">| {{ap.bedroom}}
                       <img src="assets/img/icon/shawer.png">| {{ap.bathroom}}
                       <div class="dealer-action pull-right">
-                        <a routerLink="/rent-list" *ngIf="isCheck[i]" (click)="cancelBooking(ap?.id)" class="button">CancelBooking</a>
+                        <a routerLink="/rent-list" *ngIf="isCheck[i]" (click)="cancelBooking(listRentBooking[i].id)" class="button">Cancel Booking</a>
+                        <a routerLink="#" (click)="checkIn(listRentBooking[i])" class="button">Check-in</a>
                       </div>
                     </div>
                   </div>
@@ -99,7 +102,7 @@
 
       <div class="col-md-3 p0 padding-top-40">
         <div class="blog-asside-right">
-          <div class="panel panel-default sidebar-menu wow fadeInRight animated" >
+          <div class="panel panel-default sidebar-menu wow fadeInRight animated">
             <div class="panel-heading">
               <h3 class="panel-title">Hello <small *ngIf="currentUser.name">{{currentUser.name}}</small>
                 <small *ngIf="!currentUser.name">Anonymous</small></h3>
