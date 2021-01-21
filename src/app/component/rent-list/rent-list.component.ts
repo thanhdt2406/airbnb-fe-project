@@ -69,7 +69,7 @@ export class RentListComponent implements OnInit {
       this.apartments[i] = this.listRentBooking[i].apartment;
       // @ts-ignore
       this.imageService.getAllByApartment(this.apartments[i].id).subscribe(images => {
-        this.apartments[i].avatar = images[0].image;
+        this.apartments[i].avatar = images[0];
 
       })
     }

@@ -2,6 +2,7 @@ import {User} from './user';
 import {Ward} from './ward';
 import {District} from "./district";
 import {Province} from "./province";
+import {Image} from "./image";
 
 export interface Apartment {
   id?: number;
@@ -23,5 +24,5 @@ export interface Apartment {
   district?: District;
   province?: Province;
   image?: any[];
-  avatar?: string;
+  avatar?: Image;
 }

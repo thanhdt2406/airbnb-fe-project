@@ -5,6 +5,7 @@ import {Observable} from 'rxjs';
 import {Apartment} from '../../model/apartment';
 import {Rent} from '../../model/rent';
 import {SearchCondition} from '../../model/search-condition';
+import {Image} from "../../model/image";
 
 const API_URL = `${environment.apiUrl}`;
 
@@ -34,6 +35,10 @@ export class ApartmentService {
 
   updateApartment(id: number, apartment: Apartment): Observable<Apartment> {
     return this.http.put<Apartment>(API_URL + `/apartments/${id}`, apartment);
+  }
+
+  setAvatar(id: number, avatar: string): Observable<Apartment> {
+    return this.http.put<Apartment>(API_URL + `/apartments/avatar/${id}`, avatar);
   }
 
   editApartment(apartment: Apartment): Observable<Apartment> {
