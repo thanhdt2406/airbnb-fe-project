@@ -25,7 +25,7 @@ export class TotalIncomeComponent implements OnInit {
 
   async ngOnInit() {
     for (let i = 0; i < 12; i++) {
-      let value = await this.getTotalIncomeByUserId(this.currUserId, this.currentYear -1, i +1);
+      let value = await this.getTotalIncomeByUserId(this.currUserId, this.currentYear, i +1);
       if (value == null) {
         this.money = 0;
       } else {
@@ -35,13 +35,13 @@ export class TotalIncomeComponent implements OnInit {
     }
     this.chartType = 'line';
     this.chartDatasets = [
-      { data: this.monthTotalGet, label: 'Thống kê thu nhập' },
+      { data: this.monthTotalGet, label: 'Revenue Statistics' },
     ];
 
     this.chartColors = [
       {
-        backgroundColor: 'rgba(105, 0, 132, .2)',
-        borderColor: 'rgba(200, 99, 132, .7)',
+        backgroundColor: 'rgba(253, 198, 60, .2)',
+        borderColor: '#FDC600',
         borderWidth: 2,
       }
     ];
@@ -57,7 +57,8 @@ export class TotalIncomeComponent implements OnInit {
 
   chartColors: Array<any> = [];
 
-  chartLabels: Array<any> = []
+  chartLabels: Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August',
+    'September', 'October', 'November', 'December'];
 
   chartOptions =  {
     responsive: true
@@ -70,5 +71,46 @@ export class TotalIncomeComponent implements OnInit {
     return this.rentService.getTotalIncomeByUserId(currUserId, currentYear, month).toPromise();
   }
 
-
+  monthFormat(i: number) {
+    let format = '';
+    switch (i) {
+      case 0:
+        format = 'January'
+        break;
+      case 1:
+        format = 'February'
+        break;
+      case 2:
+        format = 'March'
+        break;
+      case 3:
+        format = 'April'
+        break;
+      case 4:
+        format = 'May'
+        break;
+      case 5:
+        format = 'June'
+        break;
+      case 6:
+        format = 'July'
+        break;
+      case 7:
+        format = 'August'
+        break;
+      case 8:
+        format = 'September'
+        break;
+      case 9:
+        format = 'October'
+        break;
+      case 10:
+        format = 'November'
+        break;
+      case 11:
+        format = 'December'
+        break;
+    }
+    return format;
+  }
 }
