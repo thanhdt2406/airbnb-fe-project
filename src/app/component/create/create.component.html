@@ -65,7 +65,7 @@
                       <div class="form-group">
                         <label>District :</label>
                         <select  class="show-tick form-control" formControlName="district" name="dis_id" (change)="getAllWardsByDistrictId(dis_id)" [(ngModel)]="dis_id">
-                          <option [selected]="2">select</option>
+                          <option [selected]="2"></option>
                           <option *ngFor="let dis of districts" [value]="dis.id">{{dis.name}}</option>
                         </select>
                       </div>
@@ -163,7 +163,7 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="property-images">Chose Images :</label>
-                        <input class="form-control" formControlName="image" name="image" type="file" id="property-images" multiple (change)="showPreview($event)">
+                        <input class="form-control" name="image" type="file" id="property-images" multiple (change)="showPreview($event)">
                         <p class="help-block">Select multipel images for your property .</p>
                       </div>
                     </div>

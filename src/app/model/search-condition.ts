@@ -1,16 +1,16 @@
 export interface SearchCondition {
-  province?: number;
-  district?: number;
-  ward?: number;
-  bathroom?: number;
-  bedroom?: number;
-  minPrice?: number;
-  maxPrice?: number;
-  vipRoom?: number;
-  luxuryRoom?: number;
-  singleRoom?: number;
-  coupleRoom?: number;
-  presidentRoom?: number;
-  checkIn?: Date;
-  checkOut?: Date;
+  province?: any;
+  district?: any;
+  ward?: any;
+  bathroom?: any;
+  bedroom?: any;
+  minPrice?: any;
+  maxPrice?: any;
+  vipRoom?: any;
+  luxuryRoom?: any;
+  singleRoom?: any;
+  coupleRoom?: any;
+  presidentRoom?: any;
+  checkIn?: any;
+  checkOut?: any;
 }
