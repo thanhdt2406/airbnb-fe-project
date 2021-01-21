@@ -27,7 +27,7 @@ import {RentListComponent} from './component/rent-list/rent-list.component';
 import {RentedHistoryComponent} from './component/rented-history/rented-history.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {TotalIncomeComponent} from './component/total-income/total-income.component';
-import {RatingComponent} from "./component/rating/rating.component";
+import {MDBBootstrapModule} from 'angular-bootstrap-md';
 
 @NgModule({
   declarations: [
@@ -48,18 +48,18 @@ import {RatingComponent} from "./component/rating/rating.component";
     RentListComponent,
     RentedHistoryComponent,
     TotalIncomeComponent,
-    RatingComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireStorageModule,
-    NgxPaginationModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        AngularFireModule.initializeApp(environment.firebaseConfig),
+        AngularFireStorageModule,
+        NgxPaginationModule,
+        MDBBootstrapModule
+    ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
