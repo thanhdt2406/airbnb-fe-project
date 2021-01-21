@@ -12,6 +12,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800' rel='stylesheet' type='text/css'>
   <!-- Place favicon.ico  the root directory -->
+
   <link rel="shortcut icon" href="assets/img/miniLogo.PNG"/>
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="assets/css/normalize.css">
@@ -23,6 +24,8 @@
   <link rel="stylesheet" href="assets/css/bootstrap-select.min.css">
   <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/css/icheck.min_all.css">
+  <link rel='stylesheet prefetch' href='https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css'>
+
   <link rel="stylesheet" href="assets/css/price-range.css">
   <link rel="stylesheet" href="assets/css/owl.carousel.css">
   <link rel="stylesheet" href="assets/css/owl.theme.css">
@@ -31,6 +34,7 @@
   <link rel="stylesheet" href="assets/css/jquery.slitslider.css">
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/rating.css">
   <noscript>
     <link rel="stylesheet" type="text/css" href="assets/css/styleNoJS.css" />
   </noscript>
@@ -178,38 +182,37 @@
     .host {
       color: #FFA500;
     }
-    .ngx-pagination {
-      border: none;
-      color: red;
+    .ngx-pagination .current {
+      background: #FFA500 !important;
+      border-radius: 15%  !important;
+      border: transparent !important;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      color: #838383;
     }
 
-    .custom-pagination .page-number{
-      display: inline-block;
-      /* padding: 5px 12px; */
-      background: #afffe6;
-      margin: 0px 4px;
-      border-radius: 25px;
+    .ngx-pagination li a span {
+      color: #838383;
     }
 
-    .page-number.current{
-      background: #ffffff!important;
-      border: 2px solid #458873;
+    .ngx-pagination .pagination-previous :before{
+      display: none;
     }
 
-    .page-number span{
-      display: block;
-      width: 28px;
-      height: 28px;
-      font-size: 18px;
-      cursor: pointer;
+    .ngx-pagination .pagination-next :before{
+      display: none;
     }
+    .rentInput {
+      float: left;
+      width: 250px;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      background-color: #EEE;
+      border-bottom-color: #FFA500 !important;
 
-    .pagination-previous,.pagination-next{
-      display: inline-block;
-      font-weight: bold;
     }
   </style>
-
 </head>
 <body>
 <app-root></app-root>

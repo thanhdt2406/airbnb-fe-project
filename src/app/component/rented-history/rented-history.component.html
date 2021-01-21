@@ -15,7 +15,6 @@
     <div class="row">
       <hr>
       <div class="col-md-9 pr-30 padding-top-40 properties-page user-properties">
-
         <div class="section">
           <div class="page-subheader sorting pl0 pr-10">
             <ul class="sort-by-list pull-left">
@@ -49,10 +48,9 @@
           </div>
 
         </div>
-
         <div class="section">
           <div id="list-type" class="proerty-th-list">
-            <ng-container *ngFor="let apartment of apartments">
+            <ng-container *ngFor="let apartment of apartments, let i = index">
               <div class="col-md-4 p0">
                 <div class="box-two proerty-item">
                   <div class="item-thumb">
@@ -61,10 +59,11 @@
                   <div class="item-entry overflow">
                     <h5>{{apartment.name}}</h5>
                     <div class="dot-hr"></div>
-                    <span class="proerty-price pull-right"> {{apartment.value}}$</span>
-                    <ul *ngFor="let rent of rents">
-                      <li>start: {{rent.startDate}}</li>
-                      <li>end: {{rent.startDate}}</li>
+                    <span class="proerty-price pull-right"> ${{apartment.value}}</span>
+                    <br><br>
+                    <ul>
+                      <li>start: {{rents[i].startDate}}</li>
+                      <li>end: {{rents[i].startDate}}</li>
                     </ul>
                     <p style="display: none;"></p>
                     <div class="property-icon">

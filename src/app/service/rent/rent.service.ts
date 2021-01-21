@@ -31,4 +31,8 @@ export class RentService {
   getTotalIncomeByUserId(id: number,year:number,month:number) : Observable<number> {
     return this.http.get<number>(API_URL + `/rents/money/user/${id}/years/${year}/months/${month}`);
   }
+
+  getAllRentedByApartment(id: number): Observable<Rent[]> {
+    return this.http.get<Rent[]>(API_URL + `/rents/list/${id}`)
+  }
 }

@@ -28,7 +28,6 @@ import {RentedHistoryComponent} from './component/rented-history/rented-history.
 import {NgxPaginationModule} from 'ngx-pagination';
 import { TotalIncomeComponent } from './component/total-income/total-income.component';
 
-// @ts-ignore
 @NgModule({
   declarations: [
     AppComponent,
