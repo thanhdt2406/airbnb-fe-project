@@ -1,11 +1,13 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {environment} from '../../../environments/environment';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Apartment} from '../../model/apartment';
 import {Rent} from '../../model/rent';
+import {SearchCondition} from '../../model/search-condition';
 
 const API_URL = `${environment.apiUrl}`;
+
 @Injectable({
   providedIn: 'root'
 })
@@ -59,18 +61,17 @@ export class ApartmentService {
   }
 
   getApartmentByUser(id: number): Observable<Apartment[]> {
-    return this.http.get<Apartment[]>(API_URL + `/apartments/user/${id}`)
+    return this.http.get<Apartment[]>(API_URL + `/apartments/user/${id}`);
   }
 
-  rentApartment(id: number,startDate: Date, endDate: Date): Observable<Apartment> {
+  rentApartment(id: number, startDate: Date, endDate: Date): Observable<Apartment> {
     // @ts-ignore
-    return this.http.post<Apartment>(API_URL + `/rents/${id}`,startDate, endDate);
+    return this.http.post<Apartment>(API_URL + `/rents/${id}`, startDate, endDate);
   }
 
-  searchApartmentByCondition(province: string, districts: string, ward: string, bath: string, bed: string, checkin: string, checkout: string, vip: string, luxury: string, single: string, couple: string, president: string, minPrice: string, maxPrice: string): Observable<Apartment[]> {
-    return this.http.get<Apartment[]>(API_URL + `/apartments/searchs?province=${province}&district=${districts}&ward=${ward}&bath=${bath}&bed=${bed}&cr=${couple}&lr=${luxury}&pr=${president}&sr=${single}&vr=${vip}&checkin=${checkin}&checkout=${checkout}&minp=${minPrice}&maxp=${maxPrice}`)
+  searchApartmentByCondition(searchCondition: SearchCondition): Observable<Apartment[]> {
+    return this.http.post<Apartment[]>(API_URL + `/apartments/search`, searchCondition);
   }
-
 
 
 }
