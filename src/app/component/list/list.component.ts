@@ -259,61 +259,25 @@ export class ListComponent implements OnInit {
     } else {
       bed = $('#input-bedroom').val();
     }
-    if ($('#ward_id').val() === 0) {
+    if ($('#ward_id').val() === '') {
       ward_id = null;
     } else {
       ward_id = $('#ward_id').val();
     }
 
     if ($('#timeCheckIn').val() === '') {
-      check_in = null;
+      let checkInArray = new Date().toDateString().split(' ');
+      check_in = checkInArray[3].concat("-",this.convertMonthToNumber(checkInArray[1]),"-",checkInArray[2]);
     } else {
       let checkInArray = new Date($('#timeCheckIn').val()).toDateString().split(' ');
-      switch (checkInArray[2]) {
-        case 'Jan':
-          checkInArray[2] = '01';
-          break;
-        case 'Feb':
-          checkInArray[2] = '02';
-          break;
-        case 'Mar':
-          checkInArray[2] = '03';
-          break;
-        case 'Apr':
-          checkInArray[2] = '04';
-          break;
-        case 'May':
-          checkInArray[2] = '05';
-          break;
-        case 'Jun':
-          checkInArray[2] = '06';
-          break;
-        case 'Jul':
-          checkInArray[2] = '07';
-          break;
-        case 'Aug':
-          checkInArray[2] = '08';
-          break;
-        case 'Sep':
-          checkInArray[2] = '09';
-          break;
-        case 'Oct':
-          checkInArray[2] = '10';
-          break;
-        case 'Nov':
-          checkInArray[2] = '11';
-          break;
-        case 'Dec':
-          checkInArray[2] = '12';
-          break;
-      }
-      check_in = checkInArray[3].concat('-', checkInArray[2], '-', checkInArray[1]);
+      check_in = checkInArray[3].concat("-",this.convertMonthToNumber(checkInArray[1]),"-",checkInArray[2]);
     }
     if ($('#timeCheckOut').val() === '') {
-      check_out = null;
+      let checkOutArray = new Date('2099-12-31').toDateString().split(' ');
+      check_out = checkOutArray[3].concat("-",this.convertMonthToNumber(checkOutArray[1]),"-",checkOutArray[2]);
     } else {
       let checkOutArray = new Date($('#timeCheckOut').val()).toDateString().split(' ');
-      check_out = checkOutArray[3].concat('-', checkOutArray[2], '-', checkOutArray[1]);
+      check_out = checkOutArray[3].concat("-",this.convertMonthToNumber(checkOutArray[1]),"-",checkOutArray[2]);
     }
 
     if ($('#vipRoom').val() === '') {
@@ -350,16 +314,16 @@ export class ListComponent implements OnInit {
     this.searchCondition = {
       province: pro_id,
       district: dis_id,
-      ward: +ward_id,
-      bathroom: +bath,
-      bedroom: +bed,
-      vipRoom: +vipRoom,
-      luxuryRoom: +luxuryRoom,
-      singleRoom: +singleRoom,
-      coupleRoom: +coupleRoom,
-      presidentRoom: +presidentRoom,
-      minPrice: +min_price,
-      maxPrice: +max_price,
+      ward: ward_id,
+      bathroom: bath,
+      bedroom: bed,
+      vipRoom: vipRoom,
+      luxuryRoom: luxuryRoom,
+      singleRoom: singleRoom,
+      coupleRoom: coupleRoom,
+      presidentRoom: presidentRoom,
+      minPrice: min_price,
+      maxPrice: max_price,
       checkIn: check_in,
       checkOut: check_out
     };
@@ -398,6 +362,61 @@ export class ListComponent implements OnInit {
   pageChanged(event: any) {
     // @ts-ignore
     this.config.currentPage = event;
+  }
+
+  convertMonthToNumber(month: string){
+    let number = "01";
+    switch (month){
+      case 'Jan': {
+        number = "01";
+        break;
+      }
+      case 'Feb': {
+        number = "02";
+        break;
+      }
+      case 'Mar': {
+        number = "03";
+        break;
+      }
+      case 'Apr': {
+        number = "04";
+        break;
+      }
+      case 'May': {
+        number = "05";
+        break;
+      }
+      case 'Jun': {
+        number = "06";
+        break;
+      }
+      case 'Jul': {
+        number = "07";
+        break;
+      }
+      case 'Aug': {
+        number = "08";
+        break;
+      }
+      case 'Sep': {
+        number = "09";
+        break;
+      }
+      case 'Oct': {
+        number = "10";
+        break;
+      }
+      case 'Nov': {
+        number = "11";
+        break;
+      }
+      case 'Dec': {
+        number = "12";
+        break;
+      }
+    }
+    return number;
   }
 
 }

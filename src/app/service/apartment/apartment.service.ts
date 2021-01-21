@@ -75,8 +75,7 @@ export class ApartmentService {
   }
 
   searchApartmentByCondition(searchCondition: SearchCondition): Observable<Apartment[]> {
-    // @ts-ignore
-    return this.http.get<Apartment[]>(API_URL + `/apartments/search`, {});
+    return this.http.post<Apartment[]>(API_URL + `/apartments/search`, searchCondition);
   }
 
 
