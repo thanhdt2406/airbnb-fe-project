@@ -14,8 +14,8 @@ export class RentService {
   constructor(private http: HttpClient) {
   }
 
-  getRentById(rentID: number): Observable<Rent> {
-    return this.http.get<Rent>(API_URL + `rents/rent/${rentID}`);
+  getRentById(rentID: number) {
+    return this.http.get<Rent>(API_URL + `/rents/rent/${rentID}`);
   }
 
   getAllRented(useriId: number): Observable<Rent> {
