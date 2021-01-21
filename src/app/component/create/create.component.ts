@@ -288,6 +288,7 @@ export class CreateComponent implements OnInit {
           });
         });
       }
+
     } else {
       $(function () {
         const Toast = Swal.mixin({
