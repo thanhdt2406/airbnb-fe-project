@@ -47,7 +47,7 @@ import {MDBBootstrapModule} from 'angular-bootstrap-md';
     LoginGoogleComponent,
     RentListComponent,
     RentedHistoryComponent,
-    TotalIncomeComponent
+    TotalIncomeComponent,
   ],
     imports: [
         BrowserModule,

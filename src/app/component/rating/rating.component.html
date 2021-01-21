@@ -1,0 +1,53 @@
+<div class="page-head">
+  <div class="container">
+    <div class="row">
+      <div class="page-head-content">
+        <h1 class="page-title">Rating apartment</h1>
+      </div>
+    </div>
+  </div>
+</div>
+<hr>
+<div class="container">
+  <div class="col-md-9 pr-30 padding-top-40 properties-page user-properties">
+    <div class="stars" style="margin: 0 auto">
+      <h3>Name: baldals</h3>
+      <form action="">
+        <input class="star star-5" id="star-5" type="radio" name="star" value="5"/>
+        <label class="star star-5" for="star-5"></label>
+        <input class="star star-4" id="star-4" type="radio" name="star" value="4"/>
+        <label class="star star-4" for="star-4"></label>
+        <input class="star star-3" id="star-3" type="radio" name="star" value="3"/>
+        <label class="star star-3" for="star-3"></label>
+        <input class="star star-2" id="star-2" type="radio" name="star" value="2"/>
+        <label class="star star-2" for="star-2"></label>
+        <input class="star star-1" id="star-1" type="radio" name="star" value="1"/>
+        <label class="star star-1" for="star-1"></label>
+        <hr>
+        <textarea id="content" name="content" rows="4" cols="70" [(ngModel)]="content">
+          say something....
+        </textarea>
+        <div class="col-sm-12 padding-top-25">
+          <div class="col-sm-5"></div>
+          <div class="col-sm-6">
+            <input type="submit" name="submit" value="submit" (click)="submit()">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="col-md-3 p0 padding-top-40">
+    <div class="blog-asside-right">
+      <div class="panel panel-default sidebar-menu wow fadeInRight animated">
+        <div class="panel-heading">
+          <h3 class="panel-title">Hello <small *ngIf="currentUser.name">{{currentUser.name}}</small>
+            <small *ngIf="!currentUser.name">Anonymous</small></h3>
+        </div>
+        <div class="panel-body search-widget">
+          <a href="">Rented history</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<hr>
