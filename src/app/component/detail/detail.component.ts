@@ -199,7 +199,7 @@ export class DetailComponent implements OnInit {
         this.checkinCheck = false;
         break
       }else {
-        this.checkoutCheck = true;
+        this.checkinCheck = true;
       }
     }
     for (let i = 0; i < this.rents.length ; i ++){
