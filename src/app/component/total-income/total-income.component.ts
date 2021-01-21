@@ -18,6 +18,7 @@ export class TotalIncomeComponent implements OnInit {
   money: number = 0;
   monthTotalGet: any = [];
   currentUser = this.authService.currentUserValue;
+  responsive: boolean = true;
   constructor(private rentService: RentService,
               private authService: AuthService,) {
   }
@@ -32,27 +33,33 @@ export class TotalIncomeComponent implements OnInit {
       }
       this.monthTotalGet.push(this.money);
     }
-    console.log(this.monthTotalGet);
+    this.chartType = 'line';
+    this.chartDatasets = [
+      { data: this.monthTotalGet, label: 'Thống kê thu nhập' },
+    ];
 
+    this.chartColors = [
+      {
+        backgroundColor: 'rgba(105, 0, 132, .2)',
+        borderColor: 'rgba(200, 99, 132, .7)',
+        borderWidth: 2,
+      }
+    ];
+    this.chartLabels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August',
+      'September', 'October', 'November', 'December'];
+    this.chartOptions =  {
+      responsive: true
+    };
   }
 
   chartType: string = 'line';
-  chartDatasets: Array<any> = [
-    { data: this.monthTotalGet, label: 'Thống kê thu nhập' },
-  ];
+  chartDatasets: Array<any> = []
 
-  chartColors: Array<any> = [
-    {
-      backgroundColor: 'rgba(105, 0, 132, .2)',
-      borderColor: 'rgba(200, 99, 132, .7)',
-      borderWidth: 2,
-    }
-  ];
+  chartColors: Array<any> = [];
 
-  chartLabels: Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August',
-    'September', 'October', 'November', 'December']
+  chartLabels: Array<any> = []
 
-  chartOptions: any = {
+  chartOptions =  {
     responsive: true
   };
 
