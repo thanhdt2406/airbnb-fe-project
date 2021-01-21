@@ -18,13 +18,14 @@ export class TotalIncomeComponent implements OnInit {
   money: number = 0;
   monthTotalGet: any = [];
   currentUser = this.authService.currentUserValue;
+  responsive: boolean = true;
   constructor(private rentService: RentService,
               private authService: AuthService,) {
   }
 
   async ngOnInit() {
     for (let i = 0; i < 12; i++) {
-      let value = await this.getTotalIncomeByUserId(this.currUserId, this.currentYear -1, i +1);
+      let value = await this.getTotalIncomeByUserId(this.currUserId, this.currentYear, i +1);
       if (value == null) {
         this.money = 0;
       } else {
@@ -32,27 +33,34 @@ export class TotalIncomeComponent implements OnInit {
       }
       this.monthTotalGet.push(this.money);
     }
-    console.log(this.monthTotalGet);
+    this.chartType = 'line';
+    this.chartDatasets = [
+      { data: this.monthTotalGet, label: 'Revenue Statistics' },
+    ];
 
+    this.chartColors = [
+      {
+        backgroundColor: 'rgba(253, 198, 60, .2)',
+        borderColor: '#FDC600',
+        borderWidth: 2,
+      }
+    ];
+    this.chartLabels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August',
+      'September', 'October', 'November', 'December'];
+    this.chartOptions =  {
+      responsive: true
+    };
   }
 
   chartType: string = 'line';
-  chartDatasets: Array<any> = [
-    { data: this.monthTotalGet, label: 'Thống kê thu nhập' },
-  ];
+  chartDatasets: Array<any> = []
 
-  chartColors: Array<any> = [
-    {
-      backgroundColor: 'rgba(105, 0, 132, .2)',
-      borderColor: 'rgba(200, 99, 132, .7)',
-      borderWidth: 2,
-    }
-  ];
+  chartColors: Array<any> = [];
 
   chartLabels: Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August',
-    'September', 'October', 'November', 'December']
+    'September', 'October', 'November', 'December'];
 
-  chartOptions: any = {
+  chartOptions =  {
     responsive: true
   };
 
@@ -63,5 +71,46 @@ export class TotalIncomeComponent implements OnInit {
     return this.rentService.getTotalIncomeByUserId(currUserId, currentYear, month).toPromise();
   }
 
-
+  monthFormat(i: number) {
+    let format = '';
+    switch (i) {
+      case 0:
+        format = 'January'
+        break;
+      case 1:
+        format = 'February'
+        break;
+      case 2:
+        format = 'March'
+        break;
+      case 3:
+        format = 'April'
+        break;
+      case 4:
+        format = 'May'
+        break;
+      case 5:
+        format = 'June'
+        break;
+      case 6:
+        format = 'July'
+        break;
+      case 7:
+        format = 'August'
+        break;
+      case 8:
+        format = 'September'
+        break;
+      case 9:
+        format = 'October'
+        break;
+      case 10:
+        format = 'November'
+        break;
+      case 11:
+        format = 'December'
+        break;
+    }
+    return format;
+  }
 }
