@@ -30,7 +30,6 @@ export class UserService {
   }
 
   changePassword(user: User): Observable<User> {
-    // @ts-ignore
-    return this.http.put<User>(API_URL + '/users/passwords', user);
+    return this.http.put<User>(API_URL + `/users/passwords`, user);
   }
 }
