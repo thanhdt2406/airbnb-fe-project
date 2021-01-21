@@ -25,7 +25,6 @@ export class TotalIncomeComponent implements OnInit {
   }
 
   async ngOnInit() {
-
     for (let i = 0; i< 12; i++) {
       // @ts-ignore
       await this.rentService.getTotalIncomeByUserId(this.currUserId,this.currentYear, i + 1 ).subscribe(value => {
@@ -38,8 +37,6 @@ export class TotalIncomeComponent implements OnInit {
       });
     }
     console.log(this.monthTotalGet);
-      // @ts-ignore
-
 
     let areaChartData = {
       labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August',
@@ -60,10 +57,8 @@ export class TotalIncomeComponent implements OnInit {
     };
 
     let barChartData = jQuery.extend(true, {}, areaChartData);
-    let stackedBarChartCanvas = $('#stackedBarChart').get(0).getContext('2d');
-    // @ts-ignore
+    let stackedBarChartCanvas = $('#stackedBarChart').getContext('2d');
     let stackedBarChartData = jQuery.extend(true, {}, barChartData);
-
     let stackedBarChartOptions = {
       responsive: true,
       maintainAspectRatio: false,
@@ -84,9 +79,4 @@ export class TotalIncomeComponent implements OnInit {
     });
   }
 
-  val: number = 0;
-
-  getTotalIncome(userId: number, year: number, month: number) {
-    this.rentService.getTotalIncomeByUserId(userId, year, month).toPromise()
-  }
 }
