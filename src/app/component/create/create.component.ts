@@ -256,7 +256,9 @@ export class CreateComponent implements OnInit {
       if (this.selectedImages.length !== 0) {
         // this.apartForm.reset();
         // $('.textarea').summernote('reset');
-        for (let selectedImage of this.selectedImages) {
+        //let selectedImage of this.selectedImages
+        for (let i = 0; i < this.selectedImages.length; i++) {
+          let selectedImage = this.selectedImages[i];
           const filePath = `${apartment.name}/${selectedImage.name.split('.').slice(0, -1).join('.')}_${new Date().getTime()}`;
           const fileRef = this.storage.ref(filePath);
           this.storage.upload(filePath, selectedImage).snapshotChanges().pipe(
@@ -268,18 +270,16 @@ export class CreateComponent implements OnInit {
                     id: apartment.id
                   }
                 };
-                if (selectedImage == this.selectedImages[0]) {
+                if (i == 0) {
                   apartment.avatar = image;
                   // @ts-ignore
                   this.apartmentService.setAvatar(apartment.id, image.image).subscribe(() => {
-                    alert("getavt")
+                    alert("success!");
                   }, error => {
-                    alert("can get avt")
+                    alert("fail");
                   });
                 }
-                this.imageService.createImage(image).subscribe(() => {
-                }, () => {
-                });
+                this.imageService.createImage(image);
               });
             })
           ).subscribe();
