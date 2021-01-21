@@ -27,12 +27,7 @@ export class ApartmentService {
   }
 
   createApartment(apartment: Apartment): Observable<Apartment> {
-    // @ts-ignore
-    return this.http.post<Apartment>(API_URL + '/apartments', apartment).subscribe(() => {
-      alert("create success!");
-    }, error => {
-      alert("fail!");
-    });
+    return this.http.post<Apartment>(API_URL + '/apartments', apartment);
   }
 
   updateApartment(id: number, apartment: Apartment): Observable<Apartment> {

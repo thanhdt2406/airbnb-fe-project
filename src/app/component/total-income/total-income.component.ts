@@ -1,8 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {RentService} from '../../service/rent/rent.service';
 import {AuthService} from '../../service/auth/auth.service';
-import {TotalIncome} from '../../model/total-income';
-
 
 declare var $: any;
 declare var jQuery: any;
@@ -24,10 +22,10 @@ export class TotalIncomeComponent implements OnInit {
               private authService: AuthService) {
   }
 
-  async ngOnInit() {
+  ngOnInit() {
     for (let i = 0; i< 12; i++) {
       // @ts-ignore
-      await this.rentService.getTotalIncomeByUserId(this.currUserId,this.currentYear, i + 1 ).subscribe(value => {
+      this.rentService.getTotalIncomeByUserId(this.currUserId,this.currentYear, i + 1 ).subscribe(value => {
         if (value == null) {
           this.money = 0
         }else {
@@ -57,7 +55,7 @@ export class TotalIncomeComponent implements OnInit {
     };
 
     let barChartData = jQuery.extend(true, {}, areaChartData);
-    let stackedBarChartCanvas = $('#stackedBarChart').getContext('2d');
+    let stackedBarChartCanvas = $('#stackedBarChart').get(0).getContext('2d');
     let stackedBarChartData = jQuery.extend(true, {}, barChartData);
     let stackedBarChartOptions = {
       responsive: true,

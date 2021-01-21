@@ -26,7 +26,7 @@ import {LoginGoogleComponent} from "./component/login-google/login-google.compon
 import {RentListComponent} from './component/rent-list/rent-list.component';
 import {RentedHistoryComponent} from './component/rented-history/rented-history.component';
 import {NgxPaginationModule} from 'ngx-pagination';
-import { TotalIncomeComponent } from './component/total-income/total-income.component';
+import {TotalIncomeComponent} from './component/total-income/total-income.component';
 
 @NgModule({
   declarations: [

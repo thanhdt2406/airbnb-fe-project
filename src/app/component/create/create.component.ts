@@ -268,7 +268,8 @@ export class CreateComponent implements OnInit {
                     id: apartment.id
                   }
                 };
-                this.imageService.createImage(image);
+                this.imageService.createImage(image).subscribe(() => {
+                }, () => {});
               });
             })
           ).subscribe();
@@ -342,7 +343,6 @@ export class CreateComponent implements OnInit {
       status: 0,
     };
     if (isValidated) {
-      // @ts-ignore
       return this.apartmentService.createApartment(apartment).toPromise();
     }
 
