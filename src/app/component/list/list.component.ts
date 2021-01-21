@@ -8,8 +8,9 @@ import {Ward} from '../../model/ward';
 import {WardService} from '../../service/ward/ward.service';
 import {DistrictService} from '../../service/district/district.service';
 import {ProvinceService} from '../../service/province/province.service';
-import {Image} from "../../model/image";
-import {ImageService} from "../../service/image/image.service";
+import {Image} from '../../model/image';
+import {ImageService} from '../../service/image/image.service';
+import {SearchCondition} from '../../model/search-condition';
 
 declare var $: any;
 
@@ -28,6 +29,7 @@ export class ListComponent implements OnInit {
   dis_id: number = 0;
   images: Image[] = [];
   dateCheckIn: string = '';
+  searchCondition: SearchCondition = {};
 
   constructor(private apartmentService: ApartmentService,
               private wardService: WardService,
@@ -189,7 +191,7 @@ export class ListComponent implements OnInit {
         onRender: function(date: any) {
           return date.valueOf() <= checkin.date.valueOf() ? 'disabled' : '';
         }
-      }).on('changeDate', function (ev: any) {
+      }).on('changeDate', function(ev: any) {
         checkout.hide();
       }).data('datepicker');
     });
@@ -204,7 +206,7 @@ export class ListComponent implements OnInit {
         // @ts-ignore
         this.imageService.getAllByApartment(this.apartments[i].id).subscribe(images => {
           this.apartments[i].avatar = images[0].image;
-        })
+        });
       }
     });
   }
@@ -231,49 +233,169 @@ export class ListComponent implements OnInit {
   }
 
   submitSearch() {
-    let bath = '';
-    let bed = '';
-    let pro_id = '';
-    let dis_id = '';
-    let ward_id = '';
-    let check_in = '';
-    let check_out = '';
-    let vipRoom = '';
-    let luxuryRoom = '';
-    let singleRoom = '';
-    let coupleRoom = '';
-    let presidentRoom = '';
+    let bath;
+    let bed;
+    let pro_id;
+    let dis_id;
+    let ward_id;
+    let check_in;
+    let check_out;
+    let vipRoom;
+    let luxuryRoom;
+    let singleRoom;
+    let coupleRoom;
+    let presidentRoom;
     let priceArray = $('#price-range').val().split(',');
-    let min_price = '';
-    let max_price = '';
+    let min_price;
+    let max_price;
 
-    bath = $('#min-baths').val();
-    bed = $('#min-bed').val();
+    if ($('#input-bathroom').val() === '') {
+      bath = null;
+    } else {
+      bath = $('#input-bathroom').val();
+    }
+    if ($('#input-bedroom').val() === '') {
+      bed = null;
+    } else {
+      bed = $('#input-bedroom').val();
+    }
+    if ($('#ward_id').val() === 0) {
+      ward_id = null;
+    } else {
+      ward_id = $('#ward_id').val();
+    }
+
+    if ($('#timeCheckIn').val() === '') {
+      check_in = null;
+    } else {
+      let checkInArray = new Date($('#timeCheckIn').val()).toDateString().split(' ');
+      switch (checkInArray[2]) {
+        case 'Jan':
+          checkInArray[2] = '01';
+          break;
+        case 'Feb':
+          checkInArray[2] = '02';
+          break;
+        case 'Mar':
+          checkInArray[2] = '03';
+          break;
+        case 'Apr':
+          checkInArray[2] = '04';
+          break;
+        case 'May':
+          checkInArray[2] = '05';
+          break;
+        case 'Jun':
+          checkInArray[2] = '06';
+          break;
+        case 'Jul':
+          checkInArray[2] = '07';
+          break;
+        case 'Aug':
+          checkInArray[2] = '08';
+          break;
+        case 'Sep':
+          checkInArray[2] = '09';
+          break;
+        case 'Oct':
+          checkInArray[2] = '10';
+          break;
+        case 'Nov':
+          checkInArray[2] = '11';
+          break;
+        case 'Dec':
+          checkInArray[2] = '12';
+          break;
+      }
+      check_in = checkInArray[3].concat('-', checkInArray[2], '-', checkInArray[1]);
+    }
+    if ($('#timeCheckOut').val() === '') {
+      check_out = null;
+    } else {
+      let checkOutArray = new Date($('#timeCheckOut').val()).toDateString().split(' ');
+      check_out = checkOutArray[3].concat('-', checkOutArray[2], '-', checkOutArray[1]);
+    }
+
+    if ($('#vipRoom').val() === '') {
+      vipRoom = null;
+    } else {
+      vipRoom = $('#vipRoom').val();
+    }
+    if ($('#luxuryRoom').val() === '') {
+      luxuryRoom = null;
+    } else {
+      luxuryRoom = $('#luxuryRoom').val();
+    }
+    if ($('#singleRoom').val() === '') {
+      singleRoom = null;
+    } else {
+      singleRoom = $('#singleRoom').val();
+    }
+    if ($('#coupleRoom').val() === '') {
+      coupleRoom = null;
+    } else {
+      coupleRoom = $('#coupleRoom').val();
+    }
+    if ($('#presidentRoom').val() === '') {
+      presidentRoom = null;
+    } else {
+      presidentRoom = $('#presidentRoom').val();
+    }
+
     pro_id = $('#pro_id').val();
     dis_id = $('#dis_id').val();
-    ward_id = $('#ward_id').val();
-    check_in = $('#timeCheckIn').val();
-    check_out = $('#timeCheckOut').val();
-    vipRoom = $('#vipRoom').val();
-    luxuryRoom = $('#luxuryRoom').val();
-    singleRoom = $('#singleRoom').val();
-    coupleRoom = $('#coupleRoom').val();
-    presidentRoom = $('#presidentRoom').val();
     min_price = priceArray[0];
     max_price = priceArray[1];
 
-    if (pro_id === null) {
-      pro_id = '';
-    }
-    if (dis_id === null) {
-      dis_id = '';
-    }
+    this.searchCondition = {
+      province: pro_id,
+      district: dis_id,
+      ward: +ward_id,
+      bathroom: +bath,
+      bedroom: +bed,
+      vipRoom: +vipRoom,
+      luxuryRoom: +luxuryRoom,
+      singleRoom: +singleRoom,
+      coupleRoom: +coupleRoom,
+      presidentRoom: +presidentRoom,
+      minPrice: +min_price,
+      maxPrice: +max_price,
+      checkIn: check_in,
+      checkOut: check_out
+    };
 
-    // @ts-ignore
-    this.apartmentService.searchApartmentByCondition(pro_id, dis_id, ward_id, bath, check_in,check_out, vipRoom, luxuryRoom, singleRoom,coupleRoom, presidentRoom, min_price, max_price).subscribe(apartments => { this.apartments = apartments; });
+    // this.searchCondition = {
+    //   province: ,
+    //   district: 1,
+    //   ward: 1,
+    //   // @ts-ignore
+    //   bathroom: null,
+    //   // @ts-ignore
+    //   bedroom: null,
+    //   minPrice: 0,
+    //   maxPrice: 5000,
+    //   vipRoom: 0,
+    //   // @ts-ignore
+    //   luxuryRoom: null,
+    //   // @ts-ignore
+    //   singleRoom: null,
+    //   // @ts-ignore
+    //   coupleRoom: null,
+    //   // @ts-ignore
+    //   presidentRoom: null,
+    //   // @ts-ignore
+    //   checkIn: null,
+    //   // @ts-ignore
+    //   checkOut: null
+    // };
+
+    this.apartmentService.searchApartmentByCondition(this.searchCondition).subscribe(data => {
+      this.apartments = data;
+      console.log(1);
+    });
   }
 
-  pageChanged(event: any){
+  pageChanged(event: any) {
     // @ts-ignore
     this.config.currentPage = event;
   }

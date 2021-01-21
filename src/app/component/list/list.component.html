@@ -8,24 +8,24 @@
             <div class="col-sm-12">
               <div class="col-sm-4">
                 <div class="form-group">
-                  <label>Province :</label>
+                  <label>Province</label>
                   <select class="show-tick form-control" id="pro_id" style="width: 300px;"  name="pro_id" (change)="getAllDistrictsByProvinceId(pro_id)" [(ngModel)]="pro_id">
-                    <option value="">Chọn tỉnh thành</option>
+                    <option value="" selected>Select a province</option>
                     <option  *ngFor="let province of provinces" [value]="province.id">{{province.name}}</option>
                   </select>
                 </div>
               </div>
               <div class="col-sm-4">
                 <div class="form-group">
-                  <label>District :</label>
+                  <label>District</label>
                   <select title="Chọn Quận/Huyện"  class="show-tick form-control" id="dis_id"  style="width: 300px;" name="dis_id" (change)="getAllWardsByDistrictId(dis_id)" [(ngModel)]="dis_id">
-                    <option value=""></option>
+                    <option value="" selected></option>
                     <option *ngFor="let dis of districts" [value]="dis.id">{{dis.name}}</option>
                   </select>
                 </div>
               </div>
               <div class="col-sm-4">
-                <label>Wards :</label>
+                <label>Ward</label>
                 <select  class="show-tick form-control" name="ward" id="ward_id" style="width: 300px;">
                   <option value="" selected></option>
                   <option *ngFor="let war of wards" [value]="war.id">{{war.name}}</option>
@@ -36,34 +36,24 @@
               <div class="search-row">
                 <div class="col-md-4 row">
                     <div class="col-sm-6">
-                      <label for="min-baths" >Bathroom :</label>
-                      <input type="text" class="span2" name="test" data-slider-min="1"
-                             data-slider-max="6" data-slider-step="1"
-                             data-slider-value="[1]" id="min-baths" [defaultValue]="1" value=""><br />
-                      <b class="pull-left color">1</b>
-                      <b class="pull-right color">6</b>
+                      <label for="input-bedroom" class="form-label">Bedroom</label>
+                      <input type="number" id="input-bedroom" class="form-control" >
                     </div>
-                    <!-- End of  -->
 
-                    <div class="col-sm-6">
-                      <label for="min-bed">Bedroom :</label>
-                      <input type="text" class="span2" data-slider-min="1"
-                             data-slider-max="6" data-slider-step="1"
-                             data-slider-value="[1]" id="min-bed" [defaultValue]="1" value=""><br />
-                      <b class="pull-left color">1</b>
-                      <b class="pull-right color">6</b>
-                    </div>
-                    <!-- End of  -->
+                  <div class="col-sm-6">
+                    <label for="input-bathroom" class="form-label">Bathroom</label>
+                    <input type="number" id="input-bathroom" class="form-control" >
+                  </div>
                   </div>
                 <div class="col-md-8 row">
                   <div class="col-sm-1"></div>
                   <div class="col-sm-5">
-                    <label for="price-range">Range-Price</label>
-                    <input type="text" class="span2" value="" data-slider-min="100"
-                             data-slider-max="5000" data-slider-step="100"
-                             data-slider-value="[100,1200]"  [defaultValue]="[100,1200]" id="price-range" ><br />
-                    <b class="pull-left color">100</b>
-                    <b class="pull-right color">5000</b>
+                    <label for="price-range">Price</label>
+                    <input type="text" class="span2" value="" data-slider-min="0"
+                             data-slider-max="5000" data-slider-step="10"
+                             data-slider-value="[0,5000]"  [defaultValue]="[0,5000]" id="price-range" ><br />
+                    <b class="pull-left color">$0</b>
+                    <b class="pull-right color">$5000</b>
                   </div>
                 </div>
             </div>
