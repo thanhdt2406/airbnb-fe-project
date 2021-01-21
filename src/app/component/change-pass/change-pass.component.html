@@ -24,6 +24,9 @@
                 <div *ngIf="myForm.hasError('required', 'oldPassword')">
                   Please enter your old password!
                 </div>
+                <div *ngIf="output">
+                  {{output}}
+                </div>
                 <div *ngIf="notExist">
                   {{notExist}}
                 </div>

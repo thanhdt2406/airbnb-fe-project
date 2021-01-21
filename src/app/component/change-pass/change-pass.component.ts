@@ -19,6 +19,7 @@ export class ChangePassComponent implements OnInit {
   myForm: FormGroup;
   notExist: string = '';
   notMinLength: string = '';
+  output: string  = '';
 
   constructor(private formBuilder: FormBuilder,
               private activatedRoute: ActivatedRoute,
@@ -57,9 +58,15 @@ export class ChangePassComponent implements OnInit {
     //   return;
     // }
     this.currentUser.password = this.myForm.controls.newPassword.value;
-    this.userService.changePassword(this.currentUser).subscribe(() => {
-      alert('Đổi mật khẩu thành công!');
-      this.router.navigate(['/']);
+    this.userService.changePassword(this.currentUser).subscribe(data => {
+      if(data === "Wrong password"){
+        // @ts-ignore
+        this.output = data;
+      }else{
+        alert('Đổi mật khẩu thành công!');
+        this.router.navigate(['/']);
+      }
+
     });
   }
 
