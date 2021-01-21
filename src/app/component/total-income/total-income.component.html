@@ -1,12 +1,49 @@
-<div style="display: block">
-  <canvas mdbChart
-          [chartType]="chartType"
-          [datasets]="chartDatasets"
-          [labels]="chartLabels"
-          [colors]="chartColors"
-          [options]="chartOptions"
-          [legend]="true"
-          (chartHover)="chartHovered($event)"
-          (chartClick)="chartClicked($event)">
-  </canvas>
+<!--
+
+-->
+<div class="page-head">
+  <div class="container">
+    <div class="row">
+      <div class="page-head-content">
+        <h1 class="page-title">List Layout With Sidebar</h1>
+      </div>
+    </div>
+  </div>
 </div>
+<!-- End page header -->
+
+<!-- property area -->
+<div class="content-area recent-property" style="background-color: #FFF;">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9 pr-30 padding-top-40 properties-page user-properties">
+        <div style="display: block">
+          <canvas mdbChart
+                  [chartType]="chartType"
+                  [datasets]="chartDatasets"
+                  [labels]="chartLabels"
+                  [colors]="chartColors"
+                  [options]="chartOptions"
+                  [legend]="true"
+                  (chartHover)="chartHovered($event)"
+                  (chartClick)="chartClicked($event)">
+          </canvas>
+        </div>
+      </div>
+
+      <div class="col-md-3 p0 padding-top-40">
+        <div class="blog-asside-right">
+          <div class="panel panel-default sidebar-menu wow fadeInRight animated" >
+            <div class="panel-heading">
+              <h3 class="panel-title">Hello <small *ngIf="currentUser.name">{{currentUser.name}}</small>
+                <small *ngIf="!currentUser.name">Anonymous</small></h3>
+            </div>
+            <div class="panel-body search-widget">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

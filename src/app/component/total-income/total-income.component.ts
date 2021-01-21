@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {RentService} from '../../service/rent/rent.service';
 import {AuthService} from '../../service/auth/auth.service';
+import {User} from '../../model/user';
 
 declare var $: any;
 declare var jQuery: any;
@@ -16,10 +17,9 @@ export class TotalIncomeComponent implements OnInit {
   currUserId = this.authService.currentUserValue.id;
   money: number = 0;
   monthTotalGet: any = [];
-
-
+  currentUser = this.authService.currentUserValue;
   constructor(private rentService: RentService,
-              private authService: AuthService) {
+              private authService: AuthService,) {
   }
 
   async ngOnInit() {
@@ -37,7 +37,6 @@ export class TotalIncomeComponent implements OnInit {
   }
 
   chartType: string = 'line';
-
   chartDatasets: Array<any> = [
     { data: this.monthTotalGet, label: 'Thống kê thu nhập' },
   ];
@@ -63,4 +62,6 @@ export class TotalIncomeComponent implements OnInit {
   getTotalIncomeByUserId(currUserId: any, currentYear: any, month: any) {
     return this.rentService.getTotalIncomeByUserId(currUserId, currentYear, month).toPromise();
   }
+
+
 }
