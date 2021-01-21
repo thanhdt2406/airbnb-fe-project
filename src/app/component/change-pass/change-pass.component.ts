@@ -27,7 +27,6 @@ export class ChangePassComponent implements OnInit {
               private authService: AuthService,
               private userService: UserService) {
     this.myForm = this.formBuilder.group({
-      oldPassword: ['', [Validators.required]],
       newPassword: ['', [Validators.required]],
       confirmPassword: ['']
     }, {validator: this.checkPasswords});
@@ -59,14 +58,8 @@ export class ChangePassComponent implements OnInit {
     // }
     this.currentUser.password = this.myForm.controls.newPassword.value;
     this.userService.changePassword(this.currentUser).subscribe(data => {
-      if(data === "Wrong password"){
-        // @ts-ignore
-        this.output = data;
-      }else{
         alert('Đổi mật khẩu thành công!');
         this.router.navigate(['/']);
-      }
-
     });
   }
 
