@@ -5,7 +5,7 @@
   <div class="container">
     <div class="row">
       <div class="page-head-content">
-        <h1 class="page-title">List Layout With Sidebar</h1>
+        <h1 class="page-title">Revenue Statistics</h1>
       </div>
     </div>
   </div>
@@ -35,8 +35,160 @@
         <div class="blog-asside-right">
           <div class="panel panel-default sidebar-menu wow fadeInRight animated" >
             <div class="panel-heading">
-              <h3 class="panel-title">Hello <small *ngIf="currentUser.name">{{currentUser.name}}</small>
-                <small *ngIf="!currentUser.name">Anonymous</small></h3>
+              <h3 class="panel-title">Revenue statistics of:</h3>
+            </div>
+            <div class="panel-heading">
+              <div style=" margin-bottom: 10px;border-bottom: grey 1px solid; padding-bottom: 10px;">
+                <div class="panel-heading">
+                  <h3 class="panel-title">2021</h3>
+                </div>
+                <ng-container *ngFor="let mouth of monthTotalGet; let i = index">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div>
+                      <span style="font-weight: bold; color: #777">{{monthFormat(i)}}</span><br>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div>
+                      <small>{{monthTotalGet[i] | currency}}</small>
+                    </div>
+                  </div>
+                </div>
+                </ng-container>
+                <!--<div class="row">
+                  <div class="col-sm-6">
+                    <div>
+                      <span style="font-weight: bold; color: #777">February</span><br>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div>
+                      <small>{{monthTotalGet[1] | currency}}</small>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div>
+                      <span style="font-weight: bold; color: #777">March</span><br>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div>
+                      <small>{{monthTotalGet[2] | currency}}</small>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div>
+                      <span style="font-weight: bold; color: #777">April</span><br>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div>
+                      <small>{{monthTotalGet[3] | currency}}</small>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div>
+                      <span style="font-weight: bold; color: #777">May</span><br>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div>
+                      <small>{{monthTotalGet[4] | currency}}</small>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div>
+                      <span style="font-weight: bold; color: #777">June</span><br>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div>
+                      <small>{{monthTotalGet[4] | currency}}</small>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div>
+                      <span style="font-weight: bold; color: #777">July</span><br>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div>
+                      <small>{{monthTotalGet[4] | currency}}</small>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div>
+                      <span style="font-weight: bold; color: #777">August</span><br>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div>
+                      <small>{{monthTotalGet[4] | currency}}</small>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div>
+                      <span style="font-weight: bold; color: #777">September</span><br>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div>
+                      <small>{{monthTotalGet[4] | currency}}</small>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div>
+                      <span style="font-weight: bold; color: #777">October</span><br>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div>
+                      <small>{{monthTotalGet[4] | currency}}</small>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div>
+                      <span style="font-weight: bold; color: #777">November</span><br>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div>
+                      <small>{{monthTotalGet[4] | currency}}</small>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div>
+                      <span style="font-weight: bold; color: #777">December</span><br>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div>
+                      <small>{{monthTotalGet[4] | currency}}</small>
+                    </div>
+                  </div>
+                </div>-->
+              </div>
             </div>
           </div>
         </div>

@@ -32,9 +32,10 @@ export class UserHouseComponent implements OnInit {
 
   stopApartment(id: any) {
     if (confirm("Are you sure")) {
-      this.apartmentService.stopRenting(id).subscribe(mess => {this.mess = 'Stop Apartment success' } ,
-        mess => {this.mess = 'Stop Apartment fail'; });
-      this.contentStatus();
+      this.apartmentService.stopRenting(id).subscribe(mess => {this.mess = 'Stop Apartment success'; this.getApartmentByUser()} ,
+        mess => {this.mess = 'Stop Apartment fail';
+
+      });
     }else {
       return;
     }
@@ -42,9 +43,8 @@ export class UserHouseComponent implements OnInit {
 
   repairApartment(id: any) {
     if (confirm("Are you sure")) {
-      this.apartmentService.repairRenting(id).subscribe(mess => {this.mess = 'Repair Apartment success' } ,
+      this.apartmentService.repairRenting(id).subscribe(mess => {this.mess = 'Repair Apartment success'; this.getApartmentByUser() } ,
         mess => {this.mess = 'Repair Apartment fail'; });
-      this.contentStatus();
     }else {
       return;
     }
@@ -52,16 +52,10 @@ export class UserHouseComponent implements OnInit {
 
   rentAgain(id: any) {
     if (confirm("Are you sure")) {
-      this.apartmentService.rentAgain(id).subscribe(mess => {this.mess = 'Rent Again Apartment success' } ,
+      this.apartmentService.rentAgain(id).subscribe(mess => {this.mess = 'Rent Again Apartment success'; this.getApartmentByUser()} ,
         mess => {this.mess = 'Rent Again Apartment fail'; });
-      this.contentStatus();
     }else {
       return;
     }
-  }
-  contentStatus(){
-    let content = `<i">Vô Hiệu Hóa</i>`
-    // @ts-ignore
-    document.getElementById('content-status').innerHTML = content;
   }
 }
