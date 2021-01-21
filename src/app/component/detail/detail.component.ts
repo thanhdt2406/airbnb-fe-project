@@ -20,6 +20,8 @@ declare var $: any;
   styleUrls: ['./detail.component.css']
 })
 export class DetailComponent implements OnInit {
+  checkinCheck = true;
+  checkoutCheck = true;
   p: number = 1;
   apartment = {
     id: -1,
@@ -105,15 +107,6 @@ export class DetailComponent implements OnInit {
         checkout.hide();
       }).data('datepicker');
     });
-
-    /*$(function(){
-      'use strict';
-      var checkin = $('#timeCheckIn').datepicker({
-        onRender: function (date: any) {
-          return date.getDay() == 20  ? 'disabled' : '';
-        }
-      }).data('datepicker');
-    })*/
   }
 
   slickImage() {
@@ -173,13 +166,15 @@ export class DetailComponent implements OnInit {
         id: this.currentUser.id,
       }
     }
-    // @ts-ignore
-    this.commentService.createApartment(comment).subscribe(()=>{
+    if (this.commentContent) {
       // @ts-ignore
-      this.getAllCommentByApartmentId(this.apartment);
-    });
-    // @ts-ignore
-
+      this.commentService.createApartment(comment).subscribe(()=>{
+        // @ts-ignore
+        this.getAllCommentByApartmentId(this.apartment);
+      });
+    }else {
+      return;
+    }
   }
 
   getAllCommentByApartmentId(apartment:Apartment) {
@@ -189,26 +184,86 @@ export class DetailComponent implements OnInit {
 
   rentApartment() {
     let checkin = $('#timeCheckIn').val().split("/");
+    console.log(checkin);
     let checkout = $('#timeCheckOut').val().split("/");
     let date1 = checkin[2] + '-' + checkin[0] + '-' + checkin[1];
     let date2 = checkout[2] + '-' + checkout[0] + '-' + checkout[1];
+    let mouthCheckin = parseInt(checkin[0][1]) - 1
+    let mouthCheckout = parseInt(checkout[0][1]) - 1
+    let checkDate1  = new Date(checkin[2], mouthCheckin, checkin[1], 7, 0, 0, 0);
+    let checkDate2  = new Date(checkout[2], mouthCheckout, checkout[1], 7, 0, 0, 0);
+    for (let i = 0; i < this.rents.length ; i ++){
+      // @ts-ignore
+      if (!this.checkDate(checkDate1, this.rents[i])){
+        // @ts-ignore
+        this.checkinCheck = false;
+        break
+      }else {
+        this.checkoutCheck = true;
+      }
+    }
+    for (let i = 0; i < this.rents.length ; i ++){
+      // @ts-ignore
+      if (!this.checkDate(checkDate2, this.rents[i])){
+        // @ts-ignore
+        this.checkoutCheck = false;
+        break
+      }else {
+        this.checkoutCheck = true;
+      }
+    }
+
     const rent = {
       startDate: date1,
       endDate: date2,
       user: this.currentUser,
       apartment: this.apartment,
     }
-    // @ts-ignore
-    this.rentService.saveRent(rent).subscribe(() => {
+
+    if (this.checkinCheck && this.checkoutCheck) {
       // @ts-ignore
-      this.message = 'Đặt nhà thành công';
-      this.rentingApartment();
-    });
+      this.rentService.saveRent(rent).subscribe(() => {
+        // @ts-ignore
+        this.message = 'Đặt nhà thành công';
+        this.rentingApartment();
+        this.activatedRoute.paramMap.subscribe( paramMap => {
+          // @ts-ignore
+          this.id = +paramMap.get('id');
+        })
+        // @ts-ignore
+        this.getApartment(this.id);
+      });
+    }else {
+      this.message = 'Chọn lại, ngu';
+    }
+  }
+
+  // @ts-ignore
+  checkDate(value: Date, rent: Rent): boolean {
+    // @ts-ignore
+    let checkin1 = rent.startDate.split("T");
+    // @ts-ignore
+    let checkin2 = rent.endDate.split("T");
+    // @ts-ignore
+    let dateCheckin = checkin1[0].split("-");
+    let dateCheckout = checkin2[0].split("-");
+    let mouthCheckin = parseInt(dateCheckin[0][1]) ;
+    let mouthCheckout = parseInt(dateCheckout[0][1]) ;
+    // @ts-ignore
+    let checkDate1  = new Date(dateCheckin[0], mouthCheckin, dateCheckin[2], 7, 0, 0, 0);
+    // @ts-ignore
+    let checkDate2  = new Date(dateCheckout[0], mouthCheckout, dateCheckout[2], 7, 0, 0, 0);
+    console.log(checkDate1);
+    console.log(checkDate2);
+    // @ts-ignore
+    if (value >= checkDate1 && value <= checkDate2){
+      return false;
+    }
+    return true;
   }
 
   rentingApartment() {
     this.apartmentService.renting(this.apartment.id).subscribe(() => {
-      console.log("dê")
     });
   }
 

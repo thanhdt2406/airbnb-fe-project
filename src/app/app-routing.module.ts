@@ -12,8 +12,8 @@ import {ChangePassComponent} from './component/change-pass/change-pass.component
 import {AuthGuard} from './helper/auth-guard';
 import {LoginGoogleComponent} from "./component/login-google/login-google.component";
 import {RentListComponent} from './component/rent-list/rent-list.component';
-import {RentedHistoryComponent} from "./component/rented-history/rented-history.component";
-import {RatingComponent} from "./component/rating/rating.component";
+import {RentedHistoryComponent} from './component/rented-history/rented-history.component';
+import {TotalIncomeComponent} from './component/total-income/total-income.component';
 
 
 const routes: Routes = [
@@ -67,9 +67,9 @@ const routes: Routes = [
     component: RentedHistoryComponent
   },
   {
-    path: 'rating/:id',
-    component: RatingComponent
-  },
+    path: 'total-income',
+    component: TotalIncomeComponent
+  }
 ];
 
 

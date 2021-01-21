@@ -182,9 +182,17 @@
     .host {
       color: #FFA500;
     }
-
     .ngx-pagination .current {
       background: #FFA500 !important;
+      border-radius: 15%  !important;
+      border: transparent !important;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      color: #838383;
+    }
+
+    .ngx-pagination li a span {
+      color: #838383;
     }
 
     .ngx-pagination .pagination-previous :before{
@@ -194,6 +202,16 @@
     .ngx-pagination .pagination-next :before{
       display: none;
     }
+    .rentInput {
+      float: left;
+      width: 250px;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      background-color: #EEE;
+      border-bottom-color: #FFA500 !important;
+
+    }
   </style>
 </head>
 <body>
@@ -202,6 +220,7 @@
 <script src="assets/js/modernizr-2.6.2.min.js"></script>
 <script src="assets/js/jquery-1.10.2.min.js"></script>
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 <script src="assets/js/bootstrap-select.min.js"></script>
 <script src="assets/js/bootstrap-hover-dropdown.js"></script>
 <script src="assets/js/easypiechart.min.js"></script>
