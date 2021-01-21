@@ -188,8 +188,8 @@ export class DetailComponent implements OnInit {
     let checkout = $('#timeCheckOut').val().split("/");
     let date1 = checkin[2] + '-' + checkin[0] + '-' + checkin[1];
     let date2 = checkout[2] + '-' + checkout[0] + '-' + checkout[1];
-    let mouthCheckin = parseInt(checkin[0][1]) - 1
-    let mouthCheckout = parseInt(checkout[0][1]) - 1
+    let mouthCheckin = parseInt(checkin[0][1]) - 1;
+    let mouthCheckout = parseInt(checkout[0][1]) - 1;
     let checkDate1  = new Date(checkin[2], mouthCheckin, checkin[1], 7, 0, 0, 0);
     let checkDate2  = new Date(checkout[2], mouthCheckout, checkout[1], 7, 0, 0, 0);
     for (let i = 0; i < this.rents.length ; i ++){
@@ -224,7 +224,7 @@ export class DetailComponent implements OnInit {
       // @ts-ignore
       this.rentService.saveRent(rent).subscribe(() => {
         // @ts-ignore
-        this.message = 'Đặt nhà thành công';
+        this.message = 'Apartment has been rented successfully!';
         this.rentingApartment();
         this.activatedRoute.paramMap.subscribe( paramMap => {
           // @ts-ignore
@@ -234,7 +234,7 @@ export class DetailComponent implements OnInit {
         this.getApartment(this.id);
       });
     }else {
-      this.message = 'Chọn lại, ngu';
+      this.message = 'Choose another date';
     }
   }
 
@@ -247,14 +247,12 @@ export class DetailComponent implements OnInit {
     // @ts-ignore
     let dateCheckin = checkin1[0].split("-");
     let dateCheckout = checkin2[0].split("-");
-    let mouthCheckin = parseInt(dateCheckin[0][1]) ;
-    let mouthCheckout = parseInt(dateCheckout[0][1]) ;
+    let mouthCheckin = parseInt(dateCheckin[1]);
+    let mouthCheckout = parseInt(dateCheckout[1]);
     // @ts-ignore
-    let checkDate1  = new Date(dateCheckin[0], mouthCheckin, dateCheckin[2], 7, 0, 0, 0);
+    let checkDate1  = new Date(`${dateCheckin[0]}-${mouthCheckin}-${dateCheckin[2]}`);
     // @ts-ignore
-    let checkDate2  = new Date(dateCheckout[0], mouthCheckout, dateCheckout[2], 7, 0, 0, 0);
-    console.log(checkDate1);
-    console.log(checkDate2);
+    let checkDate2  = new Date(`${dateCheckout[0]}-${mouthCheckout}-${dateCheckout[2]}`);
     // @ts-ignore
     if (value >= checkDate1 && value <= checkDate2){
       return false;
