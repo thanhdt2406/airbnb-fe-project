@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <base href="/">
+  <meta charset="utf-8">
+  <meta name="google-signIn-client_id" content="615142486691-bsld2nrnbc2i8logrdds0r4etcq64h48.apps.googleusercontent.com">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>WonderLand</title>
+  <meta name="description" content="GARO is a real-estate template">
+  <meta name="author" content="Kimarotec">
+  <meta name="keyword" content="html5, css, bootstrap, property, real-estate theme , bootstrap template">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800" rel="stylesheet" type="text/css">
+  <!-- Place favicon.ico  the root directory -->
+
+  <link rel="shortcut icon" href="assets/img/miniLogo.PNG"/>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="assets/css/normalize.css">
+  <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+  <link rel="stylesheet" href="assets/css/fontello.css">
+  <link href="assets/fonts/icon-7-stroke/css/pe-icon-7-stroke.css" rel="stylesheet">
+  <link href="assets/fonts/icon-7-stroke/css/helper.css" rel="stylesheet">
+  <link href="assets/css/animate.css" rel="stylesheet" media="screen">
+  <link rel="stylesheet" href="assets/css/bootstrap-select.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/icheck.min_all.css">
+  <link rel="stylesheet prefetch" href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css">
+
+  <link rel="stylesheet" href="assets/css/price-range.css">
+  <link rel="stylesheet" href="assets/css/owl.carousel.css">
+  <link rel="stylesheet" href="assets/css/owl.theme.css">
+  <link rel="stylesheet" href="assets/css/owl.transitions.css">
+  <link rel="stylesheet" href="assets/css/lightslider.min.css">
+  <link rel="stylesheet" href="assets/css/jquery.slitslider.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/rating.css">
+  <noscript>
+    <link rel="stylesheet" type="text/css" href="assets/css/styleNoJS.css" />
+  </noscript>
+  <link rel="stylesheet" href="assets/css/bootstrap-theme.css">
+  <style>
+    .currentUser {
+      background-color: #f9f9f9 ;
+    }
+    .currentUser > option {
+      color: #929292;
+
+    }
+
+    .content-item {
+      padding:30px 0;
+      background-color:#FFFFFF;
+    }
+
+    .content-item.grey {
+      background-color:#F0F0F0;
+      padding:50px 0;
+      height:100%;
+    }
+
+    .content-item h2 {
+      font-weight:700;
+      font-size:35px;
+      line-height:45px;
+      text-transform:uppercase;
+      margin:20px 0;
+    }
+
+    .content-item h3 {
+      font-weight:400;
+      font-size:20px;
+      color:#555555;
+      margin:10px 0 15px;
+      padding:0;
+    }
+
+    .content-headline {
+      height:1px;
+      text-align:center;
+      margin:20px 0 70px;
+    }
+
+    .content-headline h2 {
+      background-color:#FFFFFF;
+      display:inline-block;
+      margin:-20px auto 0;
+      padding:0 20px;
+    }
+
+    .grey .content-headline h2 {
+      background-color:#F0F0F0;
+    }
+
+    .content-headline h3 {
+      font-size:14px;
+      color:#AAAAAA;
+      display:block;
+    }
+
+
+    #comments {
+      box-shadow: 0 -1px 6px 1px rgba(0,0,0,0.1);
+      background-color:#FFFFFF;
+    }
+
+    #comments form {
+      margin-bottom:30px;
+    }
+
+    #comments .btn {
+      margin-top:7px;
+    }
+
+    #comments form fieldset {
+      clear:both;
+    }
+
+    #comments form textarea {
+      height:100px;
+    }
+
+    #comments .media {
+      border-top:1px dashed #DDDDDD;
+      padding:20px 0;
+      margin:0;
+    }
+
+    #comments .media > .pull-left {
+      margin-right:20px;
+    }
+
+    #comments .media img {
+      max-width:100px;
+    }
+
+    #comments .media h4 {
+      margin:0 0 10px;
+    }
+
+    #comments .media h4 span {
+      font-size:14px;
+      float:right;
+      color:#999999;
+    }
+
+    #comments .media p {
+      margin-bottom:15px;
+      text-align:justify;
+    }
+
+    #comments .media-detail {
+      margin:0;
+    }
+
+    #comments .media-detail li {
+      color:#AAAAAA;
+      font-size:12px;
+      padding-right: 10px;
+      font-weight:600;
+    }
+
+    #comments .media-detail a:hover {
+      text-decoration:underline;
+    }
+
+    #comments .media-detail li:last-child {
+      padding-right: 0;
+    }
+
+    #comments .media-detail li i {
+      color: #666666;
+      font-size: 15px;
+      margin-right: 10px;
+    }
+
+    .hiddenContent {
+      display: none;
+    }
+
+
+    .host {
+      color: #FFA500;
+    }
+    .ngx-pagination .current {
+      background: #FFA500 !important;
+      border-radius: 15%  !important;
+      border: transparent !important;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      color: #838383;
+    }
+
+    .ngx-pagination li a span {
+      color: #838383;
+    }
+
+    .ngx-pagination .pagination-previous :before{
+      display: none;
+    }
+
+    .ngx-pagination .pagination-next :before{
+      display: none;
+    }
+    .rentInput {
+      float: left;
+      width: 250px;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      background-color: #EEE;
+      border-bottom-color: #FFA500 !important;
+
+    }
+  </style>
+<link rel="stylesheet" href="styles.css"></head>
+<body>
+<app-root></app-root>
+<script src="assets/js/jquery-1.10.2.min.js"></script>
+<script src="https://apis.google.com/js/platform.js" async="" defer=""></script>
+<script src="assets/js/modernizr-2.6.2.min.js"></script>
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="assets/js/Chart.js"></script>
+<script src="assets/js/moment.min.js"></script>
+<script src="assets/js/bootstrap-select.min.js"></script>
+<script src="assets/js/bootstrap-hover-dropdown.js"></script>
+<script src="assets/js/easypiechart.min.js"></script>
+<script src="assets/js/jquery.easypiechart.min.js"></script>
+<script src="assets/js/owl.carousel.min.js"></script>
+<script src="assets/js/wow.js"></script>
+<script src="assets/js/icheck.min.js"></script>
+<script src="assets/js/price-range.js"></script>
+<script src="assets/js/jquery.ba-cond.min.js"></script>
+<script src="assets/js/jquery.slitslider.js"></script>
+<script src="assets/js/lightslider.min.js"></script>
+<script src="assets/js/jquery.validate.min.js"></script>
+<script src="assets/js/additional-methods.js"></script>
+<script src="assets/js/bootstrap-datepicker.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="runtime.js" defer></script><script src="polyfills.js" defer></script><script src="vendor.js" defer></script><script src="main.js" defer></script></body>
+</html>
