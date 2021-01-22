@@ -28,6 +28,7 @@ import {RentedHistoryComponent} from './component/rented-history/rented-history.
 import {NgxPaginationModule} from 'ngx-pagination';
 import {TotalIncomeComponent} from './component/total-income/total-income.component';
 import {MDBBootstrapModule} from 'angular-bootstrap-md';
+import {RatingComponent} from "./component/rating/rating.component";
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import {MDBBootstrapModule} from 'angular-bootstrap-md';
     RentListComponent,
     RentedHistoryComponent,
     TotalIncomeComponent,
+    RatingComponent
   ],
     imports: [
         BrowserModule,
