@@ -54,17 +54,15 @@
               <div class="col-md-4 p0">
                 <div class="box-two proerty-item">
                   <div class="item-thumb">
-                    <a href=""><img [src]="apartment.avatar" alt=""></a>
+                    <a routerLink="/detail/{{apartment.id}}"><img [src]="apartment.avatar" alt=""></a>
                   </div>
                   <div class="item-entry overflow">
                     <h5>{{apartment.name}}</h5>
                     <div class="dot-hr"></div>
-                    <span class="proerty-price pull-right"> ${{apartment.value}}</span>
-                    <br><br>
-                    <ul>
-                      <li>start: {{rents[i].startDate}}</li>
-                      <li>end: {{rents[i].startDate}}</li>
-                    </ul>
+                    <span class="proerty-price pull-right">{{apartment.value}} / {{day[i] }}
+                      day{{day[i] > 1 ? 's' : ''}}</span>
+                    <br><b>Start:</b> {{rents[i].startDate}}
+                    <br><b>End:</b> {{rents[i].endDate}}
                     <p style="display: none;"></p>
                     <div class="property-icon">
                       <img src="assets/img/icon/bed.png">|{{apartment.bedroom}}
