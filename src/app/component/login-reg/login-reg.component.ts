@@ -115,7 +115,7 @@ export class LoginRegComponent implements OnInit {
       avatar: 'https://media1.giphy.com/media/VhWI9KH051Do5D9XXz/giphy.gif?cid=ecf05e47bcjj0epjafz9mtttj5mnbrg6eoqptnuc9nlstuuu&rid=giphy.gif'
     };
     this.userService.registerUser(this.user).subscribe(() => {
-      this.output = 'Tạo Tài Khoản Thành Công';
+      this.output = 'Register success!';
       this.existUsername = '';
       this.registerForm = this.formBuilder.group({
         name: ['', [Validators.required]],
@@ -141,13 +141,13 @@ export class LoginRegComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-          alert('Đăng nhập thành công!');
+          alert('Login success!');
           this.router.navigate([this.returnUrl]);
         },
         error => {
           this.error = error;
           this.loading = false;
-          this.loginFail = 'Sai tên đăng nhập hoặc mật khẩu! Vui lòng đăng nhập lại...';
+          this.loginFail = 'Wrong password or username...';
           this.router.navigate(['/login']);
         });
   }
