@@ -13,12 +13,13 @@ export class UserHouseComponent implements OnInit {
   currentUser = this.authService.currentUserValue;
   mess = '';
   p: number = 1;
+
   constructor(private authService: AuthService,
               private apartmentService: ApartmentService) {
   }
 
   ngOnInit(): void {
-    this.getApartmentByUser()
+    this.getApartmentByUser();
   }
 
   getApartmentByUser() {
@@ -31,30 +32,44 @@ export class UserHouseComponent implements OnInit {
   }
 
   stopApartment(id: any) {
-    if (confirm("Are you sure")) {
-      this.apartmentService.stopRenting(id).subscribe(mess => {this.mess = 'Stop Apartment success'; this.getApartmentByUser()} ,
-        mess => {this.mess = 'Stop Apartment fail';
+    if (confirm('Are you sure?')) {
+      this.apartmentService.stopRenting(id).subscribe(mess => {
+          this.mess = 'Stop Apartment success';
+          this.getApartmentByUser();
+        },
+        mess => {
+          this.mess = 'Stop Apartment fail';
 
-      });
-    }else {
+        });
+    } else {
       return;
     }
   }
 
   repairApartment(id: any) {
-    if (confirm("Are you sure")) {
-      this.apartmentService.repairRenting(id).subscribe(mess => {this.mess = 'Repair Apartment success'; this.getApartmentByUser() } ,
-        mess => {this.mess = 'Repair Apartment fail'; });
-    }else {
+    if (confirm('Are you sure?')) {
+      this.apartmentService.repairRenting(id).subscribe(mess => {
+          this.mess = 'Repair Apartment success';
+          this.getApartmentByUser();
+        },
+        mess => {
+          this.mess = 'Repair Apartment fail';
+        });
+    } else {
       return;
     }
   }
 
   rentAgain(id: any) {
-    if (confirm("Are you sure")) {
-      this.apartmentService.rentAgain(id).subscribe(mess => {this.mess = 'Rent Again Apartment success'; this.getApartmentByUser()} ,
-        mess => {this.mess = 'Rent Again Apartment fail'; });
-    }else {
+    if (confirm('Are you sure')) {
+      this.apartmentService.rentAgain(id).subscribe(mess => {
+          this.mess = 'Rent Again Apartment success';
+          this.getApartmentByUser();
+        },
+        mess => {
+          this.mess = 'Rent Again Apartment fail';
+        });
+    } else {
       return;
     }
   }
