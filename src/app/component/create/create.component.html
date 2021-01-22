@@ -92,7 +92,7 @@
                               <label for="min-bed">Bedroom :</label>
                               <input type="text" class="span2" data-slider-min="1"
                                      data-slider-max="6" data-slider-step="1"
-                                     data-slider-value="[1]" id="min-bed" [defaultValue]="1" value="" formControlName="bedroom"><br />
+                                     data-slider-value="[1]" id="min-bed" [defaultValue]="1"  value="" formControlName="bedroom"><br />
                               <b class="pull-left color">1</b>
                               <b class="pull-right color">6</b>
                           </div>
@@ -100,7 +100,7 @@
                             <label for="min-baths" >Bathroom :</label>
                             <input type="text" class="span2" name="test" data-slider-min="1"
                                    data-slider-max="6" data-slider-step="1"
-                                   data-slider-value="[1]" id="min-baths" [defaultValue]="1" value="" formControlName="bathroom"><br />
+                                   data-slider-value="[1]" id="min-baths" [defaultValue]="1"  value=""  formControlName="bathroom"><br />
                             <b class="pull-left color">1</b>
                             <b class="pull-right color">6</b>
                           </div>
@@ -163,14 +163,16 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="property-images">Chose Images :</label>
-                        <input class="form-control" name="image" type="file" id="property-images" multiple (change)="showPreview($event)">
+                        <input class="form-control" name="image" formControlName="image" type="file" id="property-images" multiple (change)="showPreview($event)">
                         <p class="help-block">Select multipel images for your property .</p>
                       </div>
                     </div>
                   </div>
                   <div class="col-sm-12 padding-top-15">
                     <div class="col-sm-5"></div>
+
                     <div class="col-sm-2">
+                      <span>{{output}}</span><br>
                       <div style="width: 100px"><input type='submit' class='btn btn-finish btn-primary' name='finish' value='Finish' /></div>
                     </div>
                     <div class="col-sm-5"></div>
