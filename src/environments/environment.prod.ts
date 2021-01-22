@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://localhost:8080',
+  apiUrl: 'https://wonderland-airbnb.herokuapp.com/',
   firebaseConfig: {
     apiKey: 'AIzaSyDWoOjEXKlId55EsG58qlR0uyVEO89un6A',
     authDomain: 'wonderland-airbnb.firebaseapp.com',
