@@ -55,12 +55,14 @@ export class RentListComponent implements OnInit {
   }
 
   cancelBooking(id: any) {
-    this.rentService.cancelBooking(id).subscribe(() => {
-      while(this.apartments.length > 0) {
-        this.apartments.pop();
-      }
-      this.getAllBookingApartmentByUserId(this.userId);
-    });
+    if(confirm("Are you sure to continue?")){
+      this.rentService.cancelBooking(id).subscribe(() => {
+        while(this.apartments.length > 0) {
+          this.apartments.pop();
+        }
+        this.getAllBookingApartmentByUserId(this.userId);
+      });
+    }
   }
 
   checkIn(rent: Rent) {

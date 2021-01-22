@@ -112,6 +112,7 @@ export class LoginRegComponent implements OnInit {
     this.user = {
       username: this.registerForm.value.name,
       password: this.registerForm.value.password,
+      name: 'Anonymous',
       avatar: 'https://media1.giphy.com/media/VhWI9KH051Do5D9XXz/giphy.gif?cid=ecf05e47bcjj0epjafz9mtttj5mnbrg6eoqptnuc9nlstuuu&rid=giphy.gif'
     };
     this.userService.registerUser(this.user).subscribe(() => {
