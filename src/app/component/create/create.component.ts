@@ -268,8 +268,18 @@ export class CreateComponent implements OnInit {
                     id: apartment.id
                   }
                 };
+                if (selectedImage == this.selectedImages[0]) {
+                  apartment.avatar = image;
+                  // @ts-ignore
+                  this.apartmentService.setAvatar(apartment.id, image.image).subscribe(() => {
+                    alert("getavt")
+                  }, error => {
+                    alert("can get avt")
+                  });
+                }
                 this.imageService.createImage(image).subscribe(() => {
-                }, () => {});
+                }, () => {
+                });
               });
             })
           ).subscribe();
@@ -288,6 +298,7 @@ export class CreateComponent implements OnInit {
           });
         });
       }
+
     } else {
       $(function () {
         const Toast = Swal.mixin({
