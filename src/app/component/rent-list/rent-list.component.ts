@@ -92,11 +92,6 @@ export class RentListComponent implements OnInit {
 
       // @ts-ignore
       this.end[i] = this.listRentBooking[i].endDate.substring(0, 10);
-
-      // @ts-ignore
-      this.imageService.getAllByApartment(this.apartments[i].id).subscribe(images => {
-        this.apartments[i].avatar = images[0];
-      });
     }
   }
 
