@@ -20,7 +20,7 @@ export class RentListComponent implements OnInit {
   day: number[] = [];
   start: string[] = [];
   end: string[] = [];
-
+  p = 1;
   apartments: Apartment[] = [];
   // @ts-ignore
   userId: number = this.authService.currentUserValue.id;
