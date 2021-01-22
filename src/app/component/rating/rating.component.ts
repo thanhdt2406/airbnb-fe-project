@@ -28,7 +28,7 @@ export class RatingComponent implements OnInit {
     createDate: 'string'
   };
   star: number = 3;
-  content: string = '1';
+  content: string = 'say somthing...';
   rating: Rating = {};
 
   constructor(private authService: AuthService,
