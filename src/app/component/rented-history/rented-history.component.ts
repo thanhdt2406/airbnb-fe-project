@@ -16,6 +16,7 @@ export class RentedHistoryComponent implements OnInit {
   rents: Rent[] = [];
   apartments: Apartment[] = [];
   apartment: Apartment = {};
+  day: number[] = [];
   p = 1;
   constructor(private authService: AuthService,
               private rentService: RentService,
@@ -40,9 +41,7 @@ export class RentedHistoryComponent implements OnInit {
       // @ts-ignore
       this.apartments[i] = this.rents[i].apartment;
       // @ts-ignore
-      this.imageService.getAllByApartment(this.apartments[i].id).subscribe(images => {
-        this.apartments[i].avatar = images[0];
-      })
+      this.day[i] = (new Date(this.rents[i].endDate) - new Date(this.rents[i].startDate)) / 24 / 60 / 60 / 1000;
     }
   }
 
