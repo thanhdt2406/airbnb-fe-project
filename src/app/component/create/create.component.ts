@@ -29,6 +29,7 @@ export class CreateComponent implements OnInit {
   currentUser: User = this.authService.currentUserValue;
   pro_id: number = 0;
   dis_id: number = 0;
+  output: string = '';
   apartForm: FormGroup = new FormGroup({
     name: new FormControl(''),
     value: new FormControl(''),
@@ -44,6 +45,7 @@ export class CreateComponent implements OnInit {
     ward: new FormControl(),
     district: new FormControl(),
     province: new FormControl(),
+    image: new FormControl(),
   });
   selectedImages: any[] = [];
   provinces: Province[] = [];
@@ -209,7 +211,10 @@ export class CreateComponent implements OnInit {
           description: {
             required: true,
           },
-          ward: {
+          province: {
+            required: true,
+          },
+          district: {
             required: true,
           },
           image: {
@@ -219,28 +224,31 @@ export class CreateComponent implements OnInit {
         },
         messages: {
           name: {
-            required: 'Hãy nhập tên căn họ của bạn',
+            required: 'Please enter your first and last name',
           },
           value: {
-            required: 'Hãy nhập giá tiền để cho thuê căn hộ',
+            required: 'Please enter the price to rent the apartment',
           },
           address: {
-            required: 'Hãy nhập địa chỉ của căn hộ',
+            required: 'Please enter the address of the apartment',
           },
           bathroom: {
-            required: 'Hãy nhập số lượng phòng tắm',
+            required: 'Please enter the number of bathrooms',
           },
           bedroom: {
-            required: 'Hãy nhập số lượng phòng ngủ',
+            required: 'Please enter the number of bedrooms',
           },
           description: {
-            required: 'Hãy nhập mô tả căn nhà của bạn',
+            required: 'Please enter your house description',
           },
-          ward: {
-            required: 'Bạn phải chọn tỉnh/thành phố, huyện/quận, xã ',
+          province: {
+            required: 'Please enter your province',
+          },
+          district: {
+            required: 'Please enter your district',
           },
           image: {
-            required: 'Bạn phải chọn ảnh của căn hộ'
+            required: 'You must choose a photo of the apartment'
           }
 
         }
@@ -273,46 +281,17 @@ export class CreateComponent implements OnInit {
                 if (i == 0) {
                   apartment.avatar = image;
                   // @ts-ignore
-                  this.apartmentService.setAvatar(apartment.id, image.image).subscribe(() => {
-                    alert("success!");
-                  }, error => {
-                    alert("fail");
-                  });
+                  this.apartmentService.setAvatar(apartment.id, image.image)
                 }
-                this.imageService.createImage(image).subscribe();
+                this.imageService.createImage(image).subscribe(() => {
+                  this.apartForm.reset()
+                  this.output = 'SUCCESSFULLY CREATE'
+                });
               });
             })
           ).subscribe();
         }
-        $(function () {
-          const Toast = Swal.mixin({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 3000
-          });
-
-          Toast.fire({
-            type: 'success',
-            title: 'Tạo mới thành công'
-          });
-        });
       }
-
-    } else {
-      $(function () {
-        const Toast = Swal.mixin({
-          toast: true,
-          position: 'top-end',
-          showConfirmButton: false,
-          timer: 3000
-        });
-
-        Toast.fire({
-          type: 'error',
-          title: 'Tạo mới thất bại'
-        });
-      });
     }
   }
 
