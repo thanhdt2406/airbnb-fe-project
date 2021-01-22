@@ -65,14 +65,15 @@
                     <div class="dot-hr"></div>
                     <span class="proerty-price pull-right">{{price[i] | currency: 'USD'}} / {{day[i] }}
                       day{{day[i] > 1 ? 's' : ''}}</span>
-                    <p style="display: none;"><b>Start:</b> {{start[i]}}</p>
-                    <p style="display: none;"><b>End:</b> {{end[i]}}</p>
-                    <p style="display: none;"> </p>
+                    <br><b>Start:</b> {{start[i]}}
+                    <br><b>End:</b> {{end[i]}}
+                    <p style="display: none;"></p>
                     <div class="property-icon">
                       <img src="assets/img/icon/bed.png">| {{ap.bedroom}}
                       <img src="assets/img/icon/shawer.png">| {{ap.bathroom}}
                       <div class="dealer-action pull-right">
-                        <a routerLink="/rent-list" *ngIf="isCheck[i]" (click)="cancelBooking(listRentBooking[i].id)" class="button">Cancel Booking</a>
+                        <a routerLink="/rent-list" *ngIf="isCheck[i]" (click)="cancelBooking(listRentBooking[i].id)"
+                           class="button">Cancel Booking</a>
                         <a routerLink="#" (click)="checkIn(listRentBooking[i])" class="button">Check-in</a>
                       </div>
                     </div>

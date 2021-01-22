@@ -42,6 +42,10 @@ export class RentedHistoryComponent implements OnInit {
       this.apartments[i] = this.rents[i].apartment;
       // @ts-ignore
       this.day[i] = (new Date(this.rents[i].endDate) - new Date(this.rents[i].startDate)) / 24 / 60 / 60 / 1000;
+      // @ts-ignore
+      this.rents[i].startDate = this.rents[i].startDate.substring(0, 10);
+      // @ts-ignore
+      this.rents[i].endDate = this.rents[i].endDate.substring(0, 10);
     }
   }
 
