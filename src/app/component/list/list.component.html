@@ -174,7 +174,7 @@
                 <a [routerLink]="['/detail/'+apartment.id]"><img [src]="apartment.avatar" style="height: 170px;"></a>
               </div>
               <div class="item-entry overflow">
-                <h5><a href="property-1.html"> {{apartment.name}} </a></h5>
+                <h5><a routerLink="/detail/{{apartment.id}}"> {{apartment.name}} </a></h5>
                 <div class="dot-hr"></div>
                 <span class="pull-left"><b> Area :</b> 120m </span>
                 <span class="proerty-price pull-right"> $ {{apartment.value}}</span>

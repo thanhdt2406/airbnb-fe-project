@@ -60,6 +60,7 @@ export class RatingComponent implements OnInit {
     this.getStar();
     this.getContent();
     this.rating.user = this.currentUser;
+    this.rating.ratingDate = new Date();
     this.ratingService.addNewRating(this.rating).subscribe(() => {
       alert("success!");
     }, error => {

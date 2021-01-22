@@ -127,6 +127,12 @@
                 <button type="button" class="btn btn-normal pull-right" style="font-size: 16px; margin-top: 4px"
                         (click)="showHide()">{{isShow ? 'Hide Comments' : 'Show Comments'}}</button>
               </div>
+              <div class="row">
+                <h3 class="pull-left s-property-title" style="color: #FFA500; font-size: 18px; margin-left: 10px">
+                  Rating</h3>
+                <button type="button" class="btn btn-normal pull-right" style="font-size: 16px; margin-top: 4px"
+                        (click)="showHideRating()">{{isShowRating ? 'Hide Ratings' : 'Show Ratings'}}</button>
+              </div>
               <div class="row" [ngClass]="{'hiddenContent': !isShow}">
                 <section class="content-item" id="comments">
                   <div style="width: 700px; margin-left: 18px;">
@@ -172,11 +178,53 @@
                   </div>
                   <div class="col-sm-12" style="margin-top: 20px">
                     <div class="col-sm-6"></div>
-                    <div class="col-sm-6"><pagination-controls style="margin-left: 300px" (pageChange)="p = $event" ></pagination-controls></div>
+                    <div class="col-sm-6">
+                      <pagination-controls style="margin-left: 300px" (pageChange)="p = $event"></pagination-controls>
+                    </div>
                   </div>
                 </section>
-
               </div>
+              <div class="row" [ngClass]="{'hiddenContent': !isShowRating}">
+                <section class="content-item" id="rating">
+                  <div style="width: 700px; margin-left: 18px;">
+                    <h3>{{ratings.length}} Rating{{ratings.length > 1 ? 's' : ''}}</h3>
+                    <!-- Rating 1 - START -->
+                    <ng-container *ngFor="let rating of ratings | paginate: { itemsPerPage: 5, currentPage: p }">
+                      <div class="media">
+                        <div class="row">
+                          <div class="col-sm-2">
+                            <a class="pull-left"><img class="media-object" style="width: 90px; height: 100px"
+                                                      [src]="rating.user?.avatar" alt=""></a>
+                          </div>
+                          <div class="col-sm-10">
+                            <div class="media-body">
+                              <h4
+                                class="media-heading host"> {{rating.user?.name ? rating.user?.name : "Visitors"}} </h4>
+                              <span>{{rating.star}}<img src="assets/img/icon/star-icon.png" alt="" width="15"
+                                                        height="15" style="margin-top: -5px">
+                              </span>
+                              <p>{{rating.content}}</p>
+                              <hr>
+                              <ul class="list-unstyled list-inline media-detail pull-left">
+                                <li><i class="fa fa-calendar"></i>{{rating.ratingDate | date:'fullDate'}}</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <hr>
+                    </ng-container>
+                    <!-- Rating 1 - END -->
+                  </div>
+                  <div class="col-sm-12" style="margin-top: 20px">
+                    <div class="col-sm-6"></div>
+                    <div class="col-sm-6">
+                      <pagination-controls style="margin-left: 300px" (pageChange)="p = $event"></pagination-controls>
+                    </div>
+                  </div>
+                </section>
+              </div>
+
             </div>
             <!-- End features area  -->
 
