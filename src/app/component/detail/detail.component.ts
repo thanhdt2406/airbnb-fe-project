@@ -62,6 +62,7 @@ export class DetailComponent implements OnInit {
   // @ts-ignore
   comments: Comment[] = [];
   ratings: Rating[] = [];
+  avgStar: number = 0;
   commentContent: string = '';
   message: string = '';
   isShow: boolean = false;
@@ -194,7 +195,17 @@ export class DetailComponent implements OnInit {
     // @ts-ignore
     this.ratingSerice.getAllRatingByApartmentId(apartment.id).subscribe(data => {
       this.ratings = data
+      this.getAvgStar();
     })
+  }
+
+  getAvgStar() {
+    let sum = 0;
+    for (let i = 0; i < this.ratings.length; i++) {
+      // @ts-ignore
+      sum += this.ratings[i].star;
+    }
+    this.avgStar = sum / this.ratings.length;
   }
 
   rentApartment() {

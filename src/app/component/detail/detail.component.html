@@ -276,8 +276,10 @@
                   <h1 class="property-title">{{apartment.name}}</h1>
                   <span class="property-price">{{apartment.value | currency}}</span>
                 </div>
-                <span class="property-info-label">RATING: 0 </span><img src="assets/img/icon/star-icon.png" width="15"
-                                                                        height="15" style="margin-bottom: 5px">
+                <span class="property-info-label">RATING: {{avgStar}} </span><img src="assets/img/icon/star-icon.png"
+                                                                                  width="15"
+                                                                                  height="15"
+                                                                                  style="margin-bottom: 5px">
                 <div class="property-meta entry-meta clearfix ">
                   <div class="col-xs-4 col-sm-4 col-md-4 p-b-15">
                     <span class="property-info-icon icon-bed">
