@@ -4,6 +4,7 @@ import {environment} from "../../../environments/environment";
 import {Rating} from "../../model/rating";
 import {Observable} from "rxjs";
 import {Rent} from "../../model/rent";
+import {Comment} from "../../model/comment";
 
 const API_URL = `${environment.apiUrl}`;
 
@@ -17,5 +18,9 @@ export class RatingService {
 
   addNewRating(rate: Rating): Observable<Rating> {
     return this.http.post<Rating>(API_URL + `/rating`, rate);
+  }
+
+  getAllRatingByApartmentId(id: number): Observable<Rating[]> {
+    return this.http.get<Rating[]>(API_URL + `/rating/apartments/all/${id}`);
   }
 }

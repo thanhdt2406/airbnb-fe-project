@@ -11,6 +11,8 @@ import {Comment} from '../../model/comment';
 import {CommentService} from '../../service/comment/comment.service';
 import {RentService} from '../../service/rent/rent.service';
 import {Rent} from '../../model/rent';
+import {Rating} from "../../model/rating";
+import {RatingService} from "../../service/rating/rating.service";
 
 declare var $: any;
 
@@ -59,9 +61,12 @@ export class DetailComponent implements OnInit {
   currentUser: User = {};
   // @ts-ignore
   comments: Comment[] = [];
+  ratings: Rating[] = [];
+  avgStar: number = 0;
   commentContent: string = '';
   message: string = '';
   isShow: boolean = false;
+  isShowRating: boolean = false;
   rents: Rent[] = [];
 
   constructor(private apartmentService: ApartmentService,
@@ -70,7 +75,8 @@ export class DetailComponent implements OnInit {
               private userService: UserService,
               private authService: AuthService,
               private commentService: CommentService,
-              private rentService: RentService) {
+              private rentService: RentService,
+              private ratingSerice: RatingService) {
   }
 
   ngOnInit(): void {
@@ -135,6 +141,7 @@ export class DetailComponent implements OnInit {
       this.getUserByApartment(value);
       this.getAllCommentByApartmentId(value);
       this.getAllRentedByApartment(value);
+      this.getAllRatingByApartmentId(value);
     });
   }
 
@@ -172,14 +179,33 @@ export class DetailComponent implements OnInit {
         // @ts-ignore
         this.getAllCommentByApartmentId(this.apartment);
       });
-    }else {
+    } else {
       return;
     }
   }
 
-  getAllCommentByApartmentId(apartment:Apartment) {
+  getAllCommentByApartmentId(apartment: Apartment) {
     // @ts-ignore
-    this.commentService.getCommentByApartmentId(apartment.id).subscribe(data => { this.comments = data})
+    this.commentService.getCommentByApartmentId(apartment.id).subscribe(data => {
+      this.comments = data
+    })
+  }
+
+  getAllRatingByApartmentId(apartment: Apartment) {
+    // @ts-ignore
+    this.ratingSerice.getAllRatingByApartmentId(apartment.id).subscribe(data => {
+      this.ratings = data
+      this.getAvgStar();
+    })
+  }
+
+  getAvgStar() {
+    let sum = 0;
+    for (let i = 0; i < this.ratings.length; i++) {
+      // @ts-ignore
+      sum += this.ratings[i].star;
+    }
+    this.avgStar = sum / this.ratings.length;
   }
 
   rentApartment() {
@@ -190,7 +216,7 @@ export class DetailComponent implements OnInit {
     let date2 = checkout[2] + '-' + checkout[0] + '-' + checkout[1];
     let mouthCheckin = parseInt(checkin[0][1]) - 1;
     let mouthCheckout = parseInt(checkout[0][1]) - 1;
-    let checkDate1  = new Date(checkin[2], mouthCheckin, checkin[1], 7, 0, 0, 0);
+    let checkDate1 = new Date(checkin[2], mouthCheckin, checkin[1], 7, 0, 0, 0);
     let checkDate2  = new Date(checkout[2], mouthCheckout, checkout[1], 7, 0, 0, 0);
     for (let i = 0; i < this.rents.length ; i ++){
       // @ts-ignore
@@ -267,6 +293,10 @@ export class DetailComponent implements OnInit {
 
   showHide() {
     this.isShow = !this.isShow;
+  }
+
+  showHideRating() {
+    this.isShowRating = !this.isShowRating;
   }
 
   getAllRentedByApartment(ap: Apartment) {
