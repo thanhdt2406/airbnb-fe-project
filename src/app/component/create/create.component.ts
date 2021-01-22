@@ -273,11 +273,7 @@ export class CreateComponent implements OnInit {
                 if (i == 0) {
                   apartment.avatar = image;
                   // @ts-ignore
-                  this.apartmentService.setAvatar(apartment.id, image.image).subscribe(() => {
-                    alert("success!");
-                  }, error => {
-                    alert("fail");
-                  });
+                  this.apartmentService.setAvatar(apartment.id, image.image)
                 }
                 this.imageService.createImage(image);
               });
