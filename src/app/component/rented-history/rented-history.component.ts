@@ -16,7 +16,7 @@ export class RentedHistoryComponent implements OnInit {
   rents: Rent[] = [];
   apartments: Apartment[] = [];
   apartment: Apartment = {};
-
+  p = 1;
   constructor(private authService: AuthService,
               private rentService: RentService,
               private apartmentService: ApartmentService,

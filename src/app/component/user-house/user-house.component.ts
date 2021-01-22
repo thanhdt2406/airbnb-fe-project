@@ -12,7 +12,7 @@ export class UserHouseComponent implements OnInit {
   apartments: Apartment[] = [];
   currentUser = this.authService.currentUserValue;
   mess = '';
-
+  p: number = 1;
   constructor(private authService: AuthService,
               private apartmentService: ApartmentService) {
   }

@@ -38,7 +38,7 @@
 
         <div class="section">
           <div id="list-type" class="proerty-th-list">
-            <ng-container *ngFor="let ap  of apartments ">
+            <ng-container *ngFor="let ap  of apartments| paginate: { itemsPerPage: 5, currentPage: p} ">
              <div class="col-md-4 p0">
               <div class="box-two proerty-item">
                 <div class="item-thumb">
@@ -67,18 +67,10 @@
           </div>
         </div>
 
-        <div class="section">
-          <div class="pull-right">
-            <div class="pagination">
-              <ul>
-                <li><a href="#">Prev</a></li>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">Next</a></li>
-              </ul>
-            </div>
+        <div class="row">
+          <div class="col-sm-7"></div>
+          <div class="col-sm-5">
+            <pagination-controls (pageChange)="p = $event" ></pagination-controls>
           </div>
         </div>
 
